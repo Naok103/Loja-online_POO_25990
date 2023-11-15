@@ -155,6 +155,25 @@ namespace Classes2
 
         #endregion
 
+        #region OUTROS METODOS
+
+        public Vendas AlterarVenda(Vendas v)
+        {
+            return v;
+        }
+
+        public Vendas RetirarVenda(Vendas v)
+        {
+            return v;
+        }
+
+        public bool ExisteVendas(Vendas v)
+        {
+            return true;
+        }
+
+        #endregion
+
         #endregion
     }
 }

@@ -33,7 +33,7 @@ namespace Classes2
         }
 
         /// <summary>
-        /// Construtor 
+        /// Construtor por parametros
         /// </summary>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
@@ -144,6 +144,25 @@ namespace Classes2
                 }
             }
             return false;
+        }
+
+        #endregion
+
+        #region OUTROS METODOS
+
+        public Campanha AlterarCampanha(Campanha c)
+        {
+            return c;
+        }
+
+        public Campanha RetirarCampanha(Campanha c)
+        {
+            return c;
+        }
+
+        public bool ExisteCampanha(Campanha c)
+        {
+            return true;
         }
 
         #endregion

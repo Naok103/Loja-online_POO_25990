@@ -196,6 +196,25 @@ namespace Classes1
 
         #endregion
 
+        #region OUTROS METODOS
+
+        public Produto AlterarProduto(Produto p)
+        {
+            return p;
+        }
+
+        public Produto RetirarProduto(Produto p)
+        {
+            return p;
+        }
+
+        public bool ExisteProduto(Produto p)
+        {
+            return true;
+        }
+
+        #endregion
+
         #endregion
     }
 }

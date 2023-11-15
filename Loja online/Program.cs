@@ -8,7 +8,7 @@ namespace Loja_online
     {
         static void Main(string[] args)
         {
-            
+          
         }
     }
 }
