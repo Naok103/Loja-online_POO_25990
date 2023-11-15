@@ -36,9 +36,9 @@ namespace Classes2
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="quantidade"> variavel quantidade</param>
-        /// <param name="idP">variavel id produto</param>
-        /// <param name="idC">variavel id cliente</param>
+        /// <param name="quantidade"> variavel para a quantidade vendida</param>
+        /// <param name="idP">variavel para o id do produto vendido</param>
+        /// <param name="idC">variavel para o id do cliente que comprou o produto</param>
         public Vendas(int quantidade, int idP, int idC)
         {
             this.quantidade = quantidade;
@@ -95,8 +95,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Venda sao iguais
         /// </summary>
-        /// <param name="v1">variavel stock</param>
-        /// <param name="v2">variavel stock</param>
+        /// <param name="v1">variavel que reprensenta a classe venda</param>
+        /// <param name="v2">variavel que reprensenta a classe venda</param>
         /// <returns>retorna verdaeiro se o conteudo das Vendas comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Vendas v1, Vendas v2)
         {
@@ -110,8 +110,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Venda sao diferentes
         /// </summary>
-        /// <param name="v1">variavel stock</param>
-        /// <param name="v2">variavel stock</param>
+        /// <param name="v1">variavel que reprensenta a classe venda</param>
+        /// <param name="v2">variavel que reprensenta a classe venda</param>
         /// <returns>retorna falso se o conteudo das vendas comparadas forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Vendas v1, Vendas v2)
         {
@@ -138,7 +138,7 @@ namespace Classes2
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de uma venda
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que representa um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo da venda</returns>
         public override bool Equals(object obj)
         {

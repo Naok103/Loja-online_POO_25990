@@ -80,8 +80,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Stock sao iguais
         /// </summary>
-        /// <param name="s1">variavel stock</param>
-        /// <param name="s2">variavel stock</param>
+        /// <param name="s1">variavel que reprensenta a classe stock</param>
+        /// <param name="s2">variavel que reprensenta a classe stock</param>
         /// <returns>retorna verdaeiro se o conteudo dos stocks comparados forem iguais e falso se nao forem</returns>
         public static bool operator ==(Stock s1, Stock s2)
         {
@@ -93,8 +93,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Stock sao diferentes
         /// </summary>
-        /// <param name="s1">variavel stock</param>
-        /// <param name="s2">variavel stock</param>
+        /// <param name="s1">variavel que reprensenta a classe stock</param>
+        /// <param name="s2">variavel que reprensenta a classe stock</param>
         /// <returns>retorna falso se o conteudo dos stocks comparados forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Stock s1, Stock s2)
         {
@@ -119,7 +119,7 @@ namespace Classes2
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de um stock
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que representa um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do stock</returns>
         public override bool Equals(object obj)
         {

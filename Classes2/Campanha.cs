@@ -90,8 +90,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Campanha sao iguais
         /// </summary>
-        /// <param name="c1">variavel campanha</param>
-        /// <param name="c2">variavel campanha</param>
+        /// <param name="c1">variavel que reprensenta a classe campanha</param>
+        /// <param name="c2">variavel que reprensenta a classe campanha</param>
         /// <returns>retorna verdadeiro se o conteudo das campanhas comparadas for iguais e falso se nao forem</returns>
         public static bool operator ==(Campanha c1, Campanha c2)
         {
@@ -105,8 +105,8 @@ namespace Classes2
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Campanha sao diferentes
         /// </summary>
-        /// <param name="c1">variavel campanha</param>
-        /// <param name="c2">variavel campanha</param>
+        /// <param name="c1">variavel que reprensenta a classe campanha</param>
+        /// <param name="c2">variavel que reprensenta a classe campanha</param>
         /// <returns>retorna falso se o conteudo das campanhas comparadas forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Campanha c1, Campanha c2)
         {
@@ -131,7 +131,7 @@ namespace Classes2
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de uma campanha
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que representa um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo da campanha</returns>
         public override bool Equals(object obj)
         {

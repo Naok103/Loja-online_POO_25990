@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Classes1;
+using Classes2;
+using System;
 
 namespace Loja_online
 {
@@ -10,6 +8,7 @@ namespace Loja_online
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }

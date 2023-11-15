@@ -37,17 +37,18 @@ namespace Classes1
             categoria = "";
             preco = 0;
             garantia = 0;
+            idM = 0;
         }
 
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel id produto</param>
-        /// <param name="nome">variavel nome</param>
-        /// <param name="categoria">variavel categoria</param>
-        /// <param name="preco">variavel preco</param>
-        /// <param name="garantia">variavel garantia</param>
-        /// <param name="idM">variavel id marca</param>
+        /// <param name="id">variavel para o id produto</param>
+        /// <param name="nome">variavel para o nome do produto</param>
+        /// <param name="categoria">variavel para a categoria do produto</param>
+        /// <param name="preco">variavel para o preco do produto</param>
+        /// <param name="garantia">variavel para a garantia do produto</param>
+        /// <param name="idM">variavel para o id da marca do produto</param>
         public Produto(int id, string nome, string categoria, int preco, int garantia, int idM)
         {
             this.id = id;
@@ -67,12 +68,12 @@ namespace Classes1
         /// </summary>
         public int Id
         {
-            get { return id; }
             set
             {
                 if (value > 0)
                     id = value;
             }
+            get { return id; }
         }
 
         /// <summary>
@@ -80,8 +81,8 @@ namespace Classes1
         /// </summary>
         public string Nome
         {
-            get { return nome; }
             set { nome = value; }
+            get { return nome; }
         }
 
         /// <summary>
@@ -89,8 +90,8 @@ namespace Classes1
         /// </summary>
         public string Categoria
         {
-            get { return categoria; }
             set { categoria = value; }
+            get { return categoria; }
         }
 
         /// <summary>
@@ -98,12 +99,12 @@ namespace Classes1
         /// </summary>
         public int Preco
         {
-            get { return preco; }
             set
             {
                 if (value > 0)
                     id = value;
             }
+            get { return preco; }
         }
 
         /// <summary>
@@ -111,12 +112,12 @@ namespace Classes1
         /// </summary>
         public int Garantia
         {
-            get { return garantia; }
             set
             {
                 if (value > 0)
                     id = value;
             }
+            get { return garantia; }
         }
 
         /// <summary>
@@ -124,12 +125,12 @@ namespace Classes1
         /// </summary>
         public int IdM
         {
-            get { return idM; }
             set
             {
                 if (value > 0)
                     idM = value;
             }
+            get { return idM; }
         }
 
         #endregion
@@ -139,8 +140,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Produto sao iguais
         /// </summary>
-        /// <param name="u1">variavel produto</param>
-        /// <param name="u2">variavel produto</param>
+        /// <param name="u1">variavel que reprensenta a classe produto</param>
+        /// <param name="u2">variavel que reprensenta a classe produto</param>
         /// <returns>retorna verdaeiro se o conteudo dos produtos comparados forem iguais e falso se nao forem</returns>
         public static bool operator ==(Produto u1, Produto u2)
         {
@@ -152,8 +153,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Produto sao diferentes
         /// </summary>
-        /// <param name="u1">variavel produto</param>
-        /// <param name="u2">variavel produto</param>
+        /// <param name="u1">variavel que reprensenta a classe produto</param>
+        /// <param name="u2">variavel que reprensenta a classe produto</param>
         /// <returns>retorna falso se o conteudo dos produtos comparados forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Produto u1, Produto u2)
         {
@@ -172,13 +173,13 @@ namespace Classes1
         /// <returns>retorna uma frase com o conteudo de um produto</returns>
         public override string ToString()
         {
-            return String.Format("Nome: {0}, Idade: {1}, Preco{2}, Categoria{3}, Garantia{4}, Marca{5}", nome, id.ToString(), preco, categoria.ToString(), garantia.ToString());
+            return string.Format("Id Produto: {1}, Nome: {2}, Categoria: {3}, Preco: {4}, Garantia: {5}, Id Marca: {6}", id.ToString(), nome, categoria, preco.ToString(), garantia.ToString(), idM.ToString());
         }
 
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de um produto
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que reprensenta um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do produto</returns>
         public override bool Equals(object obj)
         {

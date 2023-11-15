@@ -41,11 +41,11 @@ namespace Classes1
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel id do cliente</param>
-        /// <param name="nome"> variavel nome</param>
-        /// <param name="pass">variavel password</param>
-        /// <param name="contacto">variavel contacto</param>
-        /// <param name="nif">variavel nif</param>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <param name="nome"> variavel para o nome do cliente</param>
+        /// <param name="pass">variavel para a password do cliente</param>
+        /// <param name="contacto">variavel para o contacto do cliente</param>
+        /// <param name="nif">variavel para o nif do cliente</param>
         public Cliente(int id, string nome, string pass, int contacto, int nif)
         {
 
@@ -124,8 +124,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Cliente sao iguais
         /// </summary>
-        /// <param name="u1">variavel cliente</param>
-        /// <param name="u2">variavel cliente</param>
+        /// <param name="u1">variavel que reprensenta a classe cliente</param>
+        /// <param name="u2">variavel que reprensenta a classe cliente</param>
         /// <returns>retorna verdaeiro se o conteudo dos clientes comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Cliente u1, Cliente u2)
         {
@@ -137,8 +137,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Cliente sao diferentes
         /// </summary>
-        /// <param name="u1">variavel cliente</param>
-        /// <param name="u2">variavel cliente</param>
+        /// <param name="u1">variavel que reprensenta a classe cliente</param>
+        /// <param name="u2">variavel que reprensenta a classe cliente</param>
         /// <returns>retorna falso se o conteudo dos clientes comparadas forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Cliente u1, Cliente u2)
         {
@@ -157,13 +157,13 @@ namespace Classes1
         /// <returns>retorna uma frase com o conteudo de um cliente</returns>
         public override string ToString()
         {
-            return String.Format("Nome: {0}, Idade: {1}, Pass{2}, Contacto{3}, Nif{4} ", nome, id.ToString(), pass, contacto.ToString(), nif.ToString());
+            return String.Format("Nome: {0}, Id: {1}, Pass: {2}, Contacto: {3}, Nif: {4}", nome, id.ToString(), pass, contacto.ToString(), nif.ToString());
         }
 
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de um cliente
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que representa um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do cliente</returns>
         public override bool Equals(object obj)
         {

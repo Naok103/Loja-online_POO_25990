@@ -39,9 +39,9 @@ namespace Classes1
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel id marca</param>
-        /// <param name="nome">variavel nome</param>
-        /// <param name="site">variavel site</param>
+        /// <param name="id">variavel para o id marca</param>
+        /// <param name="nome">variavel para o nome da marca</param>
+        /// <param name="site">variavel para o site da marca</param>
         public Marca(int id, string nome, string site)
         {
             this.id = id;
@@ -91,8 +91,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Marca sao iguais
         /// </summary>
-        /// <param name="u1">variavel marca</param>
-        /// <param name="u2">variavel marca</param>
+        /// <param name="u1">variavel que reprensenta a classe marca</param>
+        /// <param name="u2">variavel que reprensenta a classe marca</param>
         /// <returns>retorna verdaeiro se o conteudo das marcas comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Marca u1, Marca u2)
         {
@@ -104,8 +104,8 @@ namespace Classes1
         /// <summary>
         /// Funcao para verificar se duas variaveis da classe Marca sao diferentes
         /// </summary>
-        /// <param name="u1">variavel marca</param>
-        /// <param name="u2">variavel marca</param>
+        /// <param name="u1">variavel que reprensenta a classe marca</param>
+        /// <param name="u2">variavel que reprensenta a classe marca</param>
         /// <returns>retorna falso se o conteudo das marcas comparadas forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Marca u1, Marca u2)
         {
@@ -124,14 +124,13 @@ namespace Classes1
         /// <returns>retorna uma frase com o conteudo de uma marca</returns>
         public override string ToString()
         {
-
-            return String.Format("Nome: {0}, Idade: {1}, Preco{2}, Categoria{3}, Garantia{4} ", nome, id.ToString(), site.ToString());
+            return string.Format("Id: {0}, Nome: {1}, Site: {2}", id.ToString(), nome, site);
         }
 
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de uma marca
         /// </summary>
-        /// <param name="obj">variavel objeto</param>
+        /// <param name="obj">variavel que reprensenta um objeto</param>
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo da marca</returns>
         public override bool Equals(object obj)
         {
@@ -144,6 +143,11 @@ namespace Classes1
                 }
             }
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         #endregion
