@@ -31,9 +31,9 @@ namespace Loja_online
 
         #region VENDAS
 
-        void MostrarVendas(Vendas v) { }
+        void MostrarVendas(Venda v) { }
 
-        void MostrarVendasCliente(Vendas v, Cliente c) { }
+        void MostrarVendasCliente(Venda v, Cliente c) { }
 
         #endregion
 

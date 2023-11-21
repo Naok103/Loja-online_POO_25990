@@ -152,24 +152,7 @@ namespace Classes1
 
         #endregion
 
-        #region OUTROS METODOS
-
-        public Marca AlterarMarca(Marca m)
-        {
-            return m;
-        }
-
-        public Marca RetirarMarca(Marca m)
-        {
-            return m;
-        }
-
-        public bool ExisteMarca(Marca m)
-        {
-            return true;
-        }
-
-        #endregion
+        
 
         #endregion
     }

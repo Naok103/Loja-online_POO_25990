@@ -148,24 +148,7 @@ namespace Classes2
 
         #endregion
 
-        #region OUTROS METODOS
-
-        public Campanha AlterarCampanha(Campanha c)
-        {
-            return c;
-        }
-
-        public Campanha RetirarCampanha(Campanha c)
-        {
-            return c;
-        }
-
-        public bool ExisteCampanha(Campanha c)
-        {
-            return true;
-        }
-
-        #endregion
+        
 
         #endregion
     }

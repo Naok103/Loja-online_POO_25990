@@ -136,25 +136,6 @@ namespace Classes2
 
         #endregion
 
-        #region OUTROS METODOS
-
-        public Stock AdicionarStock(Stock s)
-        {
-            return s;
-        }
-
-        public Stock RetirarStock(Stock s)
-        {
-            return s;
-        }
-
-        public bool ExisteStock(Stock s)
-        {
-            return true;
-        }
-
-        #endregion
-
         #endregion
     }
 }

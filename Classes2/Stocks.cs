@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 namespace Classes2
 {
     /// <summary>
-    /// Purpose: Classe para guardar os metodos relacionados com Vendas
+    /// Purpose: Classe para guardar os metodos relacionados com Stock
     /// Created by: Rafael silva
-    /// Created on: 21/11/2023 10:55:28
+    /// Created on: 21/11/2023 10:56:04
     /// </summary>
-    internal class Vendas : IVenda
+    internal class Stocks : IStock
     {
-        public Venda AlterarVenda(Venda v)
+        public Stock AdicionarStock(Stock s)
         {
-            return v;
+            return s;
         }
 
-        public Venda RetirarVenda(Venda v)
+        public Stock RetirarStock(Stock s)
         {
-            return v;
+            return s;
         }
 
-        public bool ExisteVendas(Venda v)
+        public bool ExisteStock(Stock s) 
         {
             return true;
         }

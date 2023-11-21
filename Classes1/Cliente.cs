@@ -180,25 +180,6 @@ namespace Classes1
 
         #endregion
 
-        #region OUTROS METODOS
-
-        public Cliente AlterarCliente(Cliente c)
-        {
-            return c;
-        }
-
-        public Cliente RetirarCliente(Cliente c)
-        {
-            return c;
-        }
-
-        public bool ExisteCliente(Cliente c)
-        {
-            return true;
-        }
-
-        #endregion
-
         #endregion
     }
 }
