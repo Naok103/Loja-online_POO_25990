@@ -33,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Classes1">
-      <HintPath>..\Classes1\bin\Debug\Classes1.dll</HintPath>
+    <Reference Include="Dados">
+      <HintPath>..\Dados\bin\Debug\Dados.dll</HintPath>
     </Reference>
-    <Reference Include="Classes2">
-      <HintPath>..\Classes2\bin\Debug\Classes2.dll</HintPath>
+    <Reference Include="objetos">
+      <HintPath>..\objetos\bin\Debug\objetos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

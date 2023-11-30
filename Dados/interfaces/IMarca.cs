@@ -9,11 +9,25 @@ namespace Dados
 {
     internal interface IMarca
     {
-        Marca AlterarMarca(Marca m);
+        bool InserirMarca(Marca m);
 
-        Marca RetirarMarca(Marca m);
+        bool AlterarMarca(Marca m);
 
-        bool ExisteMarca(Marca m);
+         bool RetirarMarca(Marca m);
+
+         bool ExisteMarca(Marca m);
+
+         bool GravarMarcasB(string m);
+
+         bool LerMarcasB(string m);
+
+        bool GravarMarcas(string m);
+
+        bool LerMarcas(string m);
+
+
+
+
 
     }
 }

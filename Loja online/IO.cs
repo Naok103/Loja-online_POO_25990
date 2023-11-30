@@ -1,6 +1,8 @@
-﻿using Classes1;
-using Classes2;
+﻿using Objetos;
+using Dados;
 using System;
+using System.Collections.Generic;
+using System.Security.Policy;
 
 namespace Loja_online
 {
@@ -13,44 +15,56 @@ namespace Loja_online
     {
         #region CLIENTES
 
-        void MostrarClientes(Cliente c) { }
+        public void MostrarClientes(Cliente c) { }
 
         #endregion
 
         #region PRODUTO
 
-        void MostrarProdutos(Produto p) { }
+        public void MostrarProdutos(Produto p) { }
 
         #endregion
 
         #region MARCA
 
-        void MostrarMarcas(Marca m) { }
+        public void MostrarMarcas(Marcas m)
+        {
+
+            foreach (Marca marca in m)
+            {
+                Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", marca.Id, marca.Nome, marca.Site);
+
+
+            }
+
+
+        }
 
         #endregion
 
         #region VENDA
 
-        void MostrarVendas(Venda v) { }
+        public void MostrarVendas(Venda v) { }
 
-        void MostrarVendasCliente(Venda v, Cliente c) { }
+        public void MostrarVendasCliente(Venda v, Cliente c) { }
 
         #endregion
 
         #region STOCK
 
-        void MostrarStock(Stock s) { }
+        public void MostrarStock(Stock s) { }
 
-        void MostrarStockProduto(Stock s, Produto p) { }
+        public void MostrarStockProduto(Stock s, Produto p) { }
 
         #endregion
 
         #region CAMPANHA
 
-        void MostrarCampanha(Campanha c) { }
+        public void MostrarCampanha(Campanha c) { }
 
         #endregion
 
+       
     }
 }
 

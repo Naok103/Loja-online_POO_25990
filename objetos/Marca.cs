@@ -11,7 +11,7 @@ using System;
 
 namespace Objetos
 {
-    
+    [Serializable]
     public class Marca
     {
         #region ESTADO 
