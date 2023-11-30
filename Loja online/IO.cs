@@ -29,7 +29,7 @@ namespace Loja_online
 
         #endregion
 
-        #region VENDAS
+        #region VENDA
 
         void MostrarVendas(Venda v) { }
 

@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Objetos;
 
-
-namespace Classes1
+namespace Dados
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: Classe para guardar os metodos relacionados com Campanha
     /// Created by: Rafael silva
-    /// Created on: 21/11/2023 11:20:36
+    /// Created on: 21/11/2023 10:54:43
     /// </summary>
-    public class Clientes : ICliente
+    public class Campanhas : ICampanha
     {
-        public Cliente AlterarCliente(Cliente c)
+        public Campanha AlterarCampanha(Campanha c)
         {
             return c;
         }
 
-        public Cliente RetirarCliente(Cliente c)
+        public Campanha RetirarCampanha(Campanha c)
         {
             return c;
         }
 
-        public bool ExisteCliente(Cliente c)
+        public bool ExisteCampanha(Campanha c)
         {
             return true;
         }

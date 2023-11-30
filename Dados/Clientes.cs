@@ -4,28 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Objetos;
 
 
-namespace Classes1
+namespace Dados
 {
     /// <summary>
     /// Purpose:
     /// Created by: Rafael silva
-    /// Created on: 21/11/2023 11:19:58
+    /// Created on: 21/11/2023 11:20:36
     /// </summary>
-    public class Marcas : IMarca
+    public class Clientes : ICliente
     {
-        public Marca AlterarMarca(Marca m)
+        public Cliente AlterarCliente(Cliente c)
         {
-            return m;
+            return c;
         }
 
-        public Marca RetirarMarca(Marca m)
+        public Cliente RetirarCliente(Cliente c)
         {
-            return m;
+            return c;
         }
 
-        public bool ExisteMarca(Marca m)
+        public bool ExisteCliente(Cliente c)
         {
             return true;
         }

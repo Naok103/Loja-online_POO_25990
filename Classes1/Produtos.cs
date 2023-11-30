@@ -13,7 +13,7 @@ namespace Classes1
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:21:02
     /// </summary>
-    internal class Produtos : IProduto
+    public class Produtos : IProduto
     {
         public Produto AlterarProduto(Produto p)
         {

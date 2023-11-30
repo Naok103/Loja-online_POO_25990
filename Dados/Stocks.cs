@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Objetos;
 
-namespace Classes2
+namespace Dados
 {
     /// <summary>
     /// Purpose: Classe para guardar os metodos relacionados com Stock
