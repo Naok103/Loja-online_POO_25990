@@ -19,7 +19,7 @@ namespace Loja_online
 
 
 
-            marcas.RetirarMarca(nike);
+            marcas.RetirarMarca(1);
             iO.MostrarMarcas(marcas);
 
 

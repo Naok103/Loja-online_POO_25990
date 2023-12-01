@@ -15,20 +15,115 @@ namespace Dados
     /// </summary>
     public class Stocks : IStock
     {
-        public Stock AdicionarStock(Stock s)
+        
+        #region ESTADO 
+
+       static List<Stock> stocks;
+
+        #endregion
+
+        #region COMPORTAMENTO
+
+        #region CONSTRUTORES
+
+        /// <summary>
+        /// Construtor por omissão
+        /// </summary>
+        static Stocks()
         {
-            return s;
+            stocks = new List<Stock>();
         }
 
-        public Stock RetirarStock(Stock s)
+
+
+        #endregion
+
+        #region PROPRIEDADES
+
+        public static List<Stock> STOCKS
         {
-            return s;
+            get { return stocks; }
+            set { stocks = value; }
         }
 
-        public bool ExisteStock(Stock s) 
+        #endregion
+
+        #region OUTROSMETODOS
+
+        public bool AdicionarStock(Stock s)
+        {
+            if (ExisteStock(s) == false)
+            {
+                stocks.Add(s);
+                Console.WriteLine("exito!");
+                return true;
+
+            }
+
+            return false;
+            
+        }
+
+        public bool RetirarStock(Stock s)
+        {
+            if (ExisteStock(s) == true)
+            {
+                for (int i = 0; i < stocks.Count; i++)
+                {
+                    if (stocks[i] == s)
+                    {
+                        stocks.RemoveAt(i);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool ExisteStock(Stock s)
+        {
+            foreach (Stock stock in stocks)
+            {
+                if (stock == s)          
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool AlterarStock(Stock s)
         {
             return true;
         }
+
+        public bool GravarStockB(Stock s)
+        {
+            return true;
+
+        }
+
+        public bool LerStockB(Stock s)
+        {
+            return true;
+
+        }
+
+        public bool GravarStock(Stock s)
+        {
+            return true;
+
+        }
+
+        public bool LerStock(Stock s)
+        {
+            return true;
+
+        }
+
+        #endregion
+
+        #endregion
     }
 }
 

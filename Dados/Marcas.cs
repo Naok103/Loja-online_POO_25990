@@ -52,8 +52,7 @@ namespace Dados
 
         public bool InserirMarca(Marca m)
         {
-            bool aux = ExisteMarca(m);
-            if (aux == false)
+            if (ExisteMarca(m.Id) == false)
             {
                 marcas.Add(m);
                 Console.WriteLine("exito!");
@@ -64,13 +63,13 @@ namespace Dados
             return false;
         }
 
-        public bool RetirarMarca(Marca m)
+        public bool RetirarMarca(int id)
         {
-            if (ExisteMarca(m) == true)
+            if (ExisteMarca(id) == true)
             {
                 for (int i = 0; i < marcas.Count; i++)
                 {
-                    if (marcas[i] == m)
+                    if (marcas[i].Id == id)
                     {
                         marcas.RemoveAt(i);
                         return true;
@@ -80,11 +79,11 @@ namespace Dados
             return false;
         }
 
-        public bool AlterarMarca(Marca m, int i)
-        {
-            foreach (Marca marca in marcas)
+        public bool AlterarMarca(int id, int i)
+        { 
+            for (int o = 0; o < marcas.Count; o++)
             {
-                if(marca == m)
+                if (marcas[o].Id == id)
                 {
                     switch (i)
                     {
@@ -98,16 +97,17 @@ namespace Dados
             return true;
         }
 
-        
-
-        public bool ExisteMarca(Marca m)
+        public bool ExisteMarca(int id)
         {
-            foreach (Marca marca in marcas)
+ 
+            for (int i = 0; i < marcas.Count; i++)
             {
-                if(marca == m)
+                if (marcas[i].Id == id)
                 {
+                    marcas.RemoveAt(i);
                     return true;
                 }
+
             }
             return false;
         }
@@ -174,7 +174,6 @@ namespace Dados
             }
             return true;
         }
-
 
         #endregion
 

@@ -9,11 +9,22 @@ namespace Dados
 {
     internal interface IStock
     {
-        Stock AdicionarStock(Stock s);
+        bool AdicionarStock(Stock s);
 
-        Stock RetirarStock(Stock s);
+        bool RetirarStock(Stock s);
 
         bool ExisteStock(Stock s);
-        
+
+        bool AlterarStock(Stock s);
+
+        bool GravarStockB(Stock s);
+
+        bool LerStockB(Stock s);
+
+        bool GravarStock(Stock s);
+
+        bool LerStock(Stock s);
+
+
     }
 }

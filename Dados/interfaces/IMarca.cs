@@ -11,11 +11,11 @@ namespace Dados
     {
         bool InserirMarca(Marca m);
 
-        bool AlterarMarca(Marca m,int i);
+        bool AlterarMarca(int id, int i);
 
-        bool RetirarMarca(Marca m);
+        bool RetirarMarca(int id);
 
-        bool ExisteMarca(Marca m);
+        bool ExisteMarca(int id);
 
         bool GravarMarcasB(string m);
 
@@ -24,10 +24,6 @@ namespace Dados
         bool GravarMarcas(string m);
 
         bool LerMarcas(string m);
-
-
-
-
 
     }
 }
