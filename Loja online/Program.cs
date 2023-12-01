@@ -15,12 +15,19 @@ namespace Loja_online
 
             marcas.InserirMarca(nike);
             marcas.InserirMarca(adidas);
-            
+            iO.MostrarMarcas(marcas);
+
+
+
+            marcas.RetirarMarca(nike);
+            iO.MostrarMarcas(marcas);
+
+
             
             marcas.GravarMarcas(@"dadosmarcas.txt");
             marcas.LerMarcas(@"dadosmarcas.txt");
-
-            iO.MostrarMarcas(marcas);
+            
+            
         }
     }
 }

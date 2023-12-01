@@ -64,27 +64,41 @@ namespace Dados
             return false;
         }
 
-        public bool AlterarMarca(Marca m)
-        {
-            return true;
-        }
-
         public bool RetirarMarca(Marca m)
         {
-            bool aux = ExisteMarca(m);
-            if(aux == false)
+            if (ExisteMarca(m) == true)
             {
-                foreach (Marca marca in marcas)
+                for (int i = 0; i < marcas.Count; i++)
                 {
-                    if(marca == m)
+                    if (marcas[i] == m)
                     {
-                        marcas.Remove(marca);
+                        marcas.RemoveAt(i);
                         return true;
                     }
                 }
             }
             return false;
         }
+
+        public bool AlterarMarca(Marca m, int i)
+        {
+            foreach (Marca marca in marcas)
+            {
+                if(marca == m)
+                {
+                    switch (i)
+                    {
+                        case 1://name
+                            return true;
+                        case 2://site
+                            return true;
+                    }
+                }
+            }
+            return true;
+        }
+
+        
 
         public bool ExisteMarca(Marca m)
         {
@@ -170,10 +184,6 @@ namespace Dados
         {
             return marcas.GetEnumerator();
         }
-
-        #endregion
-
-        #region IEnumerable Members
 
         IEnumerator IEnumerable.GetEnumerator()
         {
