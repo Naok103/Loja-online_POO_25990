@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dados;
 using Loja_online;
 using Objetos;
+using System.Security.Policy;
 
 
 namespace Regras
@@ -45,7 +46,6 @@ namespace Regras
             if (marcas.ExisteMarca(id) == false)
             {
                 io.DadosMarca(out nome, out site);
-
                 Marca marca = new Marca(id, nome, site);
                 marcas.InserirMarca(marca);
                 return true;
@@ -79,23 +79,47 @@ namespace Regras
             return false;
         }
 
+        public bool RetirarMarca(int id)
+        {
+            Marcas marcas = new Marcas();
+            if (marcas.ExisteMarca(id) == true)
+            {
+                marcas.RetirarMarca(id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GravarMarcas(Marcas marcas, string m)
+        {
+
+            marcas.GravarMarcas(m);
+            return true;
+        }
+
+        public Marcas LerMarcas(Marcas marcas, string m)
+        {
+            marcas.LerMarcas(m);
+            return marcas;
+        }
+
         #endregion
 
         #region VENDA
 
-       
+
 
         #endregion
 
         #region STOCK
 
-        
+
 
         #endregion
 
         #region CAMPANHA
 
-        
+
 
         #endregion
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using Regras;
 using System.Security.Policy;
+using Dados;
 
 
 namespace Loja_online
@@ -21,22 +23,22 @@ namespace Loja_online
             {
                 case 1:
                     MenuProduto();
-                    return;
+                    break;
                 case 2:
                     MenuMarca();
-                    return;
+                    break;
                 case 3:
                     MenuCliente();
-                    return;
+                    break;
                 case 4:
                     MenuVenda();
-                    return;
+                    break;
                 case 5:
                     MenuStock();
-                    return; 
+                    break; 
                 case 6:
                     MenuCampanha();
-                    return;
+                    break;
                 case 0:
                     break;    
             }
@@ -44,7 +46,42 @@ namespace Loja_online
 
         public void MenuMarca()
         {
-
+            IO io = new IO();
+            Marcas marcas = new Marcas();
+            RegrasNegocio regras = new RegrasNegocio();
+            marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+            int op;
+            int id;
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine("0- Menu Principal\n1- Inserir Marca\n2- Alterar Marca\n3- Retirar Marca\n4- Mostrar marcas\n5- Guardar Marcas");
+                op = int.Parse(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        regras.InserirMarca();
+                        break;
+                    case 2:
+                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.AlterarMarca(id);
+                        break;
+                    case 3:
+                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.RetirarMarca(id);
+                        break;
+                    case 4:
+                        io.MostrarMarcas(marcas);
+                        break;
+                    case 5:
+                        regras.GravarMarcas(marcas, @"dadosmarcas");
+                        break;
+                }
+            } while (op != 0);
+            regras.GravarMarcas(marcas, @"dadosmarcas");
+            MenuPrincipal();
         }
 
         public void MenuProduto()

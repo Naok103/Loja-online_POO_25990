@@ -65,17 +65,15 @@ namespace Dados
 
         public bool RetirarMarca(int id)
         {
-            if (ExisteMarca(id) == true)
+            for (int i = 0; i < marcas.Count; i++)
             {
-                for (int i = 0; i < marcas.Count; i++)
+                if (marcas[i].Id == id)
                 {
-                    if (marcas[i].Id == id)
-                    {
-                        marcas.RemoveAt(i);
-                        return true;
-                    }
+                    marcas.RemoveAt(i);
+                    return true;
                 }
             }
+
             return false;
         }
 
