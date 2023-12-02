@@ -79,7 +79,7 @@ namespace Dados
             return false;
         }
 
-        public bool AlterarMarca(int id, int i)
+        public bool AlterarMarca(int id, int i, string nome, string site)
         { 
             for (int o = 0; o < marcas.Count; o++)
             {
@@ -87,14 +87,16 @@ namespace Dados
                 {
                     switch (i)
                     {
-                        case 1://name
+                        case 1:
+                            marcas[o].Nome = nome;
                             return true;
-                        case 2://site
+                        case 2:
+                            marcas[o].Site = site;
                             return true;
                     }
                 }
             }
-            return true;
+            return false;
         }
 
         public bool ExisteMarca(int id)
@@ -104,12 +106,21 @@ namespace Dados
             {
                 if (marcas[i].Id == id)
                 {
-                    marcas.RemoveAt(i);
                     return true;
                 }
 
             }
             return false;
+        }
+
+        public int ID(int id)
+        {
+            for(int i = 0; i < marcas.Count; i++)
+            {
+                id = marcas[i].Id;
+            }
+            id++;
+            return id;
         }
 
         public bool GravarMarcasB(string m) 

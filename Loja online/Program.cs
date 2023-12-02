@@ -1,27 +1,23 @@
 ﻿using Dados;
 using Objetos;
+using Regras;
 using System;
+
 
 namespace Loja_online
 {
-    internal class Program
+     class Program
     {
         static void Main(string[] args)
         {
             IO iO = new IO();
-            Marca nike = new Marca(1, "nike", "nike.com");
-            Marca adidas = new Marca(2  , "adidas", "adidas.com");
+            RegrasNegocio regras = new RegrasNegocio();
             Marcas marcas = new Marcas();
 
-            marcas.InserirMarca(nike);
-            marcas.InserirMarca(adidas);
+            regras.InserirMarca();
             iO.MostrarMarcas(marcas);
-
-
-
-            marcas.RetirarMarca(1);
+            regras.AlterarMarca(1);
             iO.MostrarMarcas(marcas);
-
 
             
             marcas.GravarMarcas(@"dadosmarcas.txt");

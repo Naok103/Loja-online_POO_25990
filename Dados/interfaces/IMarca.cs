@@ -11,11 +11,12 @@ namespace Dados
     {
         bool InserirMarca(Marca m);
 
-        bool AlterarMarca(int id, int i);
+        bool AlterarMarca(int id, int i, string nome, string site);
 
         bool RetirarMarca(int id);
 
         bool ExisteMarca(int id);
+        int ID(int id);
 
         bool GravarMarcasB(string m);
 
