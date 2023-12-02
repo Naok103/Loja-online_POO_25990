@@ -10,20 +10,8 @@ namespace Loja_online
     {
         static void Main(string[] args)
         {
-            IO iO = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
-            Marcas marcas = new Marcas();
-
-            regras.InserirMarca();
-            iO.MostrarMarcas(marcas);
-            regras.AlterarMarca(1);
-            iO.MostrarMarcas(marcas);
-
-            
-            marcas.GravarMarcas(@"dadosmarcas.txt");
-            marcas.LerMarcas(@"dadosmarcas.txt");
-            
-            
+            Menu menu = new Menu();
+            menu.MenuPrincipal();
         }
     }
 }
