@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Policy;
 using System.Collections;
+using System.ComponentModel;
 
 namespace Loja_online
 {
@@ -103,6 +104,14 @@ namespace Loja_online
                     Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", stock.ID, stock.Quantidade, stock.IDP);
                 }
             }
+        }
+
+        public void DadosStock(out int idP, out int quantidade)
+        {
+            Console.WriteLine("Qual o id do Produto?");
+            idP = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a quantidade do Produto?");
+            quantidade = int.Parse(Console.ReadLine());
         }
 
         #endregion

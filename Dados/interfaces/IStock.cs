@@ -19,6 +19,8 @@ namespace Dados
 
         bool RetirarStock(int id, int quantidade);
 
+        int ID(int id);
+
         bool GravarStockB(string m);
 
         bool LerStockB(string m);

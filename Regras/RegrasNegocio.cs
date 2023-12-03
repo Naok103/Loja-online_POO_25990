@@ -84,7 +84,6 @@ namespace Regras
 
         public bool GravarMarcas(Marcas marcas, string m)
         {
-
             marcas.GravarMarcas(m);
             return true;
         }
@@ -108,12 +107,67 @@ namespace Regras
         public bool InserirStock()
         {
             IO io = new IO();
-            Stocks stock = new Stocks();
+            Stocks stocks = new Stocks();
+            int idp, quantidade, id = 0;
+            id = stocks.ID(id);
 
-
-
+            io.DadosStock(out idp, out quantidade);
+            // if(produto.ExisteProduto(idp) == true)
+            Stock stock = new Stock(quantidade,idp,id);
+            stocks.InserirStock(stock);
 
             return true;
+        }
+
+        public bool AdicionarStock()
+        {
+            IO io = new IO();
+            Stocks stocks = new Stocks();
+            int idp, quantidade;
+
+
+            io.DadosStock(out idp, out quantidade);
+            // if(produto.ExisteProduto(idp) == true);
+            stocks.AdicionarStock(idp,quantidade);
+
+            return true;
+        }
+
+        public bool RetirarStock()
+        {
+            IO io = new IO();
+            Stocks stocks = new Stocks();
+            int idp, quantidade;
+
+
+            io.DadosStock(out idp, out quantidade);
+            // if(produto.ExisteProduto(idp) == true);
+            stocks.RetirarStock(idp, quantidade);
+
+            return true;
+        }
+
+        public bool AcabarStock(int id)
+        {
+            Stocks stocks = new Stocks();
+            if (stocks.ExisteStock(id) == true)
+            {
+                stocks.AcabarStock(id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GravarStocks(Stocks stocks, string m)
+        {
+            stocks.GravarStock(m);
+            return true;
+        }
+
+        public Stocks LerStocks(Stocks stocks, string m)
+        {
+            stocks.LerStock(m);
+            return stocks;
         }
 
         #endregion

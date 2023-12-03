@@ -111,6 +111,16 @@ namespace Dados
             return true;
         }
 
+        public int ID(int id)
+        {
+            for (int i = 0; i < stocks.Count; i++)
+            {
+                id = stocks[i].ID;
+            }
+            id++;
+            return id;
+        }
+
         public bool GravarStockB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);

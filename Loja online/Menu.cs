@@ -105,41 +105,44 @@ namespace Loja_online
             IO io = new IO();
             Stocks stock = new Stocks();
             RegrasNegocio regras = new RegrasNegocio();
-            
+            stock = regras.LerStocks(stock, @"dadosstock");
             int op;
             int id;
             do
             {
                 Console.WriteLine("Escolha uma opcao:");
-                Console.WriteLine(" 0- Menu Principal\n1- Inserir Stock\n2- Acabar Stock\n3- Adicionar Stock\n4- Retirar Stock\n5- Mostrar Stock\n6- Guardar Stock");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Stock\n2- Acabar Stock\n3- Adicionar Stock\n4- Retirar Stock\n5- Mostrar Stock\n6- Mostrar Stock de um Produto\n7- Guardar Stock");
                 op = int.Parse(Console.ReadLine());
                 switch (op)
                 {
                     case 1:
-                        
+                        regras.InserirStock();
                         break;
                     case 2:
-                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
+                        Console.WriteLine("Qual o id do Produto que deseja acabar com o stock do mesmo?");
                         id = int.Parse(Console.ReadLine());
-                       
+                        regras.AcabarStock(id);
                         break;
                     case 3:
-                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
-                        id = int.Parse(Console.ReadLine());
-                        
+                        regras.AdicionarStock();
                         break;
                     case 4:
-                        
+                        regras.RetirarStock();
                         break;
                     case 5:
-                        
+                        io.MostrarStock(stock);
                         break;
                     case 6:
-
+                        Console.WriteLine("Qual o id do Produto que deseja ver o stock?");
+                        id = int.Parse(Console.ReadLine());
+                        io.MostrarStockProduto(stock, id);
+                        break;
+                    case 7:
+                        regras.GravarStocks(stock, @"dadosstock");
                         break;
                 }
             } while (op != 0);
-            
+            regras.GravarStocks(stock, @"dadosstock");
             MenuPrincipal();
         }
 
