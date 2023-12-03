@@ -14,6 +14,7 @@ namespace Objetos
     {
         #region ESTADO 
 
+        int id;
         private int quantidade;
         private int idP;
 
@@ -28,6 +29,7 @@ namespace Objetos
         /// </summary>
         public Stock()
         {
+            id = 0;
             quantidade = 0;
             idP = 0;
         }
@@ -37,8 +39,10 @@ namespace Objetos
         /// </summary>
         /// <param name="quantidade">variavel para a quantidade do produto em stock</param>
         /// <param name="idP">variavel do id do produto em stock</param>
-        public Stock(int quantidade, int idP)
+        /// <param name="id">variavel id para identificar o stock</param>
+        public Stock(int quantidade, int idP,int id)
         {
+            this.id = id;
             this.quantidade = quantidade;
             this.idP = idP;
         }
@@ -73,6 +77,19 @@ namespace Objetos
             }
         }
 
+        /// <summary>
+        /// Propriedades da variavel id
+        /// </summary>
+        public int ID
+        {
+            get { return id; }
+            set
+            {
+                if (value > 0)
+                    id = value;
+            }
+        }
+
         #endregion
 
         #region Operadores
@@ -85,7 +102,7 @@ namespace Objetos
         /// <returns>retorna verdaeiro se o conteudo dos stocks comparados forem iguais e falso se nao forem</returns>
         public static bool operator ==(Stock s1, Stock s2)
         {
-            if ((s1.Quantidade == s2.Quantidade) && (s1.idP == s2.idP))
+            if ((s1.Quantidade == s2.Quantidade) && (s1.idP == s2.idP) && (s1.id == s2.id))
                 return true;
             return false;
         }
@@ -113,7 +130,7 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de um stock</returns>
         public override string ToString()
         {
-            return String.Format("Nome: {0}, Id Produto: {1}", quantidade.ToString(), idP.ToString());
+            return String.Format("Nome: {0}, Id Produto: {1}", quantidade.ToString(), idP.ToString(), id.ToString());
         }
 
         /// <summary>

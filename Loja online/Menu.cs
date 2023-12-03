@@ -17,7 +17,7 @@ namespace Loja_online
         {
             int op;
             Console.WriteLine("Escolha uma opcao:");
-            Console.WriteLine("0- Sair \n 1- Produto \n 2- Marca \n 3- Cliente \n 4- Venda \n 5- Stock \n 6- Campanha");
+            Console.WriteLine(" 0- Sair \n 1- Produto \n 2- Marca \n 3- Cliente \n 4- Venda \n 5- Stock \n 6- Campanha");
             op = int.Parse(Console.ReadLine());
             switch (op)
             {
@@ -55,7 +55,7 @@ namespace Loja_online
             do
             {
                 Console.WriteLine("Escolha uma opcao:");
-                Console.WriteLine("0- Menu Principal\n1- Inserir Marca\n2- Alterar Marca\n3- Retirar Marca\n4- Mostrar marcas\n5- Guardar Marcas");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Marca\n2- Alterar Marca\n3- Retirar Marca\n4- Mostrar marcas\n5- Guardar Marcas");
                 op = int.Parse(Console.ReadLine());
                 switch (op)
                 {
@@ -102,6 +102,45 @@ namespace Loja_online
         public void MenuStock()
         {
 
+            IO io = new IO();
+            Stocks stock = new Stocks();
+            RegrasNegocio regras = new RegrasNegocio();
+            
+            int op;
+            int id;
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Stock\n2- Acabar Stock\n3- Adicionar Stock\n4- Retirar Stock\n5- Mostrar Stock\n6- Guardar Stock");
+                op = int.Parse(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        
+                        break;
+                    case 2:
+                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                       
+                        break;
+                    case 3:
+                        Console.WriteLine("Qual o id da Marca que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        
+                        break;
+                    case 4:
+                        
+                        break;
+                    case 5:
+                        
+                        break;
+                    case 6:
+
+                        break;
+                }
+            } while (op != 0);
+            
+            MenuPrincipal();
         }
 
         public void MenuCampanha()

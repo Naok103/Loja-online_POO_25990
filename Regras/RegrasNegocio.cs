@@ -1,15 +1,7 @@
 ﻿using System;
-using static System.Exception;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Dados;
 using Loja_online;
 using Objetos;
-using System.Security.Policy;
-
 
 namespace Regras
 {
@@ -113,7 +105,16 @@ namespace Regras
 
         #region STOCK
 
+        public bool InserirStock()
+        {
+            IO io = new IO();
+            Stocks stock = new Stocks();
 
+
+
+
+            return true;
+        }
 
         #endregion
 

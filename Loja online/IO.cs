@@ -3,6 +3,7 @@ using Dados;
 using System;
 using System.Collections.Generic;
 using System.Security.Policy;
+using System.Collections;
 
 namespace Loja_online
 {
@@ -85,9 +86,24 @@ namespace Loja_online
 
         #region STOCK
 
-        public void MostrarStock(Stock s) { }
+        public void MostrarStock(Stocks s)
+        {
+            foreach (Stock stock in s)
+            {
+                Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", stock.ID, stock.Quantidade, stock.IDP);
+            }
+        }
 
-        public void MostrarStockProduto(Stock s, Produto p) { }
+        public void MostrarStockProduto(Stocks s, int id) 
+        {
+            foreach (Stock stock in s)
+            {
+                if(stock.IDP == id)
+                {
+                    Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", stock.ID, stock.Quantidade, stock.IDP);
+                }
+            }
+        }
 
         #endregion
 
