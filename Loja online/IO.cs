@@ -91,7 +91,7 @@ namespace Loja_online
         {
             foreach (Stock stock in s)
             {
-                Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", stock.ID, stock.Quantidade, stock.IDP);
+                Console.WriteLine("Id stock: {0}, Quantidade: {1}, Id Produto: {2}", stock.ID, stock.Quantidade, stock.IDP);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Loja_online
             {
                 if(stock.IDP == id)
                 {
-                    Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", stock.ID, stock.Quantidade, stock.IDP);
+                    Console.WriteLine("Id stock: {0}, Quantidade: {1}, Id Produto: {2}", stock.ID, stock.Quantidade, stock.IDP);
                 }
             }
         }

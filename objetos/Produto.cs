@@ -10,6 +10,7 @@ using System;
 
 namespace Objetos
 {
+    [Serializable]
     public class Produto
     {
         #region ESTADO 

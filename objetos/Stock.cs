@@ -10,6 +10,7 @@ namespace Objetos
     /// Created by: Rafael Silva
     /// Created on: 08/11/2023 14:30:21
     /// </summary>
+    [Serializable]
     public class Stock
     {
         #region ESTADO 

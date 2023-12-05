@@ -9,10 +9,22 @@ namespace Dados
 {
     internal interface IProduto
     {
-        Produto AlterarProduto(Produto p);
+        bool InserirProduto(Produto p);
 
-        Produto RetirarProduto(Produto p);
+        bool AlterarProduto(int id, int t, string nome, string categoria, int preco, int garantia);
 
-        bool ExisteProduto(Produto p);
+        bool RetirarProduto(int id);
+
+        bool ExisteProduto(int id);
+
+        bool GuardarProdutoB(string d);
+
+        bool LerProdutoB(string d);
+
+        bool GuardarProduto(string d);
+
+        bool LerProduto(string d);
+
+
     }
 }

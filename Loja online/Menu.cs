@@ -105,7 +105,7 @@ namespace Loja_online
             IO io = new IO();
             Stocks stock = new Stocks();
             RegrasNegocio regras = new RegrasNegocio();
-            stock = regras.LerStocks(stock, @"dadosstock");
+            //stock = regras.LerStocks(stock, @"dadosstock");
             int op;
             int id;
             do
