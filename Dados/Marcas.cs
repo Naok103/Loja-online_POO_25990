@@ -55,7 +55,6 @@ namespace Dados
             if (ExisteMarca(m.Id) == false)
             {
                 marcas.Add(m);
-                Console.WriteLine("exito!");
                 return true;
                 
             }

@@ -43,6 +43,7 @@ namespace Dados
             if(ExisteProduto(p.Id) == false)
             {
                 produtos.Add(p);
+                return true;
             }
             return false;
         }

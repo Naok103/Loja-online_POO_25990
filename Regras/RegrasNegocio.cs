@@ -162,7 +162,7 @@ namespace Regras
 
         #region STOCK
 
-        public bool InserirStock()
+        public bool InserirStock(Produtos produtos)
         {
             IO io = new IO();
             Stocks stocks = new Stocks();
@@ -170,37 +170,45 @@ namespace Regras
             id = stocks.ID(id);
 
             io.DadosStock(out idp, out quantidade);
-            // if(produto.ExisteProduto(idp) == true)
-            Stock stock = new Stock(quantidade,idp,id);
-            stocks.InserirStock(stock);
-
-            return true;
+            if(produtos.ExisteProduto(idp) == true)
+            {
+                Stock stock = new Stock(quantidade, idp, id);
+                stocks.InserirStock(stock);
+                return true;
+            }
+            return false;
         }
 
-        public bool AdicionarStock()
+        public bool AdicionarStock(Produtos produtos)
         {
             IO io = new IO();
             Stocks stocks = new Stocks();
-            int idp, quantidade;
+            int id, quantidade;
 
 
-            io.DadosStock(out idp, out quantidade);
-            // if(produto.ExisteProduto(idp) == true);
-            stocks.AdicionarStock(idp,quantidade);
+            io.DadosStock(out id, out quantidade);
+            if(produtos.ExisteProduto(id) == true)
+            {
+                stocks.AdicionarStock(id, quantidade);
+                return true;
+            }
 
-            return true;
+            return false;
         }
 
-        public bool RetirarStock()
+        public bool RetirarStock(Produtos produtos)
         {
             IO io = new IO();
             Stocks stocks = new Stocks();
-            int idp, quantidade;
+            int id, quantidade;
 
 
-            io.DadosStock(out idp, out quantidade);
-            // if(produto.ExisteProduto(idp) == true);
-            stocks.RetirarStock(idp, quantidade);
+            io.DadosStock(out id, out quantidade);
+            if(produtos.ExisteProduto(id) == true)
+            {
+                stocks.RetirarStock(id, quantidade);
+            }
+            
 
             return true;
         }

@@ -154,8 +154,10 @@ namespace Loja_online
 
             IO io = new IO();
             Stocks stock = new Stocks();
+            Produtos produtos = new Produtos();
             RegrasNegocio regras = new RegrasNegocio();
             //stock = regras.LerStocks(stock, @"dadosstock");
+            //produtos = regras.LerProdutos(produtos, @"dadosprodutos");
             int op;
             int id;
             do
@@ -166,7 +168,7 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
-                        regras.InserirStock();
+                        regras.InserirStock(produtos);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Produto que deseja acabar com o stock do mesmo?");
@@ -174,10 +176,10 @@ namespace Loja_online
                         regras.AcabarStock(id);
                         break;
                     case 3:
-                        regras.AdicionarStock();
+                        regras.AdicionarStock(produtos);
                         break;
                     case 4:
-                        regras.RetirarStock();
+                        regras.RetirarStock(produtos);
                         break;
                     case 5:
                         io.MostrarStock(stock);

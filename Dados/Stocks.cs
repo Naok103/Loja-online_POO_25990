@@ -56,7 +56,6 @@ namespace Dados
             if (ExisteStock(s.IDP) == false)
             {
                 stocks.Add(s);
-                Console.WriteLine("exito!");
                 return true;
             }
             return false;    
@@ -94,21 +93,25 @@ namespace Dados
                 if (stocks[i].IDP == id)
                 {
                     stocks[i].Quantidade += quantidade;
+                    return true;
                 }
             }
-            return true;
+
+            return false;
         }
 
         public bool RetirarStock(int id, int quantidade)
         {
-            for(int i = 0; i < stocks.Count; i++)
+            for (int i = 0; i < stocks.Count; i++)
             {
                 if (stocks[i].IDP == id)
                 {
                     stocks[i].Quantidade -= quantidade;
+                    return true;
                 }
             }
-            return true;
+
+            return false;
         }
 
         public int ID(int id)
