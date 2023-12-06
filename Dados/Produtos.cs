@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:21:02
     /// </summary>
-    public class Produtos : IProduto
+    public class Produtos : IProduto, IEnumerable<Produto>
     {
         #region ESTADOS
 
@@ -167,6 +168,39 @@ namespace Dados
             return true;
         }
 
+        public bool DevolverProduto(int id)// desenvolver
+        {
+            return true;
+        }
+
+        public bool TrocarProduto(int id)// desenvolver
+        {
+            return false;
+        }
+
+        public int ID(int id)
+        {
+            for (int i = 0; i < produtos.Count; i++)
+            {
+                id = produtos[i].Id;
+            }
+            id++;
+            return id;
+        }
+
+        #region IEnumerable<Produto> Members
+
+        public IEnumerator<Produto> GetEnumerator()
+        {
+            return produtos.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return produtos.GetEnumerator();
+        }
+
+        #endregion
 
         #endregion
     }

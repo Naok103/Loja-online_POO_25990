@@ -86,7 +86,57 @@ namespace Loja_online
 
         public void MenuProduto()
         {
-
+            IO io = new IO();
+            Produtos produtos = new Produtos();
+            Marcas marcas = new Marcas();
+            RegrasNegocio regras = new RegrasNegocio();
+            marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+            //produtos = regras.LerProdutos(produtos, @"dadosprodutos");
+            int op;
+            int id;
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Produto\n2- Alterar Produto\n3- Retirar produto\n4- Devolver Produto\n5- Trocar Produtos\n6- Mostrar Produtos\n7- Mostrar Produtos de uma Marca\n8- Guardar Produto");
+                op = int.Parse(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        Console.WriteLine("Qual o id da Marca ao qual o Produto que deseja adicionar pertence?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.InserirProduto(marcas,id);
+                        break;
+                    case 2:
+                        Console.WriteLine("Qual o id do Produto que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.AlterarProduto(id);
+                        break;
+                    case 3:
+                        Console.WriteLine("Qual o id do Produto que deseja acabar com a venda?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.RetirarProduto(id);
+                        break;
+                    case 4:
+                        //desenvolver
+                        break;
+                    case 5:
+                        //desenvolver
+                        break;
+                    case 6:
+                        io.MostrarProdutos(produtos);
+                        break;
+                    case 7:
+                        Console.WriteLine("Qual o id do Produto que deseja ver o stock?");
+                        id = int.Parse(Console.ReadLine());
+                        io.MostrarProdutosMarca(produtos, id);
+                        break;
+                    case 8:
+                        regras.GravarProduto(produtos, @"dadosprodutos");
+                        break;
+                }
+            } while (op != 0);
+            regras.GravarProduto(produtos, @"dadosprodutos");
+            MenuPrincipal();
         }
 
         public void MenuCliente()

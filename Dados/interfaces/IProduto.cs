@@ -25,6 +25,11 @@ namespace Dados
 
         bool LerProduto(string d);
 
+        bool DevolverProduto(int id);// desenvolver
+
+        bool TrocarProduto(int id);
+
+        int ID(int id);
 
     }
 }

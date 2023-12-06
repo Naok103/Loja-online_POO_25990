@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Dados;
 using Loja_online;
 using Objetos;
@@ -20,7 +23,62 @@ namespace Regras
 
         #region PRODUTO
 
+        public bool InserirProduto(Marcas marcas, int idm)
+        {
+            IO io = new IO();
+            Produtos produtos = new Produtos();
+            string nome, categoria;
+            int preco, id = 0, garantia;
+            
+            if (marcas.ExisteMarca(idm) == true)
+            {
+                io.DadosProdutos(out nome, out categoria, out preco, out garantia);
+                id = produtos.ID(id);
+                Produto produto = new Produto(id,nome,categoria,preco,garantia,idm);
+                return true;
+            }
+            return false;
+        }
 
+        public bool AlterarProduto(int id)
+        {
+            IO io = new IO();
+            Produtos produtos = new Produtos();
+            string nome, categoria;
+            int i, preco,garantia;
+
+            if (produtos.ExisteProduto(id) == false)
+            {
+                io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out i);
+                produtos.AlterarProduto(id,i,nome,categoria,preco,garantia);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarProduto(int id)
+        {
+
+            Produtos produtos = new Produtos();
+            if (produtos.ExisteProduto(id) == true)
+            {
+                produtos.RetirarProduto(id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GravarProduto(Produtos produtos, string m)
+        {
+            produtos.GuardarProduto(m);
+            return true;
+        }
+
+        public Produtos LerProduto(Produtos produtos, string m)
+        {
+            produtos.LerProduto(m);
+            return produtos;
+        }
 
         #endregion
 
