@@ -6,20 +6,20 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+
 namespace objetos
 {
     /// <summary>
-    /// Purpose: Classe para descrever uma pessoa
+    /// Purpose: Classe para descrever um funcionario
     /// Created by: Rafael silva
-    /// Created on: 07/12/2023 15:09:07
+    /// Created on: 07/12/2023 17:11:43
     /// </summary>
-    public class Pessoa
+    internal class Funcionario : Pessoa
     {
         #region ESTADO 
 
-        private int contacto;
-        private string nome;
-        private int nif;
+        
+        private int id;
 
         #endregion
 
@@ -29,24 +29,27 @@ namespace objetos
         /// <summary>
         /// Construtor por omissão
         /// </summary>
-        public Pessoa()
+        public Funcionario()
         {
-            contacto = 0;
-            nome = "";
-            nif = 0;
+            id = 0;
+            Nome = "";
+            Contacto = 0;
+            Nif = 0;
         }
 
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel para o id da pessoa</param>
-        /// <param name="nome"> variavel para o nome da pessoa</param>
-        public Pessoa(int contacto, string nome, int nif)
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <param name="nome"> variavel para o nome do cliente</param>
+        /// <param name="contacto">variavel para o contacto do cliente</param>
+        /// <param name="nif">variavel para o nif do cliente</param>
+        public Funcionario(int id, string nome, int contacto, int nif)
         {
-
-            this.contacto = contacto;
-            this.nome = nome;
-            this.nif = nif;
+            this.id = id;
+            this.Nome = nome;
+            this.Contacto = contacto;
+            this.Nif = nif;
         }
 
         #endregion
@@ -54,34 +57,16 @@ namespace objetos
         #region PROPRIEDADES
 
         /// <summary>
-        /// Propriedades da variavel id cliente
+        /// Propriedades da variavel contacto
         /// </summary>
-        public int Contacto
+        public int Id
         {
-            get { return contacto; }
+            get { return id; }
             set
             {
                 if (value > 0)
-                    contacto = value;
+                    id = value;
             }
-        }
-
-        /// <summary>
-        /// Propriedades da variavel nome
-        /// </summary>
-        public string Nome
-        {
-            get { return nome; }
-            set { nome = value; }
-        }
-
-        /// <summary>
-        /// Propriedades da variavel nif
-        /// </summary>
-        public int Nif
-        {
-            get { return nif; }
-            set { nif = value; }
         }
 
         #endregion
@@ -89,14 +74,14 @@ namespace objetos
         #region Operadores
 
         /// <summary>
-        /// Funcao para verificar se duas variaveis da classe Pessoa sao iguais
+        /// Funcao para verificar se duas variaveis da classe Cliente sao iguais
         /// </summary>
-        /// <param name="u1">variavel que reprensenta a classe pessoa</param>
-        /// <param name="u2">variavel que reprensenta a classe pessoa</param>
+        /// <param name="u1">variavel que reprensenta a classe cliente</param>
+        /// <param name="u2">variavel que reprensenta a classe cliente</param>
         /// <returns>retorna verdaeiro se o conteudo dos clientes comparadas forem iguais e falso se nao forem</returns>
-        public static bool operator ==(Pessoa u1, Pessoa u2)
+        public static bool operator ==(Funcionario u1, Funcionario u2)
         {
-            if ((u1.Nome == u1.Nome) && (u2.Contacto == u2.Contacto) && (u1.nif == u2.nif))
+            if ((u1.Nome == u1.Nome) && (u2.Id == u2.Id) && (u1.Contacto == u2.Contacto) && (u1.Nif == u2.Nif))
                 return true;
             return false;
         }
@@ -107,7 +92,7 @@ namespace objetos
         /// <param name="u1">variavel que reprensenta a classe cliente</param>
         /// <param name="u2">variavel que reprensenta a classe cliente</param>
         /// <returns>retorna falso se o conteudo dos clientes comparadas forem iguais e verdadeiro se nao forem</returns>
-        public static bool operator !=(Pessoa u1, Pessoa u2)
+        public static bool operator !=(Funcionario u1, Funcionario u2)
         {
             if (u1 == u2)
                 return false;
@@ -116,8 +101,6 @@ namespace objetos
 
         #endregion
 
-
-        /*
         #region Overrides
 
         /// <summary>
@@ -126,7 +109,7 @@ namespace objetos
         /// <returns>retorna uma frase com o conteudo de um cliente</returns>
         public override string ToString()
         {
-            return String.Format("Nome: {0}, Id: {1}, Nif{2}", nome, id.ToString(), nif.ToString());
+            return String.Format("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}", Nome, id.ToString(), Contacto.ToString(), Nif.ToString());
         }
 
         /// <summary>
@@ -136,9 +119,9 @@ namespace objetos
         /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do cliente</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Pessoa)
+            if (obj is Funcionario)
             {
-                Pessoa u = (Pessoa)obj;
+                Funcionario u = (Funcionario)obj;
                 if (this == u)
                 {
                     return true;
@@ -148,7 +131,7 @@ namespace objetos
         }
 
         #endregion
-        */
+
         #endregion
     }
 }

@@ -5,6 +5,7 @@
  * 27-10-2023
  * **/
 
+using objetos;
 using System;
 
 
@@ -12,15 +13,13 @@ using System;
 namespace Objetos
 {
 
-    public class Cliente
+    public class Cliente : Pessoa
     {
         #region ESTADO 
 
         private int id;
-        private string nome;
-        private string pass;
-        private int contacto;
-        private int nif;
+        private string morada;
+
         #endregion
 
         #region COMPORTAMENTO
@@ -32,10 +31,10 @@ namespace Objetos
         public Cliente()
         {
             id = 0;
-            nome = "";
-            pass = "";
-            contacto = 0;
-            nif = 0;
+            Nome = "";
+            Contacto = 0;
+            Nif = 0;
+            morada = "";
         }
 
         /// <summary>
@@ -43,17 +42,15 @@ namespace Objetos
         /// </summary>
         /// <param name="id">variavel para o id do cliente</param>
         /// <param name="nome"> variavel para o nome do cliente</param>
-        /// <param name="pass">variavel para a password do cliente</param>
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>
-        public Cliente(int id, string nome, string pass, int contacto, int nif)
+        public Cliente(int id, string nome, int contacto, int nif, string morada)
         {
-
             this.id = id;
-            this.nome = nome;
-            this.pass = pass;
-            this.contacto = contacto;
-            this.nif = nif;
+            this.Nome = nome;
+            this.Contacto = contacto;
+            this.Nif = nif;
+            this.morada = morada;
         }
 
         #endregion
@@ -61,7 +58,7 @@ namespace Objetos
         #region PROPRIEDADES
 
         /// <summary>
-        /// Propriedades da variavel id cliente
+        /// Propriedades da variavel contacto
         /// </summary>
         public int Id
         {
@@ -73,50 +70,12 @@ namespace Objetos
             }
         }
 
-        /// <summary>
-        /// Propriedades da variavel nome
-        /// </summary>
-        public string Nome
+        public string Morada
         {
-            get { return nome; }
-            set { nome = value; }
-        }
+            get { return morada; }
+            set { morada = value; }
 
-        /// <summary>
-        /// Propriedades da variavel pass
-        /// </summary>
-        public string Pass
-        {
-            get { return pass; }
-            set { pass = value; }
         }
-
-        /// <summary>
-        /// Propriedades da variavel contacto
-        /// </summary>
-        public int Contacto
-        {
-            get { return contacto; }
-            set
-            {
-                if (value > 0)
-                    contacto = value;
-            }
-        }
-
-        /// <summary>
-        /// Propriedades da variavel nif
-        /// </summary>
-        public int Nif
-        {
-            get { return nif; }
-            set
-            {
-                if (value > 0)
-                    nif = value;
-            }
-        }
-
         #endregion
 
         #region Operadores
@@ -129,7 +88,7 @@ namespace Objetos
         /// <returns>retorna verdaeiro se o conteudo dos clientes comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Cliente u1, Cliente u2)
         {
-            if ((u1.Nome == u1.Nome) && (u2.Id == u2.Id) && (u1.Contacto == u2.Contacto) && (u1.Pass == u2.Pass) && (u1.Nif == u2.Nif))
+            if ((u1.Nome == u1.Nome) && (u2.Id == u2.Id) && (u1.Contacto == u2.Contacto) && (u1.Nif == u2.Nif) && (u1.morada == u2.morada))
                 return true;
             return false;
         }
@@ -157,9 +116,9 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de um cliente</returns>
         public override string ToString()
         {
-            return String.Format("Nome: {0}, Id: {1}, Pass: {2}, Contacto: {3}, Nif: {4}", nome, id.ToString(), pass, contacto.ToString(), nif.ToString());
+            return String.Format("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}, Morada: {4}", Nome, id.ToString(), Contacto.ToString(), Nif.ToString(), morada);
         }
-
+            
         /// <summary>
         /// Funcao para comparar um objeto com o conteudo de um cliente
         /// </summary>
