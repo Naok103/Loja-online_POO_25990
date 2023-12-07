@@ -27,7 +27,7 @@ namespace Dados
 
         bool DevolverProduto(int id);// desenvolver
 
-        bool TrocarProduto(int id);
+        bool TrocarProduto(int id);// desenvolver
 
         int ID(int id);
 

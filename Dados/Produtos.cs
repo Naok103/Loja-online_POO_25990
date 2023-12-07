@@ -25,6 +25,17 @@ namespace Dados
 
         #endregion
 
+        #region COMPORTAMENTO
+
+        #region Construtor
+
+        static Produtos()
+        {
+           produtos = new List<Produto>();
+        }
+
+        #endregion
+
         #region PROPRIEDADES
 
         public static List<Produto> PRODUTOS
@@ -200,6 +211,8 @@ namespace Dados
         {
             return produtos.GetEnumerator();
         }
+
+        #endregion
 
         #endregion
 
