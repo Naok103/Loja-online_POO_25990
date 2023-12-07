@@ -44,6 +44,7 @@
     <Compile Include="Campanha.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Produto.cs" />

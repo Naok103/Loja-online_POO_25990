@@ -18,7 +18,6 @@ namespace objetos
     {
         #region ESTADO 
 
-        
         private int id;
 
         #endregion
@@ -40,10 +39,10 @@ namespace objetos
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel para o id do cliente</param>
-        /// <param name="nome"> variavel para o nome do cliente</param>
-        /// <param name="contacto">variavel para o contacto do cliente</param>
-        /// <param name="nif">variavel para o nif do cliente</param>
+        /// <param name="id">variavel para o id do Funcionario</param>
+        /// <param name="nome"> variavel para o nome do Funcionario</param>
+        /// <param name="contacto">variavel para o contacto do Funcionario</param>
+        /// <param name="nif">variavel para o nif do Funcionario</param>
         public Funcionario(int id, string nome, int contacto, int nif)
         {
             this.id = id;
@@ -74,11 +73,11 @@ namespace objetos
         #region Operadores
 
         /// <summary>
-        /// Funcao para verificar se duas variaveis da classe Cliente sao iguais
+        /// Funcao para verificar se duas variaveis da classe Funcionario sao iguais
         /// </summary>
-        /// <param name="u1">variavel que reprensenta a classe cliente</param>
-        /// <param name="u2">variavel que reprensenta a classe cliente</param>
-        /// <returns>retorna verdaeiro se o conteudo dos clientes comparadas forem iguais e falso se nao forem</returns>
+        /// <param name="u1">variavel que reprensenta a classe Funcionario</param>
+        /// <param name="u2">variavel que reprensenta a classe Funcionario</param>
+        /// <returns>retorna verdaeiro se o conteudo dos Funcionarios comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Funcionario u1, Funcionario u2)
         {
             if ((u1.Nome == u1.Nome) && (u2.Id == u2.Id) && (u1.Contacto == u2.Contacto) && (u1.Nif == u2.Nif))
@@ -87,11 +86,11 @@ namespace objetos
         }
 
         /// <summary>
-        /// Funcao para verificar se duas variaveis da classe Cliente sao diferentes
+        /// Funcao para verificar se duas variaveis da classe Funcionario sao diferentes
         /// </summary>
-        /// <param name="u1">variavel que reprensenta a classe cliente</param>
-        /// <param name="u2">variavel que reprensenta a classe cliente</param>
-        /// <returns>retorna falso se o conteudo dos clientes comparadas forem iguais e verdadeiro se nao forem</returns>
+        /// <param name="u1">variavel que reprensenta a classe Funcionario</param>
+        /// <param name="u2">variavel que reprensenta a classe Funcionario</param>
+        /// <returns>retorna falso se o conteudo dos Funcionarios comparadas forem iguais e verdadeiro se nao forem</returns>
         public static bool operator !=(Funcionario u1, Funcionario u2)
         {
             if (u1 == u2)
@@ -104,19 +103,19 @@ namespace objetos
         #region Overrides
 
         /// <summary>
-        /// Funcao para mostrar na consola o conteudo de um cliente
+        /// Funcao para mostrar na consola o conteudo de um Funcionario
         /// </summary>
-        /// <returns>retorna uma frase com o conteudo de um cliente</returns>
+        /// <returns>retorna uma frase com o conteudo de um Funcionario</returns>
         public override string ToString()
         {
             return String.Format("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}", Nome, id.ToString(), Contacto.ToString(), Nif.ToString());
         }
 
         /// <summary>
-        /// Funcao para comparar um objeto com o conteudo de um cliente
+        /// Funcao para comparar um objeto com o conteudo de um Funcionario
         /// </summary>
         /// <param name="obj">variavel que representa um objeto</param>
-        /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do cliente</returns>
+        /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do Funcionario</returns>
         public override bool Equals(object obj)
         {
             if (obj is Funcionario)
