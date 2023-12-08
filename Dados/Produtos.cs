@@ -200,6 +200,10 @@ namespace Dados
             return id;
         }
 
+
+
+        #endregion
+
         #region IEnumerable<Produto> Members
 
         public IEnumerator<Produto> GetEnumerator()
@@ -211,8 +215,6 @@ namespace Dados
         {
             return produtos.GetEnumerator();
         }
-
-        #endregion
 
         #endregion
 

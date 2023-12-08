@@ -15,7 +15,7 @@ namespace Regras
     /// </summary>
     public class RegrasNegocio
     {
-        #region CLIENTES
+        #region CLIENTE
 
 
 
@@ -239,6 +239,18 @@ namespace Regras
         #endregion
 
         #region CAMPANHA
+
+
+
+        #endregion
+
+        #region FUNCIONARIO
+
+
+
+        #endregion
+
+        #region MANAGER
 
 
 

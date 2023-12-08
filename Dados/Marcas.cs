@@ -123,7 +123,6 @@ namespace Dados
         public bool GravarMarcasB(string m) 
         {
             Stream s = File.Open(m, FileMode.Create);
-            //testar se ficheiro...
             BinaryFormatter b = new BinaryFormatter();
             b.Serialize(s, marcas);
             s.Close();
@@ -133,7 +132,6 @@ namespace Dados
         public bool LerMarcasB(string m) 
         {
             Stream s = File.Open(m, FileMode.Open);
-            //testar se ficheiro...
             BinaryFormatter b = new BinaryFormatter();
             marcas = (List<Marca>)b.Deserialize(s);
             s.Close();

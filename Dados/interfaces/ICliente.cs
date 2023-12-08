@@ -9,8 +9,21 @@ namespace Dados
 {
     internal interface ICliente
     {
-        Cliente RetirarCliente(Cliente c);
-        Cliente AlterarCliente(Cliente c);
-        bool ExisteCliente(Cliente c);
+        bool AdicionarCliente(Cliente c);
+
+        bool AlterarCliente(int id, int d, string nome, int contacto, int nif, string morada);
+
+        bool ExisteCliente(int id);
+
+        bool RetirarCliente(int id);
+
+        bool GravarClienteB(string m);
+
+        bool LerClienteB(string m);
+
+        bool GravarCliente(string m);
+
+        bool LerCliente(string m);
+
     }
 }
