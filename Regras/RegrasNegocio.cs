@@ -17,7 +17,62 @@ namespace Regras
     {
         #region CLIENTE
 
+        public bool InserirCliente()
+        {
+            IO io = new IO();
+            Clientes clientes = new Clientes();
+            int id = 0, nif, contacto;
+            string nome, morada, aux1, aux2;
+            id = clientes.ID(id);
+            io.DadosClientes(out nome, out contacto, out nif, out morada);
+            aux1 = contacto.ToString();
+            aux2 = aux1.ToString();
+            if ((aux1.Length == 9) && (aux2.Length == 9) )
+            {
+                Cliente cliente = new Cliente(id, nome, contacto, nif, morada);
+                clientes.AdicionarCliente(cliente);
+                return true;
+            }
+            return false;
+        }
 
+        public bool AlterarCliente(int id)
+        {
+            IO io = new IO();
+            Clientes clientes = new Clientes();
+            int nif, contacto, i;
+            string nome, morada;
+            if (clientes.ExisteCliente(id) == true)
+            {
+                io.AlterarDadosC(out i, out nome, out contacto, out nif, out morada);
+                clientes.AlterarCliente(id, i, nome, contacto, nif, morada);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarCliente(int id)
+        {
+            Clientes clientes = new Clientes();
+            if(clientes.ExisteCliente(id) == true)
+            {
+                clientes.RetirarCliente(id); 
+                return true;
+            }
+            return false;
+        }
+
+        public bool GuardarClientes(Clientes clientes, string m)
+        {
+            clientes.GravarCliente(m);
+            return true;
+        }
+
+        public Clientes LerClientes(Clientes clientes, string m)
+        {
+            clientes.LerCliente(m);
+            return clientes;
+        }
 
         #endregion
 
@@ -35,6 +90,7 @@ namespace Regras
                 io.DadosProdutos(out nome, out categoria, out preco, out garantia);
                 id = produtos.ID(id);
                 Produto produto = new Produto(id,nome,categoria,preco,garantia,idm);
+                produtos.InserirProduto(produto);
                 return true;
             }
             return false;

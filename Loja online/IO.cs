@@ -6,6 +6,7 @@ using System.Security.Policy;
 using System.Collections;
 using System.ComponentModel;
 using System.Runtime;
+using System.Diagnostics.Contracts;
 
 namespace Loja_online
 {
@@ -16,9 +17,82 @@ namespace Loja_online
     /// </summary>
     public class IO
     {
-        #region CLIENTES
+        #region CLIENTE
 
-        public void MostrarClientes(Cliente c) { }
+        public void MostrarClientes(Clientes clientes) 
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}, Morada: {4}", cliente.Nome, cliente.Id, cliente.Contacto, cliente.Nif, cliente.Morada);
+            }
+        }
+
+        public void MostrarCliente(Clientes clientes, int id)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                if(cliente.Id == id)
+                {
+                    Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}, Morada: {4}", cliente.Nome, cliente.Id, cliente.Contacto, cliente.Nif, cliente.Morada);
+                }
+            }
+        }
+
+        public void DadosClientes(out string nome, out int contacto, out int nif, out string morada)
+        {
+            Console.WriteLine("Qual o nome do cliente?");
+            nome = Console.ReadLine();
+            Console.WriteLine("Qual o contacto do cliente?");
+            contacto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o nif do cliente?");
+            nif = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a morada do cliente?");
+            morada = Console.ReadLine();
+        }
+
+        public void AlterarDadosC(out int d, out string nome, out int contacto, out int nif, out string morada)
+        {
+            nome = "";
+            nif = 0;
+            contacto = 0;
+            morada = "";
+            d = 0;
+            int a;
+            do
+            {
+                Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif, 4 - morada)?");
+                a = int.Parse(Console.ReadLine());
+
+                if (a == 1)
+                {
+                    Console.WriteLine("Qual o novo nome do cliente?");
+                    nome = Console.ReadLine();
+                    d = a;
+                }
+                else if (a == 2)
+                {
+                    Console.WriteLine("Qual o novo contacto do cliente?");
+                    contacto = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a == 3)
+                {
+                    Console.WriteLine("Qual o novo nif do cliente?");
+                    nif = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a == 4)
+                {
+                    Console.WriteLine("Qual a nova morada do cliente?");
+                    morada = Console.ReadLine();
+                    d = a;
+                }
+                else if (a != 0)
+                {
+                    Console.WriteLine("Escolha um numero correto");
+                }
+            } while (a != 0);
+        }
 
         #endregion
 
@@ -197,7 +271,17 @@ namespace Loja_online
 
         #endregion
 
-       
+        #region FUNCIONARIO
+
+
+
+        #endregion
+
+        #region MANAGER
+
+
+
+        #endregion
     }
 }
 

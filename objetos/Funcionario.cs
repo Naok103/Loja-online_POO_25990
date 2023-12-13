@@ -25,6 +25,7 @@ namespace objetos
         #region COMPORTAMENTO
 
         #region CONSTRUTORES
+
         /// <summary>
         /// Construtor por omissão
         /// </summary>

@@ -141,7 +141,46 @@ namespace Loja_online
 
         public void MenuCliente()
         {
-
+            IO io = new IO();
+            RegrasNegocio regras = new RegrasNegocio();
+            Clientes clientes = new Clientes();
+            clientes = regras.LerClientes(clientes, @"dadosclientes");
+            int opcao, id;
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Cliente\n2- Alterar Cliente\n3- Retirar Cliente\n4- Mostrar Clientes\n5- Mostrar Cliente\n6- Guardar Clientes");
+                opcao = int.Parse(Console.ReadLine());
+                switch(opcao) 
+                {
+                    case 1:
+                        regras.InserirCliente();
+                        break;
+                    case 2:
+                        Console.WriteLine("Qual o id do Cliente que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.AlterarCliente(id);
+                        break;
+                    case 3:
+                        Console.WriteLine("Qual o id do Cliente que deseja retirar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.RetirarCliente(id);
+                        break;
+                    case 4:
+                        io.MostrarClientes(clientes);
+                        break; 
+                    case 5:
+                        Console.WriteLine("Qual o id do Cliente que deseja ver?");
+                        id = int.Parse(Console.ReadLine());
+                        io.MostrarCliente(clientes, id);
+                        break;
+                    case 6:
+                        regras.GuardarClientes(clientes, @"dadosclientes");
+                        break;
+                }
+            } while (opcao != 0);
+            regras.GuardarClientes(clientes, @"dadosclientes");
+            MenuPrincipal();
         }
 
         public void MenuVenda() 

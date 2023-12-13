@@ -61,7 +61,6 @@ namespace objetos
         /// <summary>
         /// Propriedades da variavel pass
         /// </summary>
-        
         public string Pass
         {
             get { return pass; }

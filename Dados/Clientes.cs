@@ -113,6 +113,16 @@ namespace Dados
             return false;
         }
 
+        public int ID(int id)
+        {
+            for (int i = 0; i < clientes.Count; i++)
+            {
+                id = clientes[i].Id;
+            }
+            id++;
+            return id;
+        }
+
         public bool GravarClienteB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
