@@ -13,7 +13,7 @@ namespace objetos
     /// Created by: Rafael silva
     /// Created on: 07/12/2023 23:07:24
     /// </summary>
-    internal class Manager : Funcionario
+    public class Manager : Funcionario
     {
         #region ESTADO 
 

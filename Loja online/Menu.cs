@@ -94,6 +94,7 @@ namespace Loja_online
             //produtos = regras.LerProdutos(produtos, @"dadosprodutos");
             int op;
             int id;
+            bool aux;
             do
             {
                 Console.WriteLine("Escolha uma opcao:");

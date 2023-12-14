@@ -170,7 +170,7 @@ namespace Dados
                     int idm = int.Parse(sdados[5]);
 
 
-                   Produto produto = new Produto(id,nome,categoria,preco,garantia,idm);
+                    Produto produto = new Produto(id,nome,categoria,preco,garantia,idm);
 
                     produtos.Add(produto);
 
