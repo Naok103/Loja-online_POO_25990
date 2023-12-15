@@ -10,8 +10,14 @@ namespace Loja_online
     {
         static void Main(string[] args)
         {
+            Produtos produtos = new Produtos();
+            Marcas marcas = new Marcas();
+            Stocks stocks = new Stocks();
+            Clientes clientes = new Clientes();
+            Funcioanarios funcioanarios = new Funcioanarios();
             Menu menu = new Menu();
-            menu.MenuPrincipal();
+
+            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
         }
     }
 }

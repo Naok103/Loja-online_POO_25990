@@ -47,7 +47,7 @@
     <Compile Include="Campanhas.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="Funcionarios.cs" />
-    <Compile Include="IFuncionario.cs" />
+    <Compile Include="interfaces\IFuncionario.cs" />
     <Compile Include="interfaces\ICampanha.cs" />
     <Compile Include="interfaces\ICliente.cs" />
     <Compile Include="interfaces\IMarca.cs" />

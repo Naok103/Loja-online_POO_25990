@@ -14,6 +14,7 @@ namespace objetos
     /// Created by: Rafael silva
     /// Created on: 07/12/2023 17:11:43
     /// </summary>
+    [Serializable]
     public class Funcionario : Pessoa
     {
         #region ESTADO 

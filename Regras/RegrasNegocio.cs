@@ -265,7 +265,6 @@ namespace Regras
                 stocks.RetirarStock(id, quantidade);
             }
             
-
             return true;
         }
 
