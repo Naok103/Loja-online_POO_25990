@@ -47,6 +47,7 @@
     <Compile Include="Campanhas.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="Funcionarios.cs" />
+    <Compile Include="interfaces\IManager.cs" />
     <Compile Include="interfaces\IFuncionario.cs" />
     <Compile Include="interfaces\ICampanha.cs" />
     <Compile Include="interfaces\ICliente.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="interfaces\IProduto.cs" />
     <Compile Include="interfaces\IStock.cs" />
     <Compile Include="interfaces\IVenda.cs" />
+    <Compile Include="Managers.cs" />
     <Compile Include="Marcas.cs" />
     <Compile Include="Produtos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
