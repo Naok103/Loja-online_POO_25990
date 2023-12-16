@@ -13,7 +13,7 @@ namespace Loja_online
     /// </summary>
     public class Menu
     {
-        public void MenuPrincipal(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios) 
+        public void MenuPrincipal(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios) 
         {
             int op;
             Console.WriteLine("Escolha uma opcao:");
@@ -24,28 +24,28 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
-                        MenuProduto(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuProduto(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 2:
-                        MenuMarca(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuMarca(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 3:
-                        MenuCliente(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuCliente(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 4:
-                        MenuVenda(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuVenda(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 5:
-                        MenuStock(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuStock(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 6:
-                        MenuCampanha(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuCampanha(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 7:
-                        MenuFuncionario(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuFuncionario(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 8:
-                        MenuManager(produtos, marcas, stocks, clientes, funcioanarios);
+                        MenuManager(produtos, marcas, stocks, clientes, funcionarios);
                         break;
                     case 0:
                         break;
@@ -54,7 +54,7 @@ namespace Loja_online
             
         }
 
-        public void MenuMarca(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuMarca(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
@@ -90,10 +90,10 @@ namespace Loja_online
                 }
             } while (op != 0);
             regras.GravarMarcas(marcas, @"dadosmarcas");
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuProduto(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuProduto(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
@@ -145,10 +145,10 @@ namespace Loja_online
                 }
             } while (op != 0);
             regras.GravarProduto(produtos, @"dadosprodutos");
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuCliente(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuCliente(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
@@ -188,15 +188,15 @@ namespace Loja_online
                 }
             } while (opcao != 0);
             regras.GuardarClientes(clientes, @"dadosclientes");
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuVenda(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios) 
+        public void MenuVenda(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios) 
         {
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuStock(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuStock(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
 
             IO io = new IO();
@@ -240,29 +240,57 @@ namespace Loja_online
                 }
             } while (op != 0);
             regras.GravarStocks(stocks, @"dadosstock");
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuCampanha(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuCampanha(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuFuncionario(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuFuncionario(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
+            funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
 
+            int opcao, id;
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine(" 0- Menu Principal\n1- Inserir Funcionario\n2- Alterar Funcionario\n3- Retirar Funcionario\n4- Mostrar Funcionario\n5- Guardar Funcionario");
+                opcao = int.Parse(Console.ReadLine());
+                switch (opcao)
+                {
+                    case 1:
+                        regras.InserirFuncionario();
+                        break;
+                    case 2:
+                        Console.WriteLine("Qual o id do Cliente que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.AlterarFuncionario(id);
+                        break;
+                    case 3:
+                        Console.WriteLine("Qual o id do Cliente que deseja retirar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.RetirarFuncionario(id);
+                        break;
+                    case 4:
+                        io.MostrarFuncionarios(funcionarios);
+                        break;
+                    case 5:
+                        regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
+                        break;
+                }
+            } while (opcao != 0);
 
-
-
-
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
 
-        public void MenuManager(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcioanarios funcioanarios)
+        public void MenuManager(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios)
         {
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
     }
 }

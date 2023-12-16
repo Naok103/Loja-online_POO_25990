@@ -1,6 +1,7 @@
 ﻿using objetos;
 using Objetos;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Dados
     /// Created on: 14/12/2023 16:36:16
     /// </summary>
     [Serializable]
-    public class Funcioanarios : IFuncionario
+    public class Funcionarios : IFuncionario, IEnumerable<Funcionario>
     {
         #region ESTADO 
 
@@ -33,7 +34,7 @@ namespace Dados
         /// <summary>
         /// Construtor por omissão
         /// </summary>
-        static Funcioanarios()
+        static Funcionarios()
         {
             funcionarios = new List<Funcionario>();
         }
@@ -110,6 +111,16 @@ namespace Dados
             return false;
         }
 
+        public int ID(int id)
+        {
+            for (int i = 0; i < funcionarios.Count; i++)
+            {
+                id = funcionarios[i].Id;
+            }
+            id++;
+            return id;
+        }
+
         public bool GuardarFuncionarioB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -171,6 +182,20 @@ namespace Dados
                 }
             }
             return true;
+        }
+
+        #endregion
+
+        #region IEnumerable<Funcionario> Members
+
+        public IEnumerator<Funcionario> GetEnumerator()
+        {
+            return funcionarios.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return funcionarios.GetEnumerator();
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Dados;
 using Loja_online;
+using objetos;
 using Objetos;
 
 namespace Regras
@@ -26,7 +27,7 @@ namespace Regras
             id = clientes.ID(id);
             io.DadosClientes(out nome, out contacto, out nif, out morada);
             aux1 = contacto.ToString();
-            aux2 = aux1.ToString();
+            aux2 = nif.ToString();
             if ((aux1.Length == 9) && (aux2.Length == 9) )
             {
                 Cliente cliente = new Cliente(id, nome, contacto, nif, morada);
@@ -301,7 +302,69 @@ namespace Regras
 
         #region FUNCIONARIO
 
+        public bool InserirFuncionario()
+        {
+            IO io = new IO();
+            Funcionarios funcionarios = new Funcionarios();
 
+            int id = 0 , nif, contacto;
+            string nome, aux1, aux2;
+
+            id = funcionarios.ID(id);
+
+            io.DadosFuncionario(out nome, out nif, out contacto);
+            aux1 = contacto.ToString();
+            aux2 = nif.ToString();
+            
+            if ((aux1.Length == 9) && (aux2.Length == 9))
+            {
+                Funcionario funcionario = new Funcionario(id, nome, contacto, nif);
+                funcionarios.InserirFuncionario(funcionario);
+                return true;
+            }
+            return false;
+        }
+
+        public bool AlterarFuncionario(int id)
+        {
+            IO io = new IO();
+            Funcionarios funcionarios = new Funcionarios();
+
+            int nif, contacto, i;
+            string nome;
+
+            if (funcionarios.ExisteFuncionario(id) == true)
+            {
+                io.AlterarDadosF(out i, out nome, out contacto, out nif);
+                funcionarios.AlterarFuncionario(id, i, nome, contacto, nif);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarFuncionario(int id)
+        {
+            Funcionarios funcionarios = new Funcionarios();
+
+            if(funcionarios.ExisteFuncionario(id) == true)
+            {
+                funcionarios.RetirarFuncionario(id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GuardarFuncionario(Funcionarios funcionarios, string m)
+        {
+            funcionarios.GuardarFuncionario(m);
+            return true;
+        }
+
+        public Funcionarios LerFuncionario(Funcionarios funcionarios, string m)
+        {
+            funcionarios.LerFuncionario(m);
+            return funcionarios;
+        }
 
         #endregion
 

@@ -24,6 +24,8 @@ namespace Dados
 
         bool RetirarFuncionario(int id);
 
+        int ID(int id);
+
         bool GuardarFuncionarioB(string m);
 
         bool LerFuncionarioB(string m);

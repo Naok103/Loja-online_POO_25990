@@ -7,6 +7,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Runtime;
 using System.Diagnostics.Contracts;
+using objetos;
 
 namespace Loja_online
 {
@@ -273,7 +274,60 @@ namespace Loja_online
 
         #region FUNCIONARIO
 
+        public void MostrarFuncionarios(Funcionarios funcionarios)
+        {
+            foreach(Funcionario funcionario in funcionarios)
+            {
+                Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}", funcionario.Nome, funcionario.Id, funcionario.Contacto, funcionario.Nif);
+            }
+        }
 
+        public void DadosFuncionario(out string nome, out int nif, out int contacto)
+        {
+            Console.WriteLine("Qual o nome do funcionario?");
+            nome = Console.ReadLine();
+            Console.WriteLine("Qual o nif do funcionario?");
+            nif = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o contacto do funcionario?");
+            contacto = int.Parse(Console.ReadLine());
+        }
+
+        public void AlterarDadosF(out int d, out string nome, out int contacto, out int nif)
+        {
+            nome = "";
+            nif = 0;
+            contacto = 0;
+            d = 0;
+            int a;
+            do
+            {
+                Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif)?");
+                a = int.Parse(Console.ReadLine());
+
+                if (a == 1)
+                {
+                    Console.WriteLine("Qual o novo nome do Funcionario?");
+                    nome = Console.ReadLine();
+                    d = a;
+                }
+                else if (a == 2)
+                {
+                    Console.WriteLine("Qual o novo contacto do Funcionario?");
+                    contacto = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a == 3)
+                {
+                    Console.WriteLine("Qual o novo nif do Funcionario?");
+                    nif = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a != 0)
+                {
+                    Console.WriteLine("Escolha um numero correto");
+                }
+            } while (a != 0);
+        }
 
         #endregion
 

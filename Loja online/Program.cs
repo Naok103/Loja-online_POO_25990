@@ -14,10 +14,10 @@ namespace Loja_online
             Marcas marcas = new Marcas();
             Stocks stocks = new Stocks();
             Clientes clientes = new Clientes();
-            Funcioanarios funcioanarios = new Funcioanarios();
+            Funcionarios funcionarios = new Funcionarios();
             Menu menu = new Menu();
 
-            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcioanarios);
+            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios);
         }
     }
 }
