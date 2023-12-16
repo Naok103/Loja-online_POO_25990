@@ -333,7 +333,69 @@ namespace Loja_online
 
         #region MANAGER
 
+        public void MostrarManagers(Managers managers)
+        {
+            foreach (Manager manager in managers)
+            {
+                Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}", manager.Nome, manager.Id, manager.Contacto, manager.Nif);
+            }
+        }
 
+        public void DadosManager(out string nome, out int nif, out int contacto, out string pass)
+        {
+            Console.WriteLine("Qual o nome do manager?");
+            nome = Console.ReadLine();
+            Console.WriteLine("Qual o nif do manager?");
+            nif = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o contacto do manager?");
+            contacto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a pass do manager?");
+            pass = Console.ReadLine();
+        }
+
+        public void AlterarDadosM(out int d, out string nome, out int contacto, out int nif, out string pass)
+        {
+            nome = "";
+            nif = 0;
+            contacto = 0;
+            pass = "";
+            d = 0;
+            int a;
+            do
+            {
+                Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif, 4 - pass)?");
+                a = int.Parse(Console.ReadLine());
+
+                if (a == 1)
+                {
+                    Console.WriteLine("Qual o novo nome do Manager?");
+                    nome = Console.ReadLine();
+                    d = a;
+                }
+                else if (a == 2)
+                {
+                    Console.WriteLine("Qual o novo contacto do Manager?");
+                    contacto = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a == 3)
+                {
+                    Console.WriteLine("Qual o novo nif do Manager?");
+                    nif = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a == 4)
+                {
+                    Console.WriteLine("Qual a nova pass do Manager?");
+                    nif = int.Parse(Console.ReadLine());
+                    d = a;
+                }
+                else if (a != 0)
+                {
+                    Console.WriteLine("Escolha um numero correto");
+                }
+            } while (a != 0);
+        }
 
         #endregion
     }

@@ -17,7 +17,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 16/12/2023 15:26:44
     /// </summary>
-    internal class Managers : IManager, IEnumerable<Manager>
+    public class Managers : IManager, IEnumerable<Manager>
     {
         #region ESTADO 
 

@@ -370,7 +370,69 @@ namespace Regras
 
         #region MANAGER
 
+        public bool InserirManager()
+        {
+            IO io = new IO();
+            Managers managers = new Managers();
 
+            int id = 0, nif, contacto;
+            string nome, aux1, aux2, pass;
+
+            id = managers.ID(id);
+
+            io.DadosManager(out nome, out nif, out contacto, out pass);
+            aux1 = contacto.ToString();
+            aux2 = nif.ToString();
+
+            if ((aux1.Length == 9) && (aux2.Length == 9))
+            {
+                Manager manager = new Manager(id, nome, contacto, nif, pass);
+                managers.InserirManager(manager);
+                return true;
+            }
+            return false;
+        }
+
+        public bool AlterarManager(int id)
+        {
+            IO io = new IO();
+            Managers managers = new Managers();
+
+            int nif, contacto, i;
+            string nome, pass;
+
+            if (managers.ExisteManager(id) == true)
+            {
+                io.AlterarDadosM(out i, out nome, out contacto, out nif, out pass);
+                managers.AlterarManager(id, i, nome, contacto, nif, pass);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarManager(int id)
+        {
+            Managers managers = new Managers();
+
+            if (managers.ExisteManager(id) == true)
+            {
+                managers.RetirarManager(id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GuardarManager(Managers managers, string m)
+        {
+            managers.GuardarManager(m);
+            return true;
+        }
+
+        public Managers LerManager(Managers managers, string m)
+        {
+            managers.LerManager(m);
+            return managers;
+        }
 
         #endregion
 
