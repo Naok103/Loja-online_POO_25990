@@ -16,9 +16,10 @@ namespace Loja_online
             Clientes clientes = new Clientes();
             Funcionarios funcionarios = new Funcionarios();
             Managers managers = new Managers();
+            Vendas vendas = new Vendas();
             Menu menu = new Menu();
 
-            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers);
+            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas);
         }
     }
 }

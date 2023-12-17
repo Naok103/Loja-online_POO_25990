@@ -213,7 +213,35 @@ namespace Regras
 
         #region VENDA
 
+        public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes)
+        {
+            IO io = new IO();
 
+            int quantidade, idc, idp;
+            DateTime hora;
+
+            io.DadosVenda(out quantidade, out idc, out idp);
+
+            if(produtos.ExisteProduto(idp) == true && clientes.ExisteCliente(idp) == true)
+            {
+                hora = DateTime.Now;
+                Venda venda = new Venda(quantidade, idp, idc, hora);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GuardarVendas(Vendas vendas, string m)
+        {
+            vendas.GuardarVenda(m);
+            return true;
+        }
+
+        public Vendas LerVendas(Vendas vendas, string m)
+        {
+            vendas.LerVenda(m);
+            return vendas;
+        }
 
         #endregion
 

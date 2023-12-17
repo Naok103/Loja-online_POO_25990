@@ -229,9 +229,39 @@ namespace Loja_online
 
         #region VENDA
 
-        public void MostrarVendas(Venda v) { }
+        public void MostrarVendas(Vendas v)
+        {
+            foreach(Venda venda in v)
+            {
+                Console.WriteLine("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", venda.Quantidades, venda.IDC, venda.IDP, venda.Hora);
+            }
+        }
 
-        public void MostrarVendasCliente(Venda v, Cliente c) { }
+        public void MostrarVendasCliente(Vendas v, int id) 
+        {
+            foreach (Venda venda in v)
+            {
+                if(venda.IDC == id)
+                {
+                    Console.WriteLine("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", venda.Quantidades, venda.IDC, venda.IDP, venda.Hora);
+                }
+            }
+        }
+
+        public void DadosVenda(out int quantidade, out int idc, out int idp)
+        {
+            quantidade = 0;
+            idc = 0;
+            idp = 0;
+
+            Console.WriteLine("Qual a quantidade?");
+            quantidade = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o id do cliente?");
+            idc = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual 0 id do produto?");
+            idp = int.Parse(Console.ReadLine());
+
+        }
 
         #endregion
 
