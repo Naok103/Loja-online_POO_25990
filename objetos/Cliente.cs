@@ -12,7 +12,7 @@ using System;
 
 namespace Objetos
 {
-
+    [Serializable]
     public class Cliente : Pessoa
     {
         #region ESTADO 

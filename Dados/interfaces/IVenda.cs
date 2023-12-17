@@ -9,10 +9,15 @@ namespace Dados
 {
     internal interface IVenda
     {
-        Venda AlterarVenda(Venda v);
+        bool AdicionarVenda(Venda v);
 
-        Venda RetirarVenda(Venda v);
+        bool GuardarVendaB(string m);
 
-        bool ExisteVendas(Venda v);
+        bool LerVendaB(string m);
+
+        bool GuardarVenda(string m);
+
+        bool LerVenda(string m);
+
     }
 }

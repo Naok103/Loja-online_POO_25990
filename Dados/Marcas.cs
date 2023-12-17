@@ -15,6 +15,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:19:58
     /// </summary>
+    [Serializable]
     public class Marcas : IMarca, IEnumerable<Marca>
     {
 

@@ -14,6 +14,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 10:56:04
     /// </summary>
+    [Serializable]
     public class Stocks : IStock, IEnumerable<Stock>
     {
         

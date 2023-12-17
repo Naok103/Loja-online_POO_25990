@@ -9,6 +9,7 @@ namespace Objetos
     /// Created by: Rafael Silva
     /// Created on: 08/11/2023 14:27:30
     /// </summary>
+    [Serializable]
     public class Venda
     {
         #region ESTADO 
@@ -16,6 +17,7 @@ namespace Objetos
         private int quantidade;
         private int idP;
         private int idC;
+        private DateTime hora;
 
         #endregion
 
@@ -31,6 +33,7 @@ namespace Objetos
             quantidade = 0;
             idP = 0;
             idC = 0;
+            hora = new DateTime(0,0,0);
         }
 
         /// <summary>
@@ -39,11 +42,13 @@ namespace Objetos
         /// <param name="quantidade"> variavel para a quantidade vendida</param>
         /// <param name="idP">variavel para o id do produto vendido</param>
         /// <param name="idC">variavel para o id do cliente que comprou o produto</param>
-        public Venda(int quantidade, int idP, int idC)
+        /// <param name="hora">variavel para a hora em que a venda foi realizada</param>
+        public Venda(int quantidade, int idP, int idC, DateTime hora)
         {
             this.quantidade = quantidade;
             this.idP = idP;
             this.idC = idC;
+            this.hora = hora;
         }
 
         #endregion
@@ -88,6 +93,12 @@ namespace Objetos
             }
             get { return idC; }
         }
+
+        public DateTime Hora
+        {
+            get { return hora; }
+            set { hora = value; }
+        }
         #endregion
 
         #region Operadores
@@ -100,7 +111,7 @@ namespace Objetos
         /// <returns>retorna verdaeiro se o conteudo das Vendas comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Venda v1, Venda v2)
         {
-            if ((v1.quantidade == v2.quantidade) && (v1.idP == v2.idP) && (v1.idC == v2.idC))
+            if ((v1.quantidade == v2.quantidade) && (v1.idP == v2.idP) && (v1.idC == v2.idC) && (v1.hora == v2.hora))
             {
                 return true;
             }
@@ -132,7 +143,7 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de uma venda</returns>
         public override string ToString()
         {
-            return string.Format("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}", quantidade.ToString(), idC.ToString(), idP.ToString());
+            return string.Format("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", quantidade.ToString(), idC.ToString(), idP.ToString(), hora.ToString());
         }
 
         /// <summary>

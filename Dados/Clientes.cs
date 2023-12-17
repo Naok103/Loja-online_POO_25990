@@ -18,6 +18,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:20:36
     /// </summary>
+    [Serializable]
     public class Clientes : ICliente, IEnumerable<Cliente>
     {
 

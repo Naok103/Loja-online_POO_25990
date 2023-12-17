@@ -17,6 +17,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:21:02
     /// </summary>
+    [Serializable]
     public class Produtos : IProduto, IEnumerable<Produto>
     {
         #region ESTADOS
