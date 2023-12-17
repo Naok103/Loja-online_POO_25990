@@ -11,9 +11,12 @@ namespace Objetos
     {
         #region ESTADO 
 
+        const int MAXPRODUTOS = 35;
+        private string nome;
         private string duracao;
         private int desconto;
-        private int idP;
+        private int[] idP;
+        private int numeroP;
 
         #endregion
 
@@ -26,22 +29,27 @@ namespace Objetos
         /// </summary>
         public Campanha()
         {
+            nome = "";
             duracao = "";
             desconto = 0;
-            idP = 0;
+            idP = new int[MAXPRODUTOS];
+            numeroP = 0;
         }
 
         /// <summary>
         /// Construtor por parametros
         /// </summary>
+        /// /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         /// <param name="idP">variavel para o id do produto em campanha</param>
-        public Campanha(string duracao, int desconto, int idP)
+        public Campanha(string nome, string duracao, int desconto, int idP)
         {
+            this.nome = nome;
             this.duracao = duracao;
             this.desconto = desconto;
-            this.idP = idP;
+            this.idP[numeroP] = idP;
+            numeroP++;
         }
 
         #endregion
@@ -73,14 +81,10 @@ namespace Objetos
         /// <summary>
         /// Propriedades da variavel idP
         /// </summary>
-        public int IDP
+        public int[] IDP
         {
-            set
-            {
-                if (value < 0)
-                    idP = value;
-            }
-            get { return idP; }
+            set { }
+            get { return (int[])idP.Clone(); }
         }
         #endregion
 
@@ -94,9 +98,15 @@ namespace Objetos
         /// <returns>retorna verdadeiro se o conteudo das campanhas comparadas for iguais e falso se nao forem</returns>
         public static bool operator ==(Campanha c1, Campanha c2)
         {
-            if ((c1.desconto == c2.desconto) && (c1.duracao == c2.duracao) && (c1.idP == c2.idP))
+            for(int i = 0;  i < c1.IDP.Length;i++)
             {
-                return true;
+                for (int j = 0; j < c2.IDP.Length; j++)
+                {
+                    if ((c1.nome == c2.nome) && (c1.desconto == c2.desconto) && (c1.duracao == c2.duracao) && (c1.idP[i] == c2.idP[j]))
+                    {
+                        return true;
+                    }
+                }
             }
             return false;
         }
@@ -124,7 +134,7 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de uma campanha</returns>
         public override string ToString()
         {
-            return string.Format("Duracao: {0}, Desconto: {1}, Id Produto: {2}", duracao, desconto.ToString(), idP.ToString());
+            return string.Format("Nome: {0}, Duracao: {1}, Desconto: {2}, Id Produto: {3}",nome, duracao, desconto.ToString(), idP.ToString());
         }
 
         /// <summary>
@@ -146,8 +156,6 @@ namespace Objetos
         }
 
         #endregion
-
-        
 
         #endregion
     }

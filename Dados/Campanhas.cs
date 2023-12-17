@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -15,19 +16,44 @@ namespace Dados
     /// </summary>
     public class Campanhas : ICampanha
     {
-        public Campanha AlterarCampanha(Campanha c)
+        public bool InseirCampanha(Campanha campanha, Produtos produtos, int id)
         {
-            return c;
+            return false;
         }
 
-        public Campanha RetirarCampanha(Campanha c)
+        public bool AlterarCampanha(int id, string nome)
         {
-            return c;
+            return false;
         }
 
-        public bool ExisteCampanha(Campanha c)
+        public bool RetirarCampanha(string nome)
         {
-            return true;
+            return false;
+        }
+
+        public bool ExisteCampanha(string nome)
+        {
+            return false;
+        }
+
+        public bool GuardarCampanhasB(string m)
+        {
+            return false;
+        }
+
+        public bool LerCampanhasB(string m)
+        {
+            return false;
+        }
+
+        public bool GuardarCampanhas(string m)
+        {
+            return false;
+        }
+
+        public bool LerCampanhas(string m)
+        {
+            return false;
         }
     }
 }
