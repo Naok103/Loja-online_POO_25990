@@ -131,7 +131,6 @@ namespace Dados
             b.Serialize(s, clientes);
             s.Close();
             return true;
-            
         }
 
         public bool LerClienteB(string m)

@@ -226,6 +226,7 @@ namespace Regras
             {
                 hora = DateTime.Now;
                 Venda venda = new Venda(quantidade, idp, idc, hora);
+                vendas.AdicionarVenda(venda);
                 return true;
             }
             return false;

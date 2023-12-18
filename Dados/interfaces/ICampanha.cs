@@ -9,9 +9,13 @@ namespace Dados
 {
     internal interface ICampanha
     {
-        bool InseirCampanha(Campanha campanha, Produtos produtos, int id);
+        bool InseirCampanha(Campanha campanha);
 
-        bool AlterarCampanha(int id, string nome);
+        bool AdicionarProdutoCampanha(string nome, Produto p);
+
+        bool RetirarProdutoCampanha(string nome, int id);
+
+        bool AlterarCampanha(int t, string nome, int duracao, int desconto);
 
         bool RetirarCampanha(string nome);
 
@@ -24,5 +28,9 @@ namespace Dados
         bool GuardarCampanhas(string m);
 
         bool LerCampanhas(string m);
+
+        bool GuardarProdutoCampanha(string m);
+
+        bool LerProdutoCampanha(string m);
     }
 }
