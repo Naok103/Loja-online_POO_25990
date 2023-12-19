@@ -11,7 +11,7 @@ namespace Dados
     {
         bool InseirCampanha(Campanha campanha);
 
-        bool AdicionarProdutoCampanha(string nome, Produto p);
+        bool AdicionarProdutoCampanha(string nome, int id, Produtos produtos);
 
         bool RetirarProdutoCampanha(string nome, int id);
 
@@ -31,6 +31,6 @@ namespace Dados
 
         bool GuardarProdutoCampanha(string m);
 
-        bool LerProdutoCampanha(string m);
+        bool LerProdutoCampanha(string m, Produtos produtos);
     }
 }

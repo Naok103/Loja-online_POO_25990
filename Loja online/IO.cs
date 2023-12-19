@@ -247,12 +247,9 @@ namespace Loja_online
                 }
             }
         }
-
-        public void DadosVenda(out int quantidade, out int idc, out int idp)
+        /*
+        public void DadosVendas(out int quantidade, out int idc, out int idp)
         {
-            quantidade = 0;
-            idc = 0;
-            idp = 0;
 
             Console.WriteLine("Qual a quantidade?");
             quantidade = int.Parse(Console.ReadLine());
@@ -260,12 +257,16 @@ namespace Loja_online
             idc = int.Parse(Console.ReadLine());
             Console.WriteLine("Qual 0 id do produto?");
             idp = int.Parse(Console.ReadLine());
-
         }
+        */
+
+        
 
         #endregion
 
         #region STOCK
+
+        
 
         public void MostrarStock(Stocks s)
         {
@@ -298,7 +299,76 @@ namespace Loja_online
 
         #region CAMPANHA
 
-        public void MostrarCampanha(Campanha c) { }
+        public void MostrarCampanha(Campanhas campanhas) 
+        {
+            foreach(Campanha campanha in campanhas)
+            {
+                Console.WriteLine("Campanha: {0}, Duracao: {1}, Desconto: {2}", campanha.Nome, campanha.Duracao, campanha.Desconto);
+            }
+        }
+
+        public void MostrarProdutoCampanha(string nome, Campanhas campanhas)
+        {
+            foreach (Campanha campanha in campanhas)
+            {
+                if(campanha.Nome == nome)
+                {
+                    foreach (Produto produto in campanha.IDP)
+                    {
+                        Console.WriteLine("Campanha: {0}, ID do Produto: {1} ", campanha.Nome, produto.Id);
+                    }
+                }
+            }
+        }
+
+        public void DadosCampanha(out string nome, out int desconto, out int duracao)
+        {
+            Console.WriteLine("Qual o nome da campanha?");
+            nome = Console.ReadLine();
+            Console.WriteLine("Qual o desconto praticado na campanha?");
+            desconto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a duracao da campanha em semanas?");
+            duracao = int.Parse(Console.ReadLine());
+        }
+
+        public void AlterarDadosCA(out int t, out string nome, out int desconto, out int duracao)
+        {
+            nome = "";
+            desconto = 0;
+            duracao = 0;
+            t = 0;
+            int b;
+
+            do
+            {
+                Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - duracao, 3 -desconto )?");
+                b = int.Parse(Console.ReadLine());
+
+                if (b == 1)
+                {
+                    Console.WriteLine("Qual o novo nome da Campanha?");
+                    nome = Console.ReadLine();
+                    t = b;
+                }
+                else if (b == 2)
+                {
+                    Console.WriteLine("Qual a nova duracao da Campanha?");
+                    duracao = int.Parse(Console.ReadLine());
+                    b = t;
+                }
+                else if (b == 3)
+                {
+                    Console.WriteLine("Qual o novo desconto da Campanha?");
+                    desconto = int.Parse(Console.ReadLine());
+                    b = t;
+                }
+                else if (b != 0)
+                {
+                    Console.WriteLine("Escolha um numero correto");
+                }
+            } while (b != 0);
+
+        }
 
         #endregion
 

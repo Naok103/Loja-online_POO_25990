@@ -18,8 +18,9 @@ namespace Loja_online
             Managers managers = new Managers();
             Vendas vendas = new Vendas();
             Menu menu = new Menu();
+            Campanhas campanhas = new Campanhas();
 
-            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas);
+            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
     }
 }

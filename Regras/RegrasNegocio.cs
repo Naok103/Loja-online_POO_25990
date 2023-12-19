@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Security;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -10,7 +11,7 @@ using Objetos;
 namespace Regras
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: 
     /// Created by: Rafael silva
     /// Created on: 01/12/2023 11:16:31
     /// </summary>
@@ -213,6 +214,7 @@ namespace Regras
 
         #region VENDA
 
+        /*
         public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes)
         {
             IO io = new IO();
@@ -220,9 +222,9 @@ namespace Regras
             int quantidade, idc, idp;
             DateTime hora;
 
-            io.DadosVenda(out quantidade, out idc, out idp);
+            io.DadosVendas(out quantidade, out idc, out idp);
 
-            if(produtos.ExisteProduto(idp) == true && clientes.ExisteCliente(idp) == true)
+            if (produtos.ExisteProduto(idp) == true && clientes.ExisteCliente(idp) == true)
             {
                 hora = DateTime.Now;
                 Venda venda = new Venda(quantidade, idp, idc, hora);
@@ -231,6 +233,7 @@ namespace Regras
             }
             return false;
         }
+        */
 
         public bool GuardarVendas(Vendas vendas, string m)
         {
@@ -325,7 +328,87 @@ namespace Regras
 
         #region CAMPANHA
 
+        
+        public bool InserirCampanha()
+        {
+            IO io = new IO();
+            Campanhas campanhas = new Campanhas();
+            string nome;
+            int desconto, duracao;
 
+            io.DadosCampanha(out nome, out desconto, out duracao);
+
+            if(campanhas.ExisteCampanha(nome) == false)
+            {
+                Campanha campanha = new Campanha(nome, duracao, desconto);
+                campanhas.InseirCampanha(campanha);
+                return true;
+            }
+            return false;
+        }
+        
+
+        public bool AdicionarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
+        {
+            if((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
+            {
+                campanhas.AdicionarProdutoCampanha(nome, id, produtos);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
+        {
+            if ((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
+            {
+                if(campanhas.ExisteProdutoCampanha(id,nome) == true)
+                {
+                    campanhas.RetirarProdutoCampanha(nome, id);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool AlterarCampanha(string n, Campanhas campanhas)
+        {
+            IO io = new IO();
+            string nome;
+            int desconto, duracao, t;
+
+            if(campanhas.ExisteCampanha(n) == true)
+            {
+                io.AlterarDadosCA(out t, out nome, out desconto, out duracao);
+                campanhas.AlterarCampanha(t, nome, duracao, desconto);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RetirarCampanha(string nome, Campanhas campanhas)
+        {
+            if(campanhas.ExisteCampanha(nome) == true)
+            {
+                campanhas.RetirarCampanha(nome);
+                return true;
+            }
+            return false;
+        }
+
+        public bool GravarCampanha(string m, string t, Campanhas campanhas)
+        {
+            campanhas.GuardarCampanhas(m);
+            campanhas.GuardarProdutoCampanha(t);
+            return true;
+        }
+
+        public Campanhas LerCampanhas(string m, string t, Campanhas campanhas, Produtos produtos)
+        {
+            campanhas.LerCampanhas(m);
+            campanhas.LerProdutoCampanha(t, produtos);
+            return campanhas;
+        }
 
         #endregion
 

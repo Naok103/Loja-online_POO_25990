@@ -53,21 +53,23 @@ namespace Dados
             return false;
         }
 
-        public bool AdicionarProdutoCampanha(string nome, Produto p)
+        public bool AdicionarProdutoCampanha(string nome,int id, Produtos produtos)
         {
             foreach(Campanha campanha in campanhas)
             {
                 if(campanha.Nome == nome)
                 {
-                    foreach(Produto produto in campanha.IDP)
+                    if (ExisteProdutoCampanha(id, nome) == false)
                     {
-                        if(ExisteProdutoCampanha(produto.Id, nome) == false)
+                        foreach(Produto produto in produtos)
                         {
-                            campanha.IDP.Add(produto);
-                            return true;
+                            if(produto.Id == id)
+                            {
+                                campanha.IDP.Add(produto);
+                                return true;
+                            }
                         }
                     }
-                    
                 }
             }
             return false;
@@ -228,7 +230,7 @@ namespace Dados
                     {
                         foreach(Produto produto in campanha.IDP)
                         {
-                            writer.WriteLine($"{campanha.Nome}#{produto.Id}#{produto.Nome}#{produto.Categoria}#{produto.Garantia}#{produto.Preco}#{produto.IdM}");
+                            writer.WriteLine($"{campanha.Nome}#{produto.Id}");
                         }
                     }
                 }
@@ -241,7 +243,7 @@ namespace Dados
             }
         }
 
-        public bool LerProdutoCampanha(string m)
+        public bool LerProdutoCampanha(string m, Produtos produtos)
         {
             using (StreamReader sr = File.OpenText(m))
             {
@@ -251,16 +253,8 @@ namespace Dados
                     string[] sdados = linha.Split('#');
                     string nomeC = sdados[0];
                     int id = int.Parse(sdados[1]);
-                    string nomeP = sdados[2];
-                    string categoria = sdados[3];
-                    int garantia = int.Parse(sdados[4]);
-                    int preco = int.Parse(sdados[5]);
-                    int idm = int.Parse(sdados[6]);
 
-
-                    Produto produto = new Produto(id, nomeP, categoria, preco, garantia, idm);
-
-                    AdicionarProdutoCampanha(nomeC, produto);
+                    AdicionarProdutoCampanha(nomeC, id, produtos);
 
                     linha = sr.ReadLine();
                 }
