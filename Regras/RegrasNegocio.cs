@@ -19,10 +19,9 @@ namespace Regras
     {
         #region CLIENTE
 
-        public bool InserirCliente()
+        public bool InserirCliente(Clientes clientes)
         {
             IO io = new IO();
-            Clientes clientes = new Clientes();
             int id = 0, nif, contacto;
             string nome, morada, aux1, aux2;
             id = clientes.ID(id);
@@ -38,10 +37,9 @@ namespace Regras
             return false;
         }
 
-        public bool AlterarCliente(int id)
+        public bool AlterarCliente(int id, Clientes clientes)
         {
             IO io = new IO();
-            Clientes clientes = new Clientes();
             int nif, contacto, i;
             string nome, morada;
             if (clientes.ExisteCliente(id) == true)
@@ -53,9 +51,8 @@ namespace Regras
             return false;
         }
 
-        public bool RetirarCliente(int id)
+        public bool RetirarCliente(int id, Clientes clientes)
         {
-            Clientes clientes = new Clientes();
             if(clientes.ExisteCliente(id) == true)
             {
                 clientes.RetirarCliente(id); 
@@ -80,10 +77,9 @@ namespace Regras
 
         #region PRODUTO
 
-        public bool InserirProduto(Marcas marcas, int idm)
+        public bool InserirProduto(Marcas marcas, Produtos produtos, int idm)
         {
             IO io = new IO();
-            Produtos produtos = new Produtos();
             string nome, categoria;
             int preco, id = 0, garantia;
             
@@ -98,10 +94,9 @@ namespace Regras
             return false;
         }
 
-        public bool AlterarProduto(int id)
+        public bool AlterarProduto(int id, Produtos produtos)
         {
             IO io = new IO();
-            Produtos produtos = new Produtos();
             string nome, categoria;
             int i, preco,garantia;
 
@@ -114,10 +109,9 @@ namespace Regras
             return false;
         }
 
-        public bool RetirarProduto(int id)
+        public bool RetirarProduto(int id, Produtos produtos)
         {
 
-            Produtos produtos = new Produtos();
             if (produtos.ExisteProduto(id) == true)
             {
                 produtos.RetirarProduto(id);
@@ -142,10 +136,9 @@ namespace Regras
 
         #region MARCA
 
-        public bool InserirMarca()
+        public bool InserirMarca(Marcas marcas)
         {
             IO io = new IO();
-            Marcas marcas = new Marcas();
             string nome, site;
 
             int id = 0;
@@ -172,24 +165,22 @@ namespace Regras
             */
         }
 
-        public bool AlterarMarca(int id)
+        public bool AlterarMarca(int id, Marcas marcas)
         {
             IO io = new IO();
-            Marcas marca = new Marcas();
             string nome, site;
             int i;
-            if(marca.ExisteMarca(id) == true)
+            if(marcas.ExisteMarca(id) == true)
             {
                 io.AlterarDadosM(out nome, out site, out i);
-                marca.AlterarMarca(id, i, nome, site);
+                marcas.AlterarMarca(id, i, nome, site);
                 return true;
             }
             return false;
         }
 
-        public bool RetirarMarca(int id)
+        public bool RetirarMarca(int id, Marcas marcas)
         {
-            Marcas marcas = new Marcas();
             if (marcas.ExisteMarca(id) == true)
             {
                 marcas.RetirarMarca(id);
@@ -251,10 +242,9 @@ namespace Regras
 
         #region STOCK
 
-        public bool InserirStock(Produtos produtos)
+        public bool InserirStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
-            Stocks stocks = new Stocks();
             int idp, quantidade, id = 0;
             id = stocks.ID(id);
 
@@ -268,10 +258,9 @@ namespace Regras
             return false;
         }
 
-        public bool AdicionarStock(Produtos produtos)
+        public bool AdicionarStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
-            Stocks stocks = new Stocks();
             int id, quantidade;
 
 
@@ -285,10 +274,9 @@ namespace Regras
             return false;
         }
 
-        public bool RetirarStock(Produtos produtos)
+        public bool RetirarStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
-            Stocks stocks = new Stocks();
             int id, quantidade;
 
 
@@ -301,9 +289,8 @@ namespace Regras
             return true;
         }
 
-        public bool AcabarStock(int id)
+        public bool AcabarStock(Stocks stocks, int id)
         {
-            Stocks stocks = new Stocks();
             if (stocks.ExisteStock(id) == true)
             {
                 stocks.AcabarStock(id);
@@ -329,10 +316,9 @@ namespace Regras
         #region CAMPANHA
 
         
-        public bool InserirCampanha()
+        public bool InserirCampanha(Campanhas campanhas)
         {
             IO io = new IO();
-            Campanhas campanhas = new Campanhas();
             string nome;
             int desconto, duracao;
 
@@ -414,10 +400,9 @@ namespace Regras
 
         #region FUNCIONARIO
 
-        public bool InserirFuncionario()
+        public bool InserirFuncionario(Funcionarios funcionarios)
         {
             IO io = new IO();
-            Funcionarios funcionarios = new Funcionarios();
 
             int id = 0 , nif, contacto;
             string nome, aux1, aux2;
@@ -437,10 +422,9 @@ namespace Regras
             return false;
         }
 
-        public bool AlterarFuncionario(int id)
+        public bool AlterarFuncionario(Funcionarios funcionarios, int id)
         {
             IO io = new IO();
-            Funcionarios funcionarios = new Funcionarios();
 
             int nif, contacto, i;
             string nome;
@@ -454,10 +438,8 @@ namespace Regras
             return false;
         }
 
-        public bool RetirarFuncionario(int id)
+        public bool RetirarFuncionario(Funcionarios funcionarios, int id)
         {
-            Funcionarios funcionarios = new Funcionarios();
-
             if(funcionarios.ExisteFuncionario(id) == true)
             {
                 funcionarios.RetirarFuncionario(id);
@@ -482,10 +464,9 @@ namespace Regras
 
         #region MANAGER
 
-        public bool InserirManager()
+        public bool InserirManager(Managers managers)
         {
             IO io = new IO();
-            Managers managers = new Managers();
 
             int id = 0, nif, contacto;
             string nome, aux1, aux2, pass;
@@ -505,10 +486,9 @@ namespace Regras
             return false;
         }
 
-        public bool AlterarManager(int id)
+        public bool AlterarManager(Managers managers, int id)
         {
             IO io = new IO();
-            Managers managers = new Managers();
 
             int nif, contacto, i;
             string nome, pass;
@@ -522,9 +502,8 @@ namespace Regras
             return false;
         }
 
-        public bool RetirarManager(int id)
+        public bool RetirarManager(Managers managers, int id)
         {
-            Managers managers = new Managers();
 
             if (managers.ExisteManager(id) == true)
             {

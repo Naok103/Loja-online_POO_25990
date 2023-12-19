@@ -60,7 +60,7 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+
             int op;
             int id;
             do
@@ -71,17 +71,17 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
-                        regras.InserirMarca();
+                        regras.InserirMarca(marcas);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id da Marca que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarMarca(id);
+                        regras.AlterarMarca(id, marcas);
                         break;
                     case 3:
                         Console.WriteLine("Qual o id da Marca que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.RetirarMarca(id);
+                        regras.RetirarMarca(id, marcas);
                         break;
                     case 4:
                         io.MostrarMarcas(marcas);
@@ -91,7 +91,7 @@ namespace Loja_online
                         break;
                 }
             } while (op != 0);
-            regras.GravarMarcas(marcas, @"dadosmarcas");
+
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -99,8 +99,7 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //marcas = regras.LerMarcas(marcas, @"dadosmarcas");
-            //produtos = regras.LerProduto(produtos, @"dadosprodutos");
+
             int op;
             int id;
             bool aux;
@@ -114,17 +113,17 @@ namespace Loja_online
                     case 1:
                         Console.WriteLine("Qual o id da Marca ao qual o Produto que deseja adicionar pertence?");
                         id = int.Parse(Console.ReadLine());
-                        regras.InserirProduto(marcas,id);
+                        regras.InserirProduto(marcas, produtos, id);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Produto que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarProduto(id);
+                        regras.AlterarProduto(id, produtos);
                         break;
                     case 3:
                         Console.WriteLine("Qual o id do Produto que deseja acabar com a venda?");
                         id = int.Parse(Console.ReadLine());
-                        regras.RetirarProduto(id);
+                        regras.RetirarProduto(id, produtos);
                         break;
                     case 4:
                         //desenvolver
@@ -146,8 +145,7 @@ namespace Loja_online
 
                 }
             } while (op != 0);
-            regras.GravarProduto(produtos, @"dadosprodutos");
-            regras.GravarMarcas(marcas, @"dadosmarcas");
+            
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -155,7 +153,7 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //clientes = regras.LerClientes(clientes, @"dadosclientes");
+
             int opcao, id;
             do
             {
@@ -165,17 +163,17 @@ namespace Loja_online
                 switch(opcao) 
                 {
                     case 1:
-                        regras.InserirCliente();
+                        regras.InserirCliente(clientes);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Cliente que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarCliente(id);
+                        regras.AlterarCliente(id, clientes);
                         break;
                     case 3:
                         Console.WriteLine("Qual o id do Cliente que deseja retirar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.RetirarCliente(id);
+                        regras.RetirarCliente(id, clientes);
                         break;
                     case 4:
                         io.MostrarClientes(clientes);
@@ -190,7 +188,7 @@ namespace Loja_online
                         break;
                 }
             } while (opcao != 0);
-            regras.GuardarClientes(clientes, @"dadosclientes");
+            
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -198,9 +196,6 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //produtos = regras.LerProduto(produtos, @"dadosprodutos");
-            //clientes = regras.LerClientes(clientes, @"dadosclientes");
-            //vendas = regras.LerVendas(vendas, @"dadosvendas");
 
             int opcao, id;
             do
@@ -227,9 +222,6 @@ namespace Loja_online
                 }
             } while (opcao != 0);
 
-            regras.GravarProduto(produtos, @"dadosprodutos");
-            regras.GuardarClientes(clientes, @"dadosclientes");
-            regras.GuardarVendas(vendas, @"dadosvendas");
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -238,8 +230,7 @@ namespace Loja_online
 
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //stocks = regras.LerStocks(stocks, @"dadosstock");
-            //produtos = regras.LerProdutos(produtos, @"dadosprodutos");
+
             int op;
             int id;
             do
@@ -250,18 +241,18 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
-                        regras.InserirStock(produtos);
+                        regras.InserirStock(stocks, produtos);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Produto que deseja acabar com o stock do mesmo?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AcabarStock(id);
+                        regras.AcabarStock(stocks, id);
                         break;
                     case 3:
-                        regras.AdicionarStock(produtos);
+                        regras.AdicionarStock(stocks, produtos);
                         break;
                     case 4:
-                        regras.RetirarStock(produtos);
+                        regras.RetirarStock(stocks, produtos);
                         break;
                     case 5:
                         io.MostrarStock(stocks);
@@ -276,7 +267,7 @@ namespace Loja_online
                         break;
                 }
             } while (op != 0);
-            regras.GravarStocks(stocks, @"dadosstock");
+
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -284,7 +275,6 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
 
             int opcao, id;
             string nome;
@@ -296,7 +286,7 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.InserirCampanha();
+                        regras.InserirCampanha(campanhas);
                         break;
                     case 2:
                         Console.WriteLine("Qual o nome da Campanha que deseja alterar?");
@@ -336,7 +326,6 @@ namespace Loja_online
                 }
             } while (opcao != 0);
 
-            regras.GravarCampanha(@"dadoscampanhas", @"dadosprodutocampanha", campanhas);
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -344,7 +333,6 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
 
             int opcao, id;
             do
@@ -355,17 +343,17 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.InserirFuncionario();
+                        regras.InserirFuncionario(funcionarios);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Cliente que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarFuncionario(id);
+                        regras.AlterarFuncionario(funcionarios, id);
                         break;
                     case 3:
                         Console.WriteLine("Qual o id do Cliente que deseja retirar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.RetirarFuncionario(id);
+                        regras.RetirarFuncionario(funcionarios, id);
                         break;
                     case 4:
                         io.MostrarFuncionarios(funcionarios);
@@ -376,7 +364,6 @@ namespace Loja_online
                 }
             } while (opcao != 0);
 
-            regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
         }
 
@@ -384,7 +371,6 @@ namespace Loja_online
         {
             IO io = new IO();
             RegrasNegocio regras = new RegrasNegocio();
-            //managers = regras.LerManager(managers, @"dadosmanager");
 
             int opcao, id;
             do
@@ -395,17 +381,17 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.InserirManager();
+                        regras.InserirManager(managers);
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Cliente que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarManager(id);
+                        regras.AlterarManager(managers, id);
                         break;
                     case 3:
                         Console.WriteLine("Qual o id do Cliente que deseja retirar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.RetirarManager(id);
+                        regras.RetirarManager(managers, id);
                         break;
                     case 4:
                         io.MostrarManagers(managers);
@@ -416,7 +402,6 @@ namespace Loja_online
                 }
             } while (opcao != 0);
 
-            regras.GuardarManager(managers, @"dadosmanager");
             MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
 
             
