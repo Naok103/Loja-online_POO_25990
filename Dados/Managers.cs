@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Dados
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: classe para desenvolver funcoes relacioandas com o manager
     /// Created by: Rafael silva
     /// Created on: 16/12/2023 15:26:44
     /// </summary>
@@ -51,6 +51,11 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar um manager a lista
+        /// </summary>
+        /// <param name="g">variavel para o manager</param>
+        /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool InserirManager(Manager g)
         {
             if (ExisteManager(g.Id) == false)
@@ -61,6 +66,12 @@ namespace Dados
             return false;
         }
 
+
+        /// <summary>
+        /// Funcao para verificar se um manager ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <returns>retorna true se o manager existe e false se nao</returns>
         public bool ExisteManager(int id)
         {
             foreach (Manager managaer in managers)
@@ -73,6 +84,16 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para alterar um manager
+        /// </summary>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <param name="t">variavel que determina que propriedade do manager deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do manager</param>
+        /// <param name="contacto">variavel para o contacto do manager</param>
+        /// <param name="nif">variavel para o nif do manager</param>
+        /// <param name="pass">variavel para a pass do manager</param>
+        /// <returns>retorna true se for alterado uma propriedade do manager e false se nao</returns>
         public bool AlterarManager(int id, int t, string nome, int contacto, int nif, string pass)
         {
             for (int i = 0; i < managers.Count; i++)
@@ -99,6 +120,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar um manager
+        /// </summary>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <returns>retorna true se removeu o manager ou false se nao</returns>
         public bool RetirarManager(int id)
         {
             for (int i = 0; i < managers.Count; i++)
@@ -112,6 +138,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// funcao para buscar o proximo id do manager
+        /// </summary>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <returns>retorna o id</returns>
         public int ID(int id)
         {
             for (int i = 0; i < managers.Count; i++)
@@ -122,6 +153,11 @@ namespace Dados
             return id;
         }
 
+        /// <summary>
+        /// Funcao para guardar os managers num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarManagerB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -132,6 +168,11 @@ namespace Dados
 
         }
 
+        /// <summary>
+        /// Funcao para ler os managers de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerManagerB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -141,6 +182,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar os managers num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarManager(string m)
         {
             try
@@ -161,6 +207,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler os managers de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerManager(string m)
         {
             using (StreamReader sr = File.OpenText(m))

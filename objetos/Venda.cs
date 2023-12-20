@@ -5,7 +5,7 @@
 namespace Objetos
 {
     /// <summary>
-    /// Purpose: Classe para definir uma campanha
+    /// Purpose: Classe para definir uma venda
     /// Created by: Rafael Silva
     /// Created on: 08/11/2023 14:27:30
     /// </summary>
@@ -14,10 +14,10 @@ namespace Objetos
     {
         #region ESTADO 
 
-        private int quantidade;
-        private int idP;
-        private int idC;
-        private DateTime hora;
+        private int quantidade; //variavel para a quantidade vendida
+        private int idP; //variavel para o id do produto vendido
+        private int idC; //variavel para o id do cliente que comprou o produto
+        private DateTime hora; //variavel para a hora em que a venda foi realizada
 
         #endregion
 
@@ -94,6 +94,9 @@ namespace Objetos
             get { return idC; }
         }
 
+        /// <summary>
+        /// Propriedades da variavel hora
+        /// </summary>
         public DateTime Hora
         {
             get { return hora; }

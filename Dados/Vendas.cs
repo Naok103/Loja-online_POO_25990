@@ -22,7 +22,7 @@ namespace Dados
     {
         #region ESTADO 
 
-        static List<Venda> vendas;
+        static List<Venda> vendas; //lista com o conjunto de vendas realizadas
 
         #endregion
 
@@ -42,6 +42,9 @@ namespace Dados
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// Propriedade da lista vendas
+        /// </summary>
         public static List<Venda> VENDAS
         {
             get { return vendas; }
@@ -52,12 +55,22 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar uma venda a lista de vendas
+        /// </summary>
+        /// <param name="v">variavel para uma venda</param>
+        /// <returns></returns>
         public bool AdicionarVenda(Venda v)
         {
             vendas.Add(v);
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar as vendas num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarVendaB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -67,6 +80,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para ler as vendas de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerVendaB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -76,6 +94,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar as vendas num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarVenda(string m)
         {
             try
@@ -96,6 +119,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler as vendas de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerVenda(string m)
         {
             using (StreamReader sr = File.OpenText(m))

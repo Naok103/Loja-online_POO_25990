@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Dados
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: classe para desenvolver funcoes relacioandas com o funcionario
     /// Created by: Rafael silva
     /// Created on: 14/12/2023 16:36:16
     /// </summary>
@@ -23,7 +23,7 @@ namespace Dados
     {
         #region ESTADO 
 
-        static List<Funcionario> funcionarios;
+        static List<Funcionario> funcionarios; // lista que contem os funcionarios da loja
 
         #endregion
 
@@ -43,6 +43,9 @@ namespace Dados
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// Propriedades da lista
+        /// </summary>
         public List<Funcionario> Lista
         {
             get { return funcionarios; }
@@ -53,6 +56,11 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar um funcionario a lista
+        /// </summary>
+        /// <param name="f">variavel para o funcionarios</param>
+        /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool InserirFuncionario(Funcionario f)
         {
             if(ExisteFuncionario(f.Id) == false)
@@ -63,6 +71,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se um funcionario ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <returns>retorna true se o funcionario existe e false se nao</returns>
         public bool ExisteFuncionario(int id)
         {
             foreach(Funcionario f in funcionarios)
@@ -75,6 +88,15 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para alterar um funcionario
+        /// </summary>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <param name="t">variavel que determina que propriedade do funcionario deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do funcionario</param>
+        /// <param name="contacto">variavel para o contacto do funcionario</param>
+        /// <param name="nif">variavel para o nif do funcionario</param>
+        /// <returns>retorna true se for alterado uma propriedade do funcionario e false se nao</returns>
         public bool AlterarFuncionario(int id, int t, string nome, int contacto, int nif)
         {
             for(int i = 0;i< funcionarios.Count; i++)
@@ -98,6 +120,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar um funcionario
+        /// </summary>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <returns>retorna true se removeu o funcionario ou false se nao</returns>
         public bool RetirarFuncionario(int id)
         {
             for(int i = 0;i<funcionarios.Count;i++ )
@@ -111,6 +138,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// funcao para buscar o proximo id do funcionario
+        /// </summary>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <returns>retorna o id</returns>
         public int ID(int id)
         {
             for (int i = 0; i < funcionarios.Count; i++)
@@ -121,6 +153,11 @@ namespace Dados
             return id;
         }
 
+        /// <summary>
+        /// Funcao para guardar os funcionarios num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarFuncionarioB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -131,6 +168,11 @@ namespace Dados
            
         }
 
+        /// <summary>
+        /// Funcao para ler os funcionarios de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerFuncionarioB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -140,6 +182,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar os funcionarios num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarFuncionario(string m)
         {
             try
@@ -160,6 +207,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler os funcionarios de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerFuncionario(string m)
         {
             using (StreamReader sr = File.OpenText(m))

@@ -20,7 +20,7 @@ namespace Dados
         
         #region ESTADO 
 
-       static List<Stock> stocks;
+       static List<Stock> stocks; // listas que contem o stock da loja
 
         #endregion
 
@@ -36,12 +36,13 @@ namespace Dados
             stocks = new List<Stock>();
         }
 
-
-
         #endregion
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// propriedades da lista stocks
+        /// </summary>
         public static List<Stock> STOCKS
         {
             get { return stocks; }
@@ -52,6 +53,11 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar um stock a lista
+        /// </summary>
+        /// <param name="s">variavel para um stock</param>
+        /// <returns>retorna true se o stock foi adicionado ou false se nao</returns>
         public bool InserirStock(Stock s)
         {
             if (ExisteStock(s.IDP) == false)
@@ -62,6 +68,11 @@ namespace Dados
             return false;    
         }
 
+        /// <summary>
+        /// Funcao para retirar um stock da lista
+        /// </summary>
+        /// <param name="id">variavel para o id do stock</param>
+        /// <returns>retorna true se o stock foi retirado ou false se nao</returns>
         public bool AcabarStock(int id)
         {
             for (int i = 0; i < stocks.Count; i++)
@@ -75,6 +86,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se um stock ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id do stock</param>
+        /// <returns>retorna true se o stock existe ou false se nao</returns>
         public bool ExisteStock(int id)
         {
             foreach (Stock stock in stocks)
@@ -87,6 +103,12 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para adicionar produtos a um stock ja existente
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="quantidade">variavel para a quantidade do produto a ser adicioanda ao stock</param>
+        /// <returns>retorna true se os produto/s foi/foram adicionado/s ou false se nao</returns>
         public bool AdicionarStock(int id, int quantidade)
         {
             for (int i = 0; i < stocks.Count; i++)
@@ -101,6 +123,12 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar produtos de um stock ja exixtente
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="quantidade">variavel para a quantidade do produto a ser retirada do stock</param>
+        /// <returns>retorna true se os produto/s foi/foram retirado/s ou false se nao</returns>
         public bool RetirarStock(int id, int quantidade)
         {
             for (int i = 0; i < stocks.Count; i++)
@@ -115,6 +143,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// funcao para buscar o proximo id do stock
+        /// </summary>
+        /// <param name="id">variavel para o id do stock</param>
+        /// <returns>retorna o id</returns>
         public int ID(int id)
         {
             for (int i = 0; i < stocks.Count; i++)
@@ -125,6 +158,11 @@ namespace Dados
             return id;
         }
 
+        /// <summary>
+        /// Funcao para guardar o stock num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarStockB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -135,6 +173,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para ler o stock de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerStockB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -146,6 +189,11 @@ namespace Dados
 
         }
 
+        /// <summary>
+        /// Funcao para guardar o stock num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarStock(string m)
         {
             try
@@ -166,6 +214,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler o stock de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerStock(string m)
         {
             using (StreamReader sr = File.OpenText(m))

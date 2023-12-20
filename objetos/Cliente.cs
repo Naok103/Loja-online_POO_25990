@@ -17,8 +17,8 @@ namespace Objetos
     {
         #region ESTADO 
 
-        private int id;
-        private string morada;
+        private int id; //variavel para o id do cliente
+        private string morada; //variavel para a morada do cliente
 
         #endregion
 
@@ -44,6 +44,7 @@ namespace Objetos
         /// <param name="nome"> variavel para o nome do cliente</param>
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>
+        /// <param name="morada">variavel para a morada do cliente</param>
         public Cliente(int id, string nome, int contacto, int nif, string morada)
         {
             this.id = id;
@@ -70,6 +71,9 @@ namespace Objetos
             }
         }
 
+        /// <summary>
+        /// Propriedades da variavel morada
+        /// </summary>
         public string Morada
         {
             get { return morada; }

@@ -15,12 +15,12 @@ namespace Objetos
     {
         #region ESTADO 
 
-        private int id;
-        private string nome;
-        private string categoria;
-        private int preco;
-        private int garantia;
-        private int idM;
+        private int id; //variavel para o id produto
+        private string nome; //variavel para o nome do produto
+        private string categoria; //variavel para a categoria do produto
+        private int preco; //variavel para o preco do produto
+        private int garantia; //variavel para a garantia do produto
+        private int idM; //variavel para o id da marca do produto
 
         #endregion
 

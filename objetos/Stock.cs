@@ -6,7 +6,7 @@ using System;
 namespace Objetos
 {
     /// <summary>
-    /// Purpose: Classe para definir uma campanha
+    /// Purpose: Classe para definir um stock
     /// Created by: Rafael Silva
     /// Created on: 08/11/2023 14:30:21
     /// </summary>
@@ -15,9 +15,9 @@ namespace Objetos
     {
         #region ESTADO 
 
-        int id;
-        private int quantidade;
-        private int idP;
+        int id; //variavel id para identificar o stock
+        private int quantidade; //variavel para a quantidade do produto em stock
+        private int idP; //variavel do id do produto em stock
 
         #endregion
 

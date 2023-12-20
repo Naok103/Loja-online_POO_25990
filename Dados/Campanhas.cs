@@ -17,7 +17,7 @@ namespace Dados
     {
         #region ESTADO 
 
-        static List<Campanha> campanhas;
+        static List<Campanha> campanhas; // lista que contem todas as campanhas da loja
 
         #endregion
 
@@ -37,6 +37,9 @@ namespace Dados
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// Propriedades da lista
+        /// </summary>
         public static List<Campanha> CAMPANHAS
         {
             get { return campanhas; }
@@ -47,12 +50,24 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar uma campanha a lista
+        /// </summary>
+        /// <param name="campanha">variavel para a campanha</param>
+        /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool InseirCampanha(Campanha campanha)
         {
             campanhas.Add(campanha);
             return false;
         }
 
+        /// <summary>
+        /// Funcao para adicionar um produto a uma campanha
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id do produtos</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool AdicionarProdutoCampanha(string nome,int id, Produtos produtos)
         {
             foreach(Campanha campanha in campanhas)
@@ -75,6 +90,12 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar um produto de uma campanha
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns>retorna true se removeu o produto da campanha ou false se nao</returns>
         public bool RetirarProdutoCampanha(string nome, int id)
         {
             foreach(Campanha campanha in campanhas)
@@ -94,6 +115,14 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para alterar uma campanha
+        /// </summary>
+        /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="duracao">variavel para a duracao da campanha</param>
+        /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
+        /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
         public bool AlterarCampanha(int t, string nome, int duracao, int desconto)
         {
             foreach(Campanha campanha in campanhas)
@@ -117,6 +146,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar uma campanha
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <returns>retorna true se removeu a campanha ou false se nao</returns>
         public bool RetirarCampanha(string nome)
         {
             foreach(Campanha campanha in campanhas)
@@ -130,6 +164,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se uma campanha ja existe
+        /// </summary>
+        /// <param name="nome">variavel para o id da campanha</param>
+        /// <returns>retorna true se a campanha existe e false se nao</returns>
         public bool ExisteCampanha(string nome)
         {
             foreach(Campanha campanha in campanhas)
@@ -142,6 +181,12 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se um produto existe numa campanha
+        /// </summary>
+        /// <param name="nome">variavel para o id da campanha</param>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns>retorna true se o produto existe e false se nao</returns>
         public bool ExisteProdutoCampanha(int id, string nome)
         {
             foreach(Campanha campanha in campanhas)
@@ -160,6 +205,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para guardar as campanhas num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarCampanhasB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -169,6 +219,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para ler as campanhas de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerCampanhasB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -178,6 +233,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar as campanhas num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarCampanhas(string m)
         {
             try
@@ -198,6 +258,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler as campanhas de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerCampanhas(string m)
         {
             using (StreamReader sr = File.OpenText(m))
@@ -220,6 +285,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar os produtos de uma campanha num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarProdutoCampanha(string m)
         {
             try
@@ -243,6 +313,12 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler os produtos de uma campanha de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
         public bool LerProdutoCampanha(string m, Produtos produtos)
         {
             using (StreamReader sr = File.OpenText(m))

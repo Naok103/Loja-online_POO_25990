@@ -19,7 +19,7 @@ namespace objetos
     {
         #region ESTADO 
 
-        private int id;
+        private int id; //variavel para o id do Funcionario
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace objetos
         #region PROPRIEDADES
 
         /// <summary>
-        /// Propriedades da variavel contacto
+        /// Propriedades da variavel id
         /// </summary>
         public int Id
         {

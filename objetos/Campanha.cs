@@ -14,10 +14,10 @@ namespace Objetos
         #region ESTADO 
 
         
-        private string nome;
-        private int duracao;
-        private int desconto;
-        private List<Produto> idP;
+        private string nome; //variavel para o nome da campanha
+        private int duracao; //variavel para a duracao da campanha
+        private int desconto; //variavel para o desconto no produto durante a campanha
+        private List<Produto> idP; //lista com os produtos sobre efeito da campanha
 
         #endregion
 
@@ -43,7 +43,6 @@ namespace Objetos
         /// /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
-        /// <param name="idP">variavel para o id do produto em campanha</param>
         public Campanha(string nome, int duracao, int desconto)
         {
             this.nome = nome;

@@ -18,7 +18,7 @@ namespace objetos
     {
         #region ESTADO 
 
-        private string pass;
+        private string pass; //variavel para a pass do Manager
 
         #endregion
 

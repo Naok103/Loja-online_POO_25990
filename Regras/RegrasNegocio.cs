@@ -11,7 +11,7 @@ using Objetos;
 namespace Regras
 {
     /// <summary>
-    /// Purpose: 
+    /// Purpose: classe para deselvolver as funcoes relacionadas com as regras
     /// Created by: Rafael silva
     /// Created on: 01/12/2023 11:16:31
     /// </summary>
@@ -19,6 +19,11 @@ namespace Regras
     {
         #region CLIENTE
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um cliente
+        /// </summary>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <returns></returns>
         public bool InserirCliente(Clientes clientes)
         {
             IO io = new IO();
@@ -37,6 +42,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para alterar um cliente
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <returns></returns>
         public bool AlterarCliente(int id, Clientes clientes)
         {
             IO io = new IO();
@@ -51,6 +62,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um cliente
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <returns></returns>
         public bool RetirarCliente(int id, Clientes clientes)
         {
             if(clientes.ExisteCliente(id) == true)
@@ -61,12 +78,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para guardar os clientes
+        /// </summary>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarClientes(Clientes clientes, string m)
         {
             clientes.GravarCliente(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler os clientes
+        /// </summary>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Clientes LerClientes(Clientes clientes, string m)
         {
             clientes.LerCliente(m);
@@ -77,6 +106,13 @@ namespace Regras
 
         #region PRODUTO
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um produto
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="idm">variavel para o id da marca</param>
+        /// <returns></returns>
         public bool InserirProduto(Marcas marcas, Produtos produtos, int idm)
         {
             IO io = new IO();
@@ -94,6 +130,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para alterar um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <returns></returns>
         public bool AlterarProduto(int id, Produtos produtos)
         {
             IO io = new IO();
@@ -109,6 +151,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <returns></returns>
         public bool RetirarProduto(int id, Produtos produtos)
         {
 
@@ -120,12 +168,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar os produtos
+        /// </summary>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarProduto(Produtos produtos, string m)
         {
             produtos.GuardarProduto(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler os produtos
+        /// </summary>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Produtos LerProduto(Produtos produtos, string m)
         {
             produtos.LerProduto(m);
@@ -136,6 +196,11 @@ namespace Regras
 
         #region MARCA
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar uma marca
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <returns></returns>
         public bool InserirMarca(Marcas marcas)
         {
             IO io = new IO();
@@ -165,6 +230,12 @@ namespace Regras
             */
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para alterar uma marca
+        /// </summary>
+        /// <param name="id">variavel para o id da marca</param>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <returns></returns>
         public bool AlterarMarca(int id, Marcas marcas)
         {
             IO io = new IO();
@@ -179,6 +250,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar uma marca
+        /// </summary>
+        /// <param name="id">variavel para o id da marca</param>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <returns></returns>
         public bool RetirarMarca(int id, Marcas marcas)
         {
             if (marcas.ExisteMarca(id) == true)
@@ -189,12 +266,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as marcas
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarMarcas(Marcas marcas, string m)
         {
             marcas.GravarMarcas(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler as marcas
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Marcas LerMarcas(Marcas marcas, string m)
         {
             marcas.LerMarcas(m);
@@ -206,6 +295,13 @@ namespace Regras
         #region VENDA
 
         /*
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar uma venda
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="clientes">variavel para a lista de clientes</param>
+        /// <returns></returns>
         public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes)
         {
             IO io = new IO();
@@ -226,12 +322,24 @@ namespace Regras
         }
         */
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as vendas
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarVendas(Vendas vendas, string m)
         {
             vendas.GuardarVenda(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler as vendas
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Vendas LerVendas(Vendas vendas, string m)
         {
             vendas.LerVenda(m);
@@ -242,6 +350,12 @@ namespace Regras
 
         #region STOCK
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
         public bool InserirStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
@@ -258,6 +372,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um produto a um stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
         public bool AdicionarStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
@@ -274,6 +394,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um produto a um stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
         public bool RetirarStock(Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
@@ -289,6 +415,12 @@ namespace Regras
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="id">variavel para o id do stock</param>
+        /// <returns></returns>
         public bool AcabarStock(Stocks stocks, int id)
         {
             if (stocks.ExisteStock(id) == true)
@@ -299,12 +431,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar o stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarStocks(Stocks stocks, string m)
         {
             stocks.GravarStock(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler o stock
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Stocks LerStocks(Stocks stocks, string m)
         {
             stocks.LerStock(m);
@@ -315,7 +459,11 @@ namespace Regras
 
         #region CAMPANHA
 
-        
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar uma campanha
+        /// </summary>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool InserirCampanha(Campanhas campanhas)
         {
             IO io = new IO();
@@ -332,8 +480,15 @@ namespace Regras
             }
             return false;
         }
-        
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um produto a uma campanha
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool AdicionarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
         {
             if((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
@@ -344,6 +499,14 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um produto de uma campanha
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool RetirarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
         {
             if ((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
@@ -357,6 +520,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para alterar uma campanha
+        /// </summary>
+        /// <param name="n">variavel para o nome da campanha</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool AlterarCampanha(string n, Campanhas campanhas)
         {
             IO io = new IO();
@@ -372,6 +541,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar uma campanha
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool RetirarCampanha(string nome, Campanhas campanhas)
         {
             if(campanhas.ExisteCampanha(nome) == true)
@@ -382,6 +557,13 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as campanhas
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="t">variavel para o nome do ficheiro</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
         public bool GravarCampanha(string m, string t, Campanhas campanhas)
         {
             campanhas.GuardarCampanhas(m);
@@ -389,6 +571,14 @@ namespace Regras
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler as campanhas
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="t">variavel para o nome do ficheiro</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
         public Campanhas LerCampanhas(string m, string t, Campanhas campanhas, Produtos produtos)
         {
             campanhas.LerCampanhas(m);
@@ -400,6 +590,11 @@ namespace Regras
 
         #region FUNCIONARIO
 
+        /// <summary>
+        /// funcao com a regra de negocio para  adicionar um funcionario
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <returns></returns>
         public bool InserirFuncionario(Funcionarios funcionarios)
         {
             IO io = new IO();
@@ -422,6 +617,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para  alterar um funcionario
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <returns></returns>
         public bool AlterarFuncionario(Funcionarios funcionarios, int id)
         {
             IO io = new IO();
@@ -438,6 +639,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para  retirar um funcionario
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="id">variavel para o id do funcionario</param>
+        /// <returns></returns>
         public bool RetirarFuncionario(Funcionarios funcionarios, int id)
         {
             if(funcionarios.ExisteFuncionario(id) == true)
@@ -448,12 +655,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para  gravar funcionarios
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarFuncionario(Funcionarios funcionarios, string m)
         {
             funcionarios.GuardarFuncionario(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para  ler funcionarios
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Funcionarios LerFuncionario(Funcionarios funcionarios, string m)
         {
             funcionarios.LerFuncionario(m);
@@ -464,6 +683,11 @@ namespace Regras
 
         #region MANAGER
 
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um manager
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <returns></returns>
         public bool InserirManager(Managers managers)
         {
             IO io = new IO();
@@ -486,6 +710,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para alterar um manager
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <returns></returns>
         public bool AlterarManager(Managers managers, int id)
         {
             IO io = new IO();
@@ -502,6 +732,12 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um manager
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <returns></returns>
         public bool RetirarManager(Managers managers, int id)
         {
 
@@ -513,12 +749,24 @@ namespace Regras
             return false;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar os managers
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarManager(Managers managers, string m)
         {
             managers.GuardarManager(m);
             return true;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para ler os managers
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public Managers LerManager(Managers managers, string m)
         {
             managers.LerManager(m);

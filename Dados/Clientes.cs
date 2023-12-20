@@ -14,7 +14,7 @@ using Objetos;
 namespace Dados
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: classe para desenvolver funcoes relacioandas com o cliente
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:20:36
     /// </summary>
@@ -24,7 +24,7 @@ namespace Dados
 
         #region ESTADO 
 
-        static List<Cliente> clientes;
+        static List<Cliente> clientes; // lista que contem os clientes da loja
 
         #endregion
 
@@ -44,6 +44,9 @@ namespace Dados
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// Propriedade da lista
+        /// </summary>
         public static List<Cliente> CLIENTES
         {
             get { return clientes; }
@@ -54,6 +57,11 @@ namespace Dados
 
         #region OUTROSMETODOS
 
+        /// <summary>
+        /// Funcao para adicionar um cliente a lista
+        /// </summary>
+        /// <param name="c">variavel para o cliente</param>
+        /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool AdicionarCliente(Cliente c)
         {
             if(ExisteCliente(c.Id) == false)
@@ -64,6 +72,16 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para alterar um cliente
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <param name="t">variavel que determina que propriedade do cliente deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do cliente</param>
+        /// <param name="contacto">variavel para o contacto do cliente</param>
+        /// <param name="nif">variavel para o nif do cliente</param>
+        /// <param name="morada">variavel para a morada do cliente</param>
+        /// <returns>retorna true se for alterado uma propriedade do cliente e false se nao</returns>
         public bool AlterarCliente(int id,int d, string nome, int contacto, int nif, string morada)
         {
             for(int i = 0; i< clientes.Count;i++)
@@ -90,6 +108,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se um cliente ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <returns>retorna true se o cliente existe e false se nao</returns>
         public bool ExisteCliente(int id)
         {
 
@@ -101,6 +124,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para retirar um cliente
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <returns>retorna true se removeu o cliente ou false se nao</returns>
         public bool RetirarCliente(int id)
         {
             for (int i = 0; i < clientes.Count; i++)
@@ -114,6 +142,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// funcao para buscar o proximo id do cliente
+        /// </summary>
+        /// <param name="id">variavel para o id do cliente</param>
+        /// <returns>retorna o id</returns>
         public int ID(int id)
         {
             for (int i = 0; i < clientes.Count; i++)
@@ -124,6 +157,11 @@ namespace Dados
             return id;
         }
 
+        /// <summary>
+        /// Funcao para guardar os clientes num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarClienteB(string m)
         {
             Stream s = File.Open(m, FileMode.Create);
@@ -133,6 +171,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para ler os clientes de um ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerClienteB(string m)
         {
             Stream s = File.Open(m, FileMode.Open);
@@ -142,6 +185,11 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar os clientes num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GravarCliente(string m)
         {
             try
@@ -162,6 +210,11 @@ namespace Dados
             }
         }
 
+        /// <summary>
+        /// Funcao para ler os clientes de um ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerCliente(string m)
         {
             using (StreamReader sr = File.OpenText(m))

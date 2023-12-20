@@ -20,6 +20,10 @@ namespace Loja_online
     {
         #region CLIENTE
 
+        /// <summary>
+        /// Funcao para mostrar os clientes na consola
+        /// </summary>
+        /// <param name="clientes">variavel para a lista de clientes</param>
         public void MostrarClientes(Clientes clientes) 
         {
             foreach (Cliente cliente in clientes)
@@ -28,6 +32,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para mostrar um cliente especifico na consola
+        /// </summary>
+        /// <param name="clientes">variavel para a lista de clientes</param>
+        /// <param name="id">variavel para o id do cliente</param>
         public void MostrarCliente(Clientes clientes, int id)
         {
             foreach (Cliente cliente in clientes)
@@ -39,6 +48,13 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um cliente
+        /// </summary>
+        /// <param name="nome">variavel para o nome do cliente</param>
+        /// <param name="contacto">variavel para o contacto do cliente</param>
+        /// <param name="nif">variavel para o nif do cliente</param>
+        /// <param name="morada">variavel para a morada do cliente</param>
         public void DadosClientes(out string nome, out int contacto, out int nif, out string morada)
         {
             Console.WriteLine("Qual o nome do cliente?");
@@ -51,6 +67,15 @@ namespace Loja_online
             morada = Console.ReadLine();
         }
 
+
+        /// /// <summary>
+        /// Funcao para pedir ao utilizador quais as variaveis que quer alterar de um cliente
+        /// </summary>
+        /// <param name="d">variavel que determina que propriedade do cliente deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do cliente</param>
+        /// <param name="contacto">variavel para o contacto do cliente</param>
+        /// <param name="nif">variavel para o nif do cliente</param>
+        /// <param name="morada">variavel para a morada do cliente</param>
         public void AlterarDadosC(out int d, out string nome, out int contacto, out int nif, out string morada)
         {
             nome = "";
@@ -99,6 +124,10 @@ namespace Loja_online
 
         #region PRODUTO
 
+        /// <summary>
+        /// Funcao para mostrar os produtos na consola
+        /// </summary>
+        /// <param name="p">variavel para a lista de produtos</param>
         public void MostrarProdutos(Produtos p)
         {
             foreach(Produto produto in p)
@@ -107,6 +136,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para mostrar os produtos de uma marca especifica na consola
+        /// </summary>
+        /// <param name="p">variavel para a lista de produtos</param>
+        /// <param name="id">variavel para o id da marca</param>
         public void MostrarProdutosMarca(Produtos p, int id)
         {
             foreach (Produto produto in p)
@@ -118,6 +152,13 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um produto
+        /// </summary>
+        /// <param name="nome">variavel para o nome do produto</param>
+        /// <param name="categoria">variavel para a categoria do produto</param>
+        /// <param name="preco">variavel para o preco do produto</param>
+        /// <param name="garantia">variavel para a garantia do produto</param>
         public void DadosProdutos(out string nome, out string categoria, out int preco, out int garantia)
         {
             Console.WriteLine("Qual o nome do produto?");
@@ -130,6 +171,14 @@ namespace Loja_online
             garantia = int.Parse(Console.ReadLine());
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador quias as variaveis que quer alterar de um produto
+        /// </summary>
+        /// <param name="nome">variavel para o nome do produto</param>
+        /// <param name="categoria">variavel para a categoria do produto</param>
+        /// <param name="preco">variavel para o preco do produto</param>
+        /// <param name="garantia">variavel para a garantia do produto</param>
+        /// <param name="i">variavel que determina que propriedade do produto deve ser alterada</param>
         public void AlterarDadosP(out string nome, out string categoria, out int preco, out int garantia, out int i)
         {
             categoria = "";
@@ -173,12 +222,16 @@ namespace Loja_online
                 }
             } while (a != 0);
         }
-    
+
 
         #endregion
 
         #region MARCA
 
+        /// <summary>
+        /// Funcao para mostrar as marcas na consola
+        /// </summary>
+        /// <param name="m">variavel para lista das marcas</param>
         public void MostrarMarcas(Marcas m)
         {
             foreach (Marca marca in m)
@@ -187,6 +240,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de uma marca
+        /// </summary>
+        /// <param name="nome">variavel para o nome da marca</param>
+        /// <param name="site">variavel para o site da marca</param>
         public void DadosMarca(out string nome, out string site)
         {
             Console.WriteLine("Qual o nome da marca?");
@@ -195,6 +253,12 @@ namespace Loja_online
             site = Console.ReadLine();
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador quias as variaveis que quer alterar de uma marca
+        /// </summary>
+        /// <param name="nome">variavel para o nome da marca</param>
+        /// <param name="site">variavel para o site da marca</param>
+        /// <param name="i">variavel que determina que propriedade da marca deve ser alterada</param>
         public void AlterarDadosM(out string nome, out string site, out int i)
         {
             site = "";
@@ -229,6 +293,10 @@ namespace Loja_online
 
         #region VENDA
 
+        /// <summary>
+        /// Funcao para mostrar as vendas na consola
+        /// </summary>
+        /// <param name="v">variavel para a lista das vendas</param>
         public void MostrarVendas(Vendas v)
         {
             foreach(Venda venda in v)
@@ -237,6 +305,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para mostrar as vendas de um cliente especifico na consola
+        /// </summary>
+        /// <param name="v">variavel para a lista das vendas</param>
+        /// <param name="id">variavel para o id do cliente</param>
         public void MostrarVendasCliente(Vendas v, int id) 
         {
             foreach (Venda venda in v)
@@ -247,10 +320,15 @@ namespace Loja_online
                 }
             }
         }
-        /*
+
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de uma venda
+        /// </summary>
+        /// <param name="quantidade"> variavel para a quantidade vendida</param>
+        /// <param name="idp">variavel para o id do produto vendido</param>
+        /// <param name="idc">variavel para o id do cliente que comprou o produto</param>
         public void DadosVendas(out int quantidade, out int idc, out int idp)
         {
-
             Console.WriteLine("Qual a quantidade?");
             quantidade = int.Parse(Console.ReadLine());
             Console.WriteLine("Qual o id do cliente?");
@@ -258,16 +336,15 @@ namespace Loja_online
             Console.WriteLine("Qual 0 id do produto?");
             idp = int.Parse(Console.ReadLine());
         }
-        */
-
-        
 
         #endregion
 
         #region STOCK
 
-        
-
+        /// <summary>
+        /// Funcao para mostrar o stock na consola
+        /// </summary>
+        /// <param name="s">variavel para lista do stock</param>
         public void MostrarStock(Stocks s)
         {
             foreach (Stock stock in s)
@@ -276,6 +353,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para mostrar o stock de um produto especifico na consola
+        /// </summary>
+        /// <param name="s">variavel para lista do stock</param>
+        /// <param name="id">variavel para o id do produto</param>
         public void MostrarStockProduto(Stocks s, int id) 
         {
             foreach (Stock stock in s)
@@ -287,6 +369,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um stock
+        /// </summary>
+        /// <param name="idP">variavel para o id do produto</param>
+        /// <param name="quantidade">variavel para a quantidade do produto</param>
         public void DadosStock(out int idP, out int quantidade)
         {
             Console.WriteLine("Qual o id do Produto?");
@@ -299,6 +386,10 @@ namespace Loja_online
 
         #region CAMPANHA
 
+        /// <summary>
+        /// Funcao para mostrar as campanhas na consola
+        /// </summary>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
         public void MostrarCampanha(Campanhas campanhas) 
         {
             foreach(Campanha campanha in campanhas)
@@ -307,6 +398,11 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para mostrar os produtos de um campanha especifica na consola
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
         public void MostrarProdutoCampanha(string nome, Campanhas campanhas)
         {
             foreach (Campanha campanha in campanhas)
@@ -321,6 +417,12 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de uma campanha
+        /// </summary>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="duracao">variavel para a duracao da campanha</param>
+        /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         public void DadosCampanha(out string nome, out int desconto, out int duracao)
         {
             Console.WriteLine("Qual o nome da campanha?");
@@ -331,6 +433,13 @@ namespace Loja_online
             duracao = int.Parse(Console.ReadLine());
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador quais as variaveis que quer alterar numa campanha
+        /// </summary>
+        /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
+        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="duracao">variavel para a duracao da campanha</param>
+        /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         public void AlterarDadosCA(out int t, out string nome, out int desconto, out int duracao)
         {
             nome = "";
@@ -374,6 +483,10 @@ namespace Loja_online
 
         #region FUNCIONARIO
 
+        /// <summary>
+        /// funcao para mostar na consola todos os funcionarios
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
         public void MostrarFuncionarios(Funcionarios funcionarios)
         {
             foreach(Funcionario funcionario in funcionarios)
@@ -382,6 +495,12 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um funcionario
+        /// </summary>
+        /// <param name="nome">variavel para o nome do funcionario</param>
+        /// <param name="nif">variavel para o nif do funcionario</param>
+        /// <param name="contacto">variavel para o contacto do funcionario</param>
         public void DadosFuncionario(out string nome, out int nif, out int contacto)
         {
             Console.WriteLine("Qual o nome do funcionario?");
@@ -392,6 +511,13 @@ namespace Loja_online
             contacto = int.Parse(Console.ReadLine());
         }
 
+        /// <summary>
+        ///  Funcao para pedir ao utilizador quais as variaveis que quer alterar num funcionario
+        /// </summary>
+        /// <param name="d">variavel que determina que propriedade do funcionario deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do funcionario</param>
+        /// <param name="contacto">variavel para o contacto do funcionario</param>
+        /// <param name="nif">variavel para o nif do funcionario</param>
         public void AlterarDadosF(out int d, out string nome, out int contacto, out int nif)
         {
             nome = "";
@@ -433,6 +559,10 @@ namespace Loja_online
 
         #region MANAGER
 
+        /// <summary>
+        /// funcao para mostrar os managers na consola
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
         public void MostrarManagers(Managers managers)
         {
             foreach (Manager manager in managers)
@@ -441,6 +571,13 @@ namespace Loja_online
             }
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um manager
+        /// </summary>
+        /// <param name="nome">variavel para o nome do manager</param>
+        /// <param name="nif">variavel para o nif do manager</param>
+        /// <param name="contacto">variavel para o contacto do manager</param>
+        /// <param name="pass">variavel para a pass do manager</param>
         public void DadosManager(out string nome, out int nif, out int contacto, out string pass)
         {
             Console.WriteLine("Qual o nome do manager?");
@@ -453,6 +590,14 @@ namespace Loja_online
             pass = Console.ReadLine();
         }
 
+        /// <summary>
+        /// Funcao para pedir ao utilizador quais as variaveis que quer alterar num manager
+        /// </summary>
+        /// <param name="d">variavel que determina que propriedade do manager deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do manager</param>
+        /// <param name="contacto">variavel para o contacto do manager</param>
+        /// <param name="nif">variavel para o nif do manager</param>
+        /// <param name="pass">variavel para a pass do manager</param>
         public void AlterarDadosM(out int d, out string nome, out int contacto, out int nif, out string pass)
         {
             nome = "";

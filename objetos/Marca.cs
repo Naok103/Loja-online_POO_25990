@@ -16,9 +16,9 @@ namespace Objetos
     {
         #region ESTADO 
 
-        private int id;
-        private string nome;
-        private string site;
+        private int id; //variavel para o id da marca
+        private string nome; //variavel para o nome da marca
+        private string site; //variavel para o site da marca
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace Objetos
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel para o id marca</param>
+        /// <param name="id">variavel para o id da marca</param>
         /// <param name="nome">variavel para o nome da marca</param>
         /// <param name="site">variavel para o site da marca</param>
         public Marca(int id, string nome, string site)

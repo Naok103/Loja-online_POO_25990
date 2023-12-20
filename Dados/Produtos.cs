@@ -13,7 +13,7 @@ using Objetos;
 namespace Dados
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: classe para desenvolver as funcoes relacionadas com produto
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:21:02
     /// </summary>
@@ -22,7 +22,7 @@ namespace Dados
     {
         #region ESTADOS
 
-        static List<Produto> produtos;
+        static List<Produto> produtos; //lista que contem todos os produtos da loja
 
         #endregion
 
@@ -39,6 +39,9 @@ namespace Dados
 
         #region PROPRIEDADES
 
+        /// <summary>
+        /// Propriedades da lista produtos
+        /// </summary>
         public static List<Produto> PRODUTOS
         {
             set { produtos = value; }
@@ -49,7 +52,11 @@ namespace Dados
 
         #region OUTROSMETODOS
 
-
+        /// <summary>
+        /// Funcao para adicionar um produto a lista
+        /// </summary>
+        /// <param name="p">variavael para um produto</param>
+        /// <returns>retorna true se o produto for adicionado ou false se nao</returns>
         public bool InserirProduto(Produto p)
         {
             if(ExisteProduto(p.Id) == false)
@@ -60,6 +67,16 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para alterar um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="t">variavel que determina que propriedade do produto deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do produto</param>
+        /// <param name="categoria">variavel para a categoria do produto</param>
+        /// <param name="preco">variavel para o preco do produto</param>
+        /// <param name="garantia">variavel para a garantia do produto</param>
+        /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
         public bool AlterarProduto(int id, int t, string nome, string categoria, int preco, int garantia)
         {
             for(int o = 0;o< produtos.Count; o++)
@@ -86,7 +103,11 @@ namespace Dados
             return false;
         }
        
-
+        /// <summary>
+        /// Funcao para retirar um produto da loja 
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns>retorna true se o produto foi retirado ou false se nao</returns>
         public bool RetirarProduto(int id)
         {
             for (int i = 0; i < produtos.Count; i++)
@@ -100,6 +121,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se um produto ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns>retorna true se o produto existe e false se nao</returns>
         public bool ExisteProduto(int id)
         {
             foreach(Produto produto in produtos)
@@ -112,6 +138,11 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para guardar os produtos num ficheiro binario
+        /// </summary>
+        /// <param name="d">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool GuardarProdutoB(string d)
         {
             Stream s = File.Open(d, FileMode.Create);
@@ -123,6 +154,11 @@ namespace Dados
             
         }
 
+        /// <summary>
+        /// Funcao para ler os produtos de um ficheiro binario
+        /// </summary>
+        /// <param name="d">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerProdutoB(string d)
         {
             Stream s = File.Open(d, FileMode.Open);
@@ -133,8 +169,12 @@ namespace Dados
             return true;
         }
 
-
-       public bool GuardarProduto(string d)
+        /// <summary>
+        /// Funcao para guardar os produtos num ficheiro de texto
+        /// </summary>
+        /// <param name="d">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarProduto(string d)
         {
             try
             {
@@ -154,7 +194,11 @@ namespace Dados
             };
         }
 
-
+        /// <summary>
+        /// Funcao para ler os produtos de um ficheiro de texto
+        /// </summary>
+        /// <param name="d">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
         public bool LerProduto(string d)
         {
             using (StreamReader sr = File.OpenText(d))
@@ -181,16 +225,31 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para devolver um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns></returns>
         public bool DevolverProduto(int id)// desenvolver
         {
             return true;
         }
 
+        /// <summary>
+        /// Funcao para trocar um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns></returns>
         public bool TrocarProduto(int id)// desenvolver
         {
             return false;
         }
 
+        /// <summary>
+        /// funcao para buscar o proximo id do produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <returns>retorna o id</returns>
         public int ID(int id)
         {
             for (int i = 0; i < produtos.Count; i++)

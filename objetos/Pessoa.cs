@@ -17,15 +17,16 @@ namespace objetos
     {
         #region ESTADO 
 
-        private int contacto;
-        private string nome;
-        private int nif;
+        private int contacto; //variavel para o contacto da pessoa
+        private string nome; //variavel para o nome da pessoa
+        private int nif; //variavel para o nif da pessoa
 
         #endregion
 
         #region COMPORTAMENTO
 
         #region CONSTRUTORES
+
         /// <summary>
         /// Construtor por omissão
         /// </summary>
@@ -39,8 +40,9 @@ namespace objetos
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="id">variavel para o id da pessoa</param>
+        /// <param name="contacto">variavel para o contacto da pessoa</param>
         /// <param name="nome"> variavel para o nome da pessoa</param>
+        /// /// <param name="nif"> variavel para o nif da pessoa</param>
         public Pessoa(int contacto, string nome, int nif)
         {
 
@@ -54,7 +56,7 @@ namespace objetos
         #region PROPRIEDADES
 
         /// <summary>
-        /// Propriedades da variavel id cliente
+        /// Propriedades da variavel contacto
         /// </summary>
         public int Contacto
         {
@@ -116,39 +118,6 @@ namespace objetos
 
         #endregion
 
-
-        /*
-        #region Overrides
-
-        /// <summary>
-        /// Funcao para mostrar na consola o conteudo de um cliente
-        /// </summary>
-        /// <returns>retorna uma frase com o conteudo de um cliente</returns>
-        public override string ToString()
-        {
-            return String.Format("Nome: {0}, Id: {1}, Nif{2}", nome, id.ToString(), nif.ToString());
-        }
-
-        /// <summary>
-        /// Funcao para comparar um objeto com o conteudo de um cliente
-        /// </summary>
-        /// <param name="obj">variavel que representa um objeto</param>
-        /// <returns>retorna verdadeiro se o objeto for igual ao conteudo do cliente</returns>
-        public override bool Equals(object obj)
-        {
-            if (obj is Pessoa)
-            {
-                Pessoa u = (Pessoa)obj;
-                if (this == u)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        #endregion
-        */
         #endregion
     }
 }

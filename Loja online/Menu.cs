@@ -9,7 +9,7 @@ using Objetos;
 namespace Loja_online
 {
     /// <summary>
-    /// Purpose:
+    /// Purpose: classe para os menus
     /// Created by: Rafael silva
     /// Created on: 02/12/2023 14:59:10
     /// </summary>
