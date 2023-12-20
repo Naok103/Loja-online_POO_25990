@@ -24,11 +24,14 @@ namespace Loja_online
             regras.LerProduto(produtos, @"dadosprodutos");
             regras.LerClientes(clientes, @"dadosclientes");
             regras.LerMarcas(marcas, @"dadosmarcas");
-            regras.LerVendas(vendas, @"dadosvendas");
             regras.LerStocks(stocks, @"dadosstock");
             regras.LerFuncionario(funcionarios, @"dadosfuncionario");
             regras.LerManager(managers, @"dadosmanager");
             regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
+
+            /*
+            regras.LerVendas(vendas, @"dadosvendas");
+            */
 
             menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
 

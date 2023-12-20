@@ -130,9 +130,10 @@ namespace Loja_online
         /// <param name="p">variavel para a lista de produtos</param>
         public void MostrarProdutos(Produtos p)
         {
+            p.Ordenar();
             foreach(Produto produto in p)
             {
-                Console.WriteLine("Id Produto: {1}, Nome: {2}, Categoria: {3}, Preco: {4}, Garantia: {5}, Id Marca: {6}", produto.Id, produto.Nome, produto.Categoria, produto.Preco, produto.Garantia, produto.IdM);
+                Console.WriteLine("Id Produto: {0}, Nome: {1}, Categoria: {2}, Preco: {3}, Garantia: {4}, Id Marca: {5}", produto.Id, produto.Nome, produto.Categoria, produto.Preco, produto.Garantia, produto.IdM);
             }
         }
 
@@ -143,11 +144,12 @@ namespace Loja_online
         /// <param name="id">variavel para o id da marca</param>
         public void MostrarProdutosMarca(Produtos p, int id)
         {
+            p.Ordenar();
             foreach (Produto produto in p)
             {
                 if(produto.IdM == id)
                 {
-                    Console.WriteLine("Id Produto: {1}, Nome: {2}, Categoria: {3}, Preco: {4}, Garantia: {5}, Id Marca: {6}", produto.Id, produto.Nome, produto.Categoria, produto.Preco, produto.Garantia, produto.IdM);
+                    Console.WriteLine("Id Produto: {0}, Nome: {1}, Categoria: {2}, Preco: {3}, Garantia: {4}, Id Marca: {5}", produto.Id, produto.Nome, produto.Categoria, produto.Preco, produto.Garantia, produto.IdM);
                 }
             }
         }

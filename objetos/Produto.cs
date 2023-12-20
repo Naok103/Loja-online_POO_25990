@@ -11,7 +11,7 @@ using System;
 namespace Objetos
 {
     [Serializable]
-    public class Produto
+    public class Produto : IComparable<Produto>
     {
         #region ESTADO 
 
@@ -194,6 +194,16 @@ namespace Objetos
             }
             return false;
         }
+
+        #endregion
+
+        #region OUTROSMETODOS
+
+        public int CompareTo(Produto p)
+        {
+            return preco.CompareTo(p.preco);
+        }
+
 
         #endregion
 

@@ -53,7 +53,7 @@ namespace Loja_online
                         break;
                 }
             } while (op != 0);
-            
+            Environment.Exit(0);
         }
 
         public void MenuMarca(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas)
@@ -135,7 +135,7 @@ namespace Loja_online
                         io.MostrarProdutos(produtos);
                         break;
                     case 7:
-                        Console.WriteLine("Qual o id do Produto que deseja ver o stock?");
+                        Console.WriteLine("Qual o id da marca que deseja ver os produtos?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarProdutosMarca(produtos, id);
                         break;

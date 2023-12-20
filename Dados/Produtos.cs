@@ -260,7 +260,10 @@ namespace Dados
             return id;
         }
 
-
+        public void Ordenar()
+        {
+            produtos.Sort();
+        }
 
         #endregion
 
