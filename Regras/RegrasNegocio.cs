@@ -782,6 +782,94 @@ namespace Regras
 
         #endregion
 
+        #region FORNECEDOR
+
+        /// <summary>
+        /// funcao com a regra de negocio para adicionar um fornecedor
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <returns></returns>
+        public bool InserirFornecedor(Fornecedores fornecedores)
+        {
+            IO io = new IO();
+            int id = 0, nif, contacto;
+            string nome, morada, aux1, aux2, email;
+            id = fornecedores.ID(id);
+            io.DadosFornecedores(out nome, out contacto, out nif, out morada ,out email);
+            aux1 = contacto.ToString();
+            aux2 = nif.ToString();
+            if ((aux1.Length == 9) && (aux2.Length == 9))
+            {
+                Fornecedor fornecedor = new Fornecedor(id, nome, contacto, nif, morada, email);
+                fornecedores.AdicionarFornecedor(fornecedor);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para alterar um fornecedor
+        /// </summary>
+        /// <param name="id">variavel para o id do fornecedor</param>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <returns></returns>
+        public bool AlterarFornecedor(int id, Fornecedores fornecedores)
+        {
+            IO io = new IO();
+            int nif, contacto;
+            int[] array;
+            string nome, morada, email;
+            if (fornecedores.ExisteFornecedor(id) == true)
+            {
+                io.AlterarDadosFO(out array, out nome, out contacto, out nif, out morada, out email);
+                fornecedores.AlterarFornecedor(id, array, nome, contacto, nif, morada, email);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para retirar um fornecedor
+        /// </summary>
+        /// <param name="id">variavel para o id do fornecedor</param>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <returns></returns>
+        public bool RetirarFornecedor(int id, Fornecedores fornecedores)
+        {
+            if (fornecedores.ExisteFornecedor(id) == true)
+            {
+                fornecedores.RetirarFornecedor(id);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para guardar os fornecedores
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarFornecedores(Fornecedores fornecedores, string m)
+        {
+            fornecedores.GravarFornecedor(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler os fornecedores
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Fornecedores LerFornecedores(Fornecedores fornecedores, string m)
+        {
+            fornecedores.LerFornecedor(m);
+            return fornecedores;
+        }
+
+        #endregion
+
     }
 }
 

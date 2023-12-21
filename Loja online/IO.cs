@@ -71,7 +71,7 @@ namespace Loja_online
         /// /// <summary>
         /// Funcao para pedir ao utilizador quais as variaveis que quer alterar de um cliente
         /// </summary>
-        /// <param name="d">variavel que determina que propriedade do cliente deve ser alterada</param>
+        /// <param name="array">variavel array que determina que propriedade do cliente deve ser alterada</param>
         /// <param name="nome">variavel para o nome do cliente</param>
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>
@@ -699,6 +699,132 @@ namespace Loja_online
                     }
                 }
                 
+            } while (a != 0);
+        }
+
+        #endregion
+
+        #region FORNECEDOR
+
+        /// <summary>
+        /// Funcao para mostrar os fornecedor na consola
+        /// </summary>
+        /// <param name="fornecedor">variavel para a lista de fornecedor</param>
+        public void MostrarFornecedores(Fornecedores fornecedores)
+        {
+            foreach (Fornecedor fornecedor in fornecedores)
+            {
+                Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}, Morada: {4}, Email: {5}", fornecedor.Nome, fornecedor.Id, fornecedor.Contacto, fornecedor.Nif, fornecedor.Morada, fornecedor.Email);
+            }
+        }
+
+        /// <summary>
+        /// Funcao para mostrar um fornecedor especifico na consola
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista de fornecedores</param>
+        /// <param name="id">variavel para o id do fornecedor</param>
+        public void MostrarFornecedor(Fornecedores fornecedores, int id)
+        {
+            foreach (Fornecedor fornecedor in fornecedores)
+            {
+                if (fornecedor.Id == id)
+                {
+                    Console.WriteLine("Nome: {0}, Id: {1}, Contacto: {2}, Nif: {3}, Morada: {4}, Email: {5}", fornecedor.Nome, fornecedor.Id, fornecedor.Contacto, fornecedor.Nif, fornecedor.Morada, fornecedor.Email);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de um fornecedor
+        /// </summary>
+        /// <param name="nome">variavel para o nome do fornecedor</param>
+        /// <param name="contacto">variavel para o contacto do fornecedor</param>
+        /// <param name="nif">variavel para o nif do fornecedor</param>
+        /// <param name="morada">variavel para a morada do fornecedor</param>
+        public void DadosFornecedores(out string nome, out int contacto, out int nif, out string morada, out string email)
+        {
+            Console.WriteLine("Qual o nome do fornecedor?");
+            nome = Console.ReadLine();
+            Console.WriteLine("Qual o contacto do fornecedor?");
+            contacto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o nif do fornecedor?");
+            nif = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a morada do fornecedor?");
+            morada = Console.ReadLine();
+            Console.WriteLine("Qual o email do fornecedor?");
+            email = Console.ReadLine();
+        }
+
+
+        /// /// <summary>
+        /// Funcao para pedir ao utilizador quais as variaveis que quer alterar de um fornecedor
+        /// </summary>
+        /// <param name="array">variavel array que determina que propriedade do fornecedor deve ser alterada</param>
+        /// <param name="nome">variavel para o nome do fornecedor</param>
+        /// <param name="contacto">variavel para o contacto do fornecedor</param>
+        /// <param name="nif">variavel para o nif do fornecedor</param>
+        /// <param name="morada">variavel para a morada do fornecedor</param>
+        public void AlterarDadosFO(out int[] array, out string nome, out int contacto, out int nif, out string morada, out string email)
+        {
+            nome = "";
+            nif = 0;
+            contacto = 0;
+            morada = "";
+            email = "";
+            array = new int[4];
+            int a, d = 0;
+            do
+            {
+                Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif, 4 - morada, 5 - email)?");
+                a = int.Parse(Console.ReadLine());
+                for (d = d; d < array.Length; d++)
+                {
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome do fornecedor?");
+                        nome = Console.ReadLine();
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual o novo contacto do fornecedor?");
+                        contacto = int.Parse(Console.ReadLine());
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 3)
+                    {
+                        Console.WriteLine("Qual o novo nif do fornecedor?");
+                        nif = int.Parse(Console.ReadLine());
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 4)
+                    {
+                        Console.WriteLine("Qual a nova morada do fornecedor?");
+                        morada = Console.ReadLine();
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 5)
+                    {
+                        Console.WriteLine("Qual o novo email do fornecedor?");
+                        email = Console.ReadLine();
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                        break;
+                    }
+                }
             } while (a != 0);
         }
 

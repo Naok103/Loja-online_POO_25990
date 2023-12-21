@@ -19,21 +19,23 @@ namespace Loja_online
             Vendas vendas = new Vendas();
             Campanhas campanhas = new Campanhas();
             RegrasNegocio regras = new RegrasNegocio();
+            Fornecedores fornecedores = new Fornecedores();
             Menu menu = new Menu();
 
-            regras.LerProduto(produtos, @"dadosprodutos");
-            regras.LerClientes(clientes, @"dadosclientes");
-            regras.LerMarcas(marcas, @"dadosmarcas");
-            regras.LerStocks(stocks, @"dadosstock");
-            regras.LerFuncionario(funcionarios, @"dadosfuncionario");
-            regras.LerManager(managers, @"dadosmanager");
-            regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
+            produtos = regras.LerProduto(produtos, @"dadosprodutos");
+            clientes = regras.LerClientes(clientes, @"dadosclientes");
+            marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+            stocks = regras.LerStocks(stocks, @"dadosstock");
+            funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
+            managers = regras.LerManager(managers, @"dadosmanager");
+            campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
+            fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
 
             /*
             regras.LerVendas(vendas, @"dadosvendas");
             */
 
-            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas);
+            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
 
             regras.GravarProduto(produtos, @"dadosprodutos");
             regras.GravarMarcas(marcas, @"dadosmarcas");
@@ -43,6 +45,7 @@ namespace Loja_online
             regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
             regras.GuardarManager(managers, @"dadosmanager");
             regras.GravarCampanha(@"dadoscampanhas", @"dadosprodutocampanha", campanhas);
+            regras.GuardarFornecedores(fornecedores, @"dadosfornecedores");
         }
     }
 }
