@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Campanha.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Fornecedor.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Marca.cs" />

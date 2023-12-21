@@ -77,7 +77,7 @@ namespace Dados
         /// Funcao para alterar um cliente
         /// </summary>
         /// <param name="id">variavel para o id do cliente</param>
-        /// <param name="t">variavel que determina que propriedade do cliente deve ser alterada</param>
+        /// <param name="d">variavel que determina que propriedade do cliente deve ser alterada</param>
         /// <param name="nome">variavel para o nome do cliente</param>
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>

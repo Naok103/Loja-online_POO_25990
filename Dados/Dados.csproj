@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Campanhas.cs" />
     <Compile Include="Clientes.cs" />
+    <Compile Include="Fornecedores.cs" />
     <Compile Include="Funcionarios.cs" />
+    <Compile Include="interfaces\IFornecedor.cs" />
     <Compile Include="interfaces\IManager.cs" />
     <Compile Include="interfaces\IFuncionario.cs" />
     <Compile Include="interfaces\ICampanha.cs" />
