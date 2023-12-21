@@ -25,11 +25,11 @@ namespace Dados
         /// Funcao para alterar uma marca
         /// </summary>
         /// <param name="id">variavel para o id da marca</param>
-        /// <param name="i">variavel que determina que propriedade da marca deve ser alterada</param>
+        /// <param name="i">variavel array que determina que propriedade da marca deve ser alterada</param>
         /// <param name="nome">variavel para o nome da marca</param>
         /// <param name="site">variavel para o site da marca</param>
         /// <returns>retorna true se for alterado uma propriedade da marca e false se nao</returns>
-        bool AlterarMarca(int id, int i, string nome, string site);
+        bool AlterarMarca(int id, int[] i, string nome, string site);
 
         /// <summary>
         /// Funcao para retirar uma marca

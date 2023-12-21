@@ -5,6 +5,7 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -82,26 +83,29 @@ namespace Dados
         /// <param name="nif">variavel para o nif do cliente</param>
         /// <param name="morada">variavel para a morada do cliente</param>
         /// <returns>retorna true se for alterado uma propriedade do cliente e false se nao</returns>
-        public bool AlterarCliente(int id,int d, string nome, int contacto, int nif, string morada)
+        public bool AlterarCliente(int id,int[] d, string nome, int contacto, int nif, string morada)
         {
             for(int i = 0; i< clientes.Count;i++)
             {
                 if (clientes[i].Id == id)
                 {
-                    switch (d)
+                    for (int t = 0; t < d.Length; t++)
                     {
-                        case 1:
-                            clientes[i].Nome = nome;
-                            break;
-                        case 2:
-                            clientes[i].Contacto = contacto;
-                            break; 
-                        case 3:
-                            clientes[i].Nif = nif;
-                            break;
-                        case 4:
-                            clientes[i].Morada = morada;
-                            break;
+                        switch (d[t])
+                        {
+                            case 1:
+                                clientes[i].Nome = nome;
+                                break;
+                            case 2:
+                                clientes[i].Contacto = contacto;
+                                break;
+                            case 3:
+                                clientes[i].Nif = nif;
+                                break;
+                            case 4:
+                                clientes[i].Morada = morada;
+                                break;
+                        }
                     }
                 }
             }

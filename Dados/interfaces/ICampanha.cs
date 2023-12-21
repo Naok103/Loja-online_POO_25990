@@ -41,12 +41,12 @@ namespace Dados
         /// <summary>
         /// Funcao para alterar uma campanha
         /// </summary>
-        /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
+        /// <param name="t">variavel array que determina que propriedade da campanha deve ser alterada</param>
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
-        bool AlterarCampanha(int t, string nome, int duracao, int desconto);
+        bool AlterarCampanha(int[] t, string nome, int duracao, int desconto);
 
         /// <summary>
         /// Funcao para retirar uma campanha

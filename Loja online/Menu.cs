@@ -121,7 +121,7 @@ namespace Loja_online
                         regras.AlterarProduto(id, produtos);
                         break;
                     case 3:
-                        Console.WriteLine("Qual o id do Produto que deseja acabar com a venda?");
+                        Console.WriteLine("Qual o id do Produto que deseja retirar da loja?");
                         id = int.Parse(Console.ReadLine());
                         regras.RetirarProduto(id, produtos);
                         break;

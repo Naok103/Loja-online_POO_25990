@@ -33,13 +33,13 @@ namespace Dados
         /// Funcao para alterar um manager
         /// </summary>
         /// <param name="id">variavel para o id do manager</param>
-        /// <param name="t">variavel que determina que propriedade do manager deve ser alterada</param>
+        /// <param name="t">variavel array que determina que propriedade do manager deve ser alterada</param>
         /// <param name="nome">variavel para o nome do manager</param>
         /// <param name="contacto">variavel para o contacto do manager</param>
         /// <param name="nif">variavel para o nif do manager</param>
         /// <param name="pass">variavel para a pass do manager</param>
         /// <returns>retorna true se for alterado uma propriedade do manager e false se nao</returns>
-        bool AlterarManager(int id, int t, string nome, int contacto, int nif, string pass);
+        bool AlterarManager(int id, int[] t, string nome, int contacto, int nif, string pass);
 
         /// <summary>
         /// Funcao para retirar um manager

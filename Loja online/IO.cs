@@ -76,46 +76,57 @@ namespace Loja_online
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>
         /// <param name="morada">variavel para a morada do cliente</param>
-        public void AlterarDadosC(out int d, out string nome, out int contacto, out int nif, out string morada)
+        public void AlterarDadosC(out int[] array, out string nome, out int contacto, out int nif, out string morada)
         {
             nome = "";
             nif = 0;
             contacto = 0;
             morada = "";
-            d = 0;
-            int a;
+            array = new int[4];
+            int a, d = 0;
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif, 4 - morada)?");
                 a = int.Parse(Console.ReadLine());
-
-                if (a == 1)
+                for (d = d; d < array.Length; d++)
                 {
-                    Console.WriteLine("Qual o novo nome do cliente?");
-                    nome = Console.ReadLine();
-                    d = a;
-                }
-                else if (a == 2)
-                {
-                    Console.WriteLine("Qual o novo contacto do cliente?");
-                    contacto = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a == 3)
-                {
-                    Console.WriteLine("Qual o novo nif do cliente?");
-                    nif = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a == 4)
-                {
-                    Console.WriteLine("Qual a nova morada do cliente?");
-                    morada = Console.ReadLine();
-                    d = a;
-                }
-                else if (a != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome do cliente?");
+                        nome = Console.ReadLine();
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual o novo contacto do cliente?");
+                        contacto = int.Parse(Console.ReadLine());
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 3)
+                    {
+                        Console.WriteLine("Qual o novo nif do cliente?");
+                        nif = int.Parse(Console.ReadLine());
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 4)
+                    {
+                        Console.WriteLine("Qual a nova morada do cliente?");
+                        morada = Console.ReadLine();
+                        array[d] = a;
+                        d++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                        break;
+                    }
                 }
             } while (a != 0);
         }
@@ -181,47 +192,58 @@ namespace Loja_online
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <param name="i">variavel que determina que propriedade do produto deve ser alterada</param>
-        public void AlterarDadosP(out string nome, out string categoria, out int preco, out int garantia, out int i)
+        public void AlterarDadosP(out string nome, out string categoria, out int preco, out int garantia, out int[] array)
         {
             categoria = "";
             nome = "";
-            i = 0;
             preco = 0;
             garantia= 0;
-            int a;
+            array = new int[4];
+            int a, i = 0;
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - categoria, 3 - preco, 4 - garantia)?");
                 a = int.Parse(Console.ReadLine());
-
-                if (a == 1)
+                for (i = i; i < array.Length; i++)
                 {
-                    Console.WriteLine("Qual o novo nome da marca?");
-                    nome = Console.ReadLine();
-                    i = a;
-                }
-                else if (a == 2)
-                {
-                    Console.WriteLine("Qual o novo site da marca?");
-                    categoria = Console.ReadLine();
-                    i = a;
-                }
-                else if (a == 3)
-                {
-                    Console.WriteLine("Qual o novo site da marca?");
-                    preco = int.Parse(Console.ReadLine());
-                    i = a;
-                }
-                else if (a == 4)
-                {
-                    Console.WriteLine("Qual o novo site da marca?");
-                    garantia = int.Parse(Console.ReadLine());
-                    i = a;
-                }
-                else if (a != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
-                }
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome do produto?");
+                        nome = Console.ReadLine();
+                        array[i] = a;
+                        i++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual a nova categoria do produto?");
+                        categoria = Console.ReadLine();
+                        array[i] = a;
+                        i++;
+                        break;
+                    }
+                    else if (a == 3)
+                    {
+                        Console.WriteLine("Qual o novo preco do produto?");
+                        preco = int.Parse(Console.ReadLine());
+                        array[i] = a;
+                        i++;
+                        break;
+                    }
+                    else if (a == 4)
+                    {
+                        Console.WriteLine("Qual a nova garantia do produto?");
+                        garantia = int.Parse(Console.ReadLine());
+                        array[i] = a;
+                        i++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                        break;
+                    }
+                } 
             } while (a != 0);
         }
 
@@ -261,33 +283,40 @@ namespace Loja_online
         /// <param name="nome">variavel para o nome da marca</param>
         /// <param name="site">variavel para o site da marca</param>
         /// <param name="i">variavel que determina que propriedade da marca deve ser alterada</param>
-        public void AlterarDadosM(out string nome, out string site, out int i)
+        public void AlterarDadosM(out string nome, out string site, out int[] array)
         {
             site = "";
             nome = "";
-            i = 0;
-            int a;
+            array = new int[2];
+            int a, i = 0;
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - site )?");
                 a = int.Parse(Console.ReadLine());
+                for (i = i; i < array.Length; i++)
+                {
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome da marca?");
+                        nome = Console.ReadLine();
+                        i = a;
+                        i++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual o novo site da marca?");
+                        site = Console.ReadLine();
+                        i = a;
+                        i++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                    }
+                }
                 
-                if (a == 1)
-                {
-                    Console.WriteLine("Qual o novo nome da marca?");
-                    nome = Console.ReadLine();
-                    i = a;
-                }
-                else if (a == 2)
-                {
-                    Console.WriteLine("Qual o novo site da marca?");
-                    site = Console.ReadLine();
-                    i = a;
-                }
-                else if(a != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
-                }
             } while (a != 0); 
         }
 
@@ -442,43 +471,52 @@ namespace Loja_online
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
-        public void AlterarDadosCA(out int t, out string nome, out int desconto, out int duracao)
+        public void AlterarDadosCA(out int[] array, out string nome, out int desconto, out int duracao)
         {
             nome = "";
             desconto = 0;
             duracao = 0;
-            t = 0;
-            int b;
+            array = new int[3];
+            int b, t = 0;
 
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - duracao, 3 -desconto )?");
                 b = int.Parse(Console.ReadLine());
 
-                if (b == 1)
+                for (t = t; t < array.Length; t++)
                 {
-                    Console.WriteLine("Qual o novo nome da Campanha?");
-                    nome = Console.ReadLine();
-                    t = b;
-                }
-                else if (b == 2)
-                {
-                    Console.WriteLine("Qual a nova duracao da Campanha?");
-                    duracao = int.Parse(Console.ReadLine());
-                    b = t;
-                }
-                else if (b == 3)
-                {
-                    Console.WriteLine("Qual o novo desconto da Campanha?");
-                    desconto = int.Parse(Console.ReadLine());
-                    b = t;
-                }
-                else if (b != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
+                    if (b == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome da marca?");
+                        nome = Console.ReadLine();
+                        t = b;
+                        t++;
+                        break;
+                    }
+                    else if (b == 2)
+                    {
+                        Console.WriteLine("Qual a nova duracao da Campanha?");
+                        duracao = int.Parse(Console.ReadLine());
+                        t = b;
+                        t++;
+                        break;
+                    }
+                    else if (b == 3)
+                    {
+                        Console.WriteLine("Qual o novo desconto da Campanha?");
+                        desconto = int.Parse(Console.ReadLine());
+                        t = b;
+                        t++;
+                        break;
+                    }
+                    else if (b != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                    }
                 }
             } while (b != 0);
-
+            
         }
 
         #endregion
@@ -520,40 +558,49 @@ namespace Loja_online
         /// <param name="nome">variavel para o nome do funcionario</param>
         /// <param name="contacto">variavel para o contacto do funcionario</param>
         /// <param name="nif">variavel para o nif do funcionario</param>
-        public void AlterarDadosF(out int d, out string nome, out int contacto, out int nif)
+        public void AlterarDadosF(out int[] array, out string nome, out int contacto, out int nif)
         {
             nome = "";
             nif = 0;
             contacto = 0;
-            d = 0;
-            int a;
+            array = new int[3];
+            int a, d = 0;
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif)?");
                 a = int.Parse(Console.ReadLine());
+                for (d = d; d < array.Length; d++)
+                {
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome do funcionario?");
+                        nome = Console.ReadLine();
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual o novo contacto do funcionario?");
+                        contacto = int.Parse(Console.ReadLine());
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 3)
+                    {
+                        Console.WriteLine("Qual o novo nif do funcionario?");
+                        nif = int.Parse(Console.ReadLine());
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                    }
+                }
 
-                if (a == 1)
-                {
-                    Console.WriteLine("Qual o novo nome do Funcionario?");
-                    nome = Console.ReadLine();
-                    d = a;
-                }
-                else if (a == 2)
-                {
-                    Console.WriteLine("Qual o novo contacto do Funcionario?");
-                    contacto = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a == 3)
-                {
-                    Console.WriteLine("Qual o novo nif do Funcionario?");
-                    nif = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
-                }
             } while (a != 0);
         }
 
@@ -600,47 +647,58 @@ namespace Loja_online
         /// <param name="contacto">variavel para o contacto do manager</param>
         /// <param name="nif">variavel para o nif do manager</param>
         /// <param name="pass">variavel para a pass do manager</param>
-        public void AlterarDadosM(out int d, out string nome, out int contacto, out int nif, out string pass)
+        public void AlterarDadosM(out int[] array, out string nome, out int contacto, out int nif, out string pass)
         {
             nome = "";
             nif = 0;
             contacto = 0;
             pass = "";
-            d = 0;
-            int a;
+            array = new int[4];
+            int a, d = 0;
             do
             {
                 Console.WriteLine("Que dados deseja alterar (0 - sair, 1 - nome, 2 - contacto, 3 - nif, 4 - pass)?");
                 a = int.Parse(Console.ReadLine());
-
-                if (a == 1)
+                for(d=d;d< array.Length; d++)
                 {
-                    Console.WriteLine("Qual o novo nome do Manager?");
-                    nome = Console.ReadLine();
-                    d = a;
+                    if (a == 1)
+                    {
+                        Console.WriteLine("Qual o novo nome do Manager?");
+                        nome = Console.ReadLine();
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 2)
+                    {
+                        Console.WriteLine("Qual o novo contacto do Manager?");
+                        contacto = int.Parse(Console.ReadLine());
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 3)
+                    {
+                        Console.WriteLine("Qual o novo nif do Manager?");
+                        nif = int.Parse(Console.ReadLine());
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a == 4)
+                    {
+                        Console.WriteLine("Qual a nova pass do Manager?");
+                        pass = Console.ReadLine();
+                        d = a;
+                        d++;
+                        break;
+                    }
+                    else if (a != 0)
+                    {
+                        Console.WriteLine("Escolha um numero correto");
+                    }
                 }
-                else if (a == 2)
-                {
-                    Console.WriteLine("Qual o novo contacto do Manager?");
-                    contacto = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a == 3)
-                {
-                    Console.WriteLine("Qual o novo nif do Manager?");
-                    nif = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a == 4)
-                {
-                    Console.WriteLine("Qual a nova pass do Manager?");
-                    nif = int.Parse(Console.ReadLine());
-                    d = a;
-                }
-                else if (a != 0)
-                {
-                    Console.WriteLine("Escolha um numero correto");
-                }
+                
             } while (a != 0);
         }
 

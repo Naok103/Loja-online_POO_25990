@@ -26,13 +26,13 @@ namespace Dados
         /// Funcao para alterar um cliente
         /// </summary>
         /// <param name="id">variavel para o id do cliente</param>
-        /// <param name="t">variavel que determina que propriedade do cliente deve ser alterada</param>
+        /// <param name="t">variavel array que determina que propriedade do cliente deve ser alterada</param>
         /// <param name="nome">variavel para o nome do cliente</param>
         /// <param name="contacto">variavel para o contacto do cliente</param>
         /// <param name="nif">variavel para o nif do cliente</param>
         /// <param name="morada">variavel para a morada do cliente</param>
         /// <returns>retorna true se for alterado uma propriedade do cliente e false se nao</returns>
-        bool AlterarCliente(int id, int d, string nome, int contacto, int nif, string morada);
+        bool AlterarCliente(int id, int[] d, string nome, int contacto, int nif, string morada);
 
         /// <summary>
         /// Funcao para verificar se um cliente ja existe

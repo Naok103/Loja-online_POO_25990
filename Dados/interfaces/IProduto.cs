@@ -25,13 +25,13 @@ namespace Dados
         /// Funcao para alterar um produto
         /// </summary>
         /// <param name="id">variavel para o id do produto</param>
-        /// <param name="t">variavel que determina que propriedade do produto deve ser alterada</param>
+        /// <param name="t">variavel array que determina que propriedade do produto deve ser alterada</param>
         /// <param name="nome">variavel para o nome do produto</param>
         /// <param name="categoria">variavel para a categoria do produto</param>
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
-        bool AlterarProduto(int id, int t, string nome, string categoria, int preco, int garantia);
+        bool AlterarProduto(int id, int[] t, string nome, string categoria, int preco, int garantia);
 
         /// <summary>
         /// Funcao para retirar um produto da loja 

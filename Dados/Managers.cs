@@ -94,27 +94,30 @@ namespace Dados
         /// <param name="nif">variavel para o nif do manager</param>
         /// <param name="pass">variavel para a pass do manager</param>
         /// <returns>retorna true se for alterado uma propriedade do manager e false se nao</returns>
-        public bool AlterarManager(int id, int t, string nome, int contacto, int nif, string pass)
+        public bool AlterarManager(int id, int[] t, string nome, int contacto, int nif, string pass)
         {
             for (int i = 0; i < managers.Count; i++)
             {
                 if (managers[i].Id == id)
                 {
-                    switch (t)
+                    for(int j = 0;j < t.Length; j++)
                     {
-                        case 1:
-                            managers[t].Nome = nome;
-                            return true;
-                        case 2:
-                            managers[t].Contacto = contacto;
-                            return true;
-                        case 3:
-                            managers[t].Nif = nif;
-                            return true;
-                        case 4:
-                            managers[t].Pass = pass;
-                            return true;
-                    }
+                        switch (t[j])
+                        {
+                            case 1:
+                                managers[i].Nome = nome;
+                                return true;
+                            case 2:
+                                managers[i].Contacto = contacto;
+                                return true;
+                            case 3:
+                                managers[i].Nif = nif;
+                                return true;
+                            case 4:
+                                managers[i].Pass = pass;
+                                return true;
+                        }
+                    } 
                 }
             }
             return false;

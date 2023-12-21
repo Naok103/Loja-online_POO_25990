@@ -123,23 +123,26 @@ namespace Dados
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
-        public bool AlterarCampanha(int t, string nome, int duracao, int desconto)
+        public bool AlterarCampanha(int[] t, string nome, int duracao, int desconto)
         {
-            foreach(Campanha campanha in campanhas)
+            for(int k = 0; k < campanhas.Count; k++)
             {
-                if(campanha.Nome == nome)
+                if (campanhas[k].Nome == nome)
                 {
-                    switch (t)
+                    for(int i = 0;i < t.Length; i++)
                     {
-                        case 1:
-                            campanha.Nome = nome;
-                            return true;
-                        case 2:
-                            campanha.Duracao = duracao;
-                            return true;
-                        case 3:
-                            campanha.Desconto = desconto;
-                            return true;
+                        switch (t[i])
+                        {
+                            case 1:
+                                campanhas[k].Nome = nome;
+                                return true;
+                            case 2:
+                                campanhas[k].Duracao = duracao;
+                                return true;
+                            case 3:
+                                campanhas[k].Desconto = desconto;
+                                return true;
+                        }
                     }
                 }
             }

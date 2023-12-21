@@ -34,12 +34,12 @@ namespace Dados
         /// Funcao para alterar um funcionario
         /// </summary>
         /// <param name="id">variavel para o id do funcionario</param>
-        /// <param name="t">variavel que determina que propriedade do funcionario deve ser alterada</param>
+        /// <param name="t">variavel array que determina que propriedade do funcionario deve ser alterada</param>
         /// <param name="nome">variavel para o nome do funcionario</param>
         /// <param name="contacto">variavel para o contacto do funcionario</param>
         /// <param name="nif">variavel para o nif do funcionario</param>
         /// <returns>retorna true se for alterado uma propriedade do funcionario e false se nao</returns>
-        bool AlterarFuncionario(int id, int t, string nome, int contacto, int nif);
+        bool AlterarFuncionario(int id, int[] t, string nome, int contacto, int nif);
 
         /// <summary>
         /// Funcao para retirar um funcionario

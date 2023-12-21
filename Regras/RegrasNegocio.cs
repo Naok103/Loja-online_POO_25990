@@ -51,12 +51,13 @@ namespace Regras
         public bool AlterarCliente(int id, Clientes clientes)
         {
             IO io = new IO();
-            int nif, contacto, i;
+            int nif, contacto;
+            int[] array;
             string nome, morada;
             if (clientes.ExisteCliente(id) == true)
             {
-                io.AlterarDadosC(out i, out nome, out contacto, out nif, out morada);
-                clientes.AlterarCliente(id, i, nome, contacto, nif, morada);
+                io.AlterarDadosC(out array, out nome, out contacto, out nif, out morada);
+                clientes.AlterarCliente(id, array, nome, contacto, nif, morada);
                 return true;
             }
             return false;
@@ -140,12 +141,13 @@ namespace Regras
         {
             IO io = new IO();
             string nome, categoria;
-            int i, preco,garantia;
+            int preco,garantia;
+            int[] array;
 
-            if (produtos.ExisteProduto(id) == false)
+            if (produtos.ExisteProduto(id) == true)
             {
-                io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out i);
-                produtos.AlterarProduto(id,i,nome,categoria,preco,garantia);
+                io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out array);
+                produtos.AlterarProduto(id,array,nome,categoria,preco,garantia);
                 return true;
             }
             return false;
@@ -206,6 +208,7 @@ namespace Regras
             IO io = new IO();
             string nome, site;
 
+
             int id = 0;
             id = marcas.ID(id);
 
@@ -240,11 +243,12 @@ namespace Regras
         {
             IO io = new IO();
             string nome, site;
-            int i;
+            int[] array;
+            
             if(marcas.ExisteMarca(id) == true)
             {
-                io.AlterarDadosM(out nome, out site, out i);
-                marcas.AlterarMarca(id, i, nome, site);
+                io.AlterarDadosM(out nome, out site, out array);
+                marcas.AlterarMarca(id, array, nome, site);
                 return true;
             }
             return false;
@@ -530,12 +534,13 @@ namespace Regras
         {
             IO io = new IO();
             string nome;
-            int desconto, duracao, t;
+            int desconto, duracao;
+            int[] array;
 
             if(campanhas.ExisteCampanha(n) == true)
             {
-                io.AlterarDadosCA(out t, out nome, out desconto, out duracao);
-                campanhas.AlterarCampanha(t, nome, duracao, desconto);
+                io.AlterarDadosCA(out array, out nome, out desconto, out duracao);
+                campanhas.AlterarCampanha(array, nome, duracao, desconto);
                 return true;
             }
             return false;
@@ -627,13 +632,14 @@ namespace Regras
         {
             IO io = new IO();
 
-            int nif, contacto, i;
+            int nif, contacto;
+            int[] array;
             string nome;
 
             if (funcionarios.ExisteFuncionario(id) == true)
             {
-                io.AlterarDadosF(out i, out nome, out contacto, out nif);
-                funcionarios.AlterarFuncionario(id, i, nome, contacto, nif);
+                io.AlterarDadosF(out array, out nome, out contacto, out nif);
+                funcionarios.AlterarFuncionario(id, array, nome, contacto, nif);
                 return true;
             }
             return false;
@@ -720,13 +726,14 @@ namespace Regras
         {
             IO io = new IO();
 
-            int nif, contacto, i;
+            int nif, contacto;
+            int[] array;
             string nome, pass;
 
             if (managers.ExisteManager(id) == true)
             {
-                io.AlterarDadosM(out i, out nome, out contacto, out nif, out pass);
-                managers.AlterarManager(id, i, nome, contacto, nif, pass);
+                io.AlterarDadosM(out array, out nome, out contacto, out nif, out pass);
+                managers.AlterarManager(id, array, nome, contacto, nif, pass);
                 return true;
             }
             return false;

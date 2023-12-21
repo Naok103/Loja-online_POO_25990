@@ -97,24 +97,28 @@ namespace Dados
         /// <param name="contacto">variavel para o contacto do funcionario</param>
         /// <param name="nif">variavel para o nif do funcionario</param>
         /// <returns>retorna true se for alterado uma propriedade do funcionario e false se nao</returns>
-        public bool AlterarFuncionario(int id, int t, string nome, int contacto, int nif)
+        public bool AlterarFuncionario(int id, int[] t, string nome, int contacto, int nif)
         {
             for(int i = 0;i< funcionarios.Count; i++)
             {
                 if (funcionarios[i].Id == id)
                 {
-                    switch(t)
+                    for(int j = 0;j< t.Length; j++)
                     {
-                        case 1:
-                            funcionarios[t].Nome = nome;
-                            return true;
-                        case 2:
-                            funcionarios[t].Contacto = contacto;
-                            return true;
-                        case 3:
-                            funcionarios[t].Nif = nif;
-                            return true;
+                        switch (t[j])
+                        {
+                            case 1:
+                                funcionarios[i].Nome = nome;
+                                return true;
+                            case 2:
+                                funcionarios[i].Contacto = contacto;
+                                return true;
+                            case 3:
+                                funcionarios[i].Nif = nif;
+                                return true;
+                        }
                     }
+
                 }
             }
             return false;

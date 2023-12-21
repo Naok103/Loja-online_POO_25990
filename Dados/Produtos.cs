@@ -77,27 +77,30 @@ namespace Dados
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
-        public bool AlterarProduto(int id, int t, string nome, string categoria, int preco, int garantia)
+        public bool AlterarProduto(int id, int[] t, string nome, string categoria, int preco, int garantia)
         {
             for(int o = 0;o< produtos.Count; o++)
             {
                 if (produtos[o].Id == id)
                 {
-                    switch(t)
+                    for(int i = 0;i < t.Length; i++)
                     {
-                        case 1:
-                            produtos[o].Nome = nome;
-                            return true;
-                        case 2:
-                            produtos[o].Categoria = categoria;
-                            return true;
-                        case 3:
-                            produtos[o].Preco = preco;
-                            return true;
-                        case 4:
-                            produtos[o].Garantia = garantia;
-                            return true;
-                    }
+                        switch (t[i])
+                        {
+                            case 1:
+                                produtos[o].Nome = nome;
+                                break;
+                            case 2:
+                                produtos[o].Categoria = categoria;
+                                break;
+                            case 3:
+                                produtos[o].Preco = preco;
+                                break;
+                            case 4:
+                                produtos[o].Garantia = garantia;
+                                break;
+                        }
+                    } 
                 }
             }
             return false;

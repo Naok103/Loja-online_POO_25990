@@ -96,20 +96,23 @@ namespace Dados
         /// <param name="nome">variavel para o nome da marca</param>
         /// <param name="site">variavel para o site da marca</param>
         /// <returns>retorna true se for alterado uma propriedade da marca e false se nao</returns>
-        public bool AlterarMarca(int id, int i, string nome, string site)
+        public bool AlterarMarca(int id, int[] i, string nome, string site)
         { 
             for (int o = 0; o < marcas.Count; o++)
             {
                 if (marcas[o].Id == id)
                 {
-                    switch (i)
+                    for(int t = 0; t < i.Length; t++)
                     {
-                        case 1:
-                            marcas[o].Nome = nome;
-                            return true;
-                        case 2:
-                            marcas[o].Site = site;
-                            return true;
+                        switch (i[t])
+                        {
+                            case 1:
+                                marcas[o].Nome = nome;
+                                break;
+                            case 2:
+                                marcas[o].Site = site;
+                                break;
+                        }
                     }
                 }
             }
