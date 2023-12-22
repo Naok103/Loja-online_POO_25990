@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Linq;
 using Objetos;
+using Excecoes;
 
 namespace Dados
 {
@@ -60,12 +61,13 @@ namespace Dados
         /// <returns>retorna true se o stock foi adicionado ou false se nao</returns>
         public bool InserirStock(Stock s)
         {
-            if (ExisteStock(s.IDP) == false)
+            if (ExisteStock(s.IDP) == true)
             {
-                stocks.Add(s);
-                return true;
+                throw new StockE();
             }
-            return false;    
+
+            stocks.Add(s);
+            return true;
         }
 
         /// <summary>
@@ -111,16 +113,19 @@ namespace Dados
         /// <returns>retorna true se os produto/s foi/foram adicionado/s ou false se nao</returns>
         public bool AdicionarStock(int id, int quantidade)
         {
+            if (ExisteStock(id) == true)
+            {
+                throw new StockE();
+            }
+
             for (int i = 0; i < stocks.Count; i++)
             {
                 if (stocks[i].IDP == id)
                 {
-                    stocks[i].Quantidade += quantidade;
-                    return true;
+                    stocks[i].Quantidade += quantidade; 
                 }
             }
-
-            return false;
+            return true;
         }
 
         /// <summary>

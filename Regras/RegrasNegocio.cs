@@ -316,7 +316,7 @@ namespace Regras
 
         #region VENDA
 
-        /*
+       
         /// <summary>
         /// funcao com a regra de negocio para adicionar uma venda
         /// </summary>
@@ -324,7 +324,7 @@ namespace Regras
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <param name="clientes">variavel para a lista de clientes</param>
         /// <returns></returns>
-        public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes)
+        public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes, Stocks stocks)
         {
             IO io = new IO();
 
@@ -338,11 +338,12 @@ namespace Regras
                 hora = DateTime.Now;
                 Venda venda = new Venda(quantidade, idp, idc, hora);
                 vendas.AdicionarVenda(venda);
+                stocks.RetirarStock(idp, quantidade);
                 return true;
             }
             return false;
         }
-        */
+        
 
         /// <summary>
         /// funcao com a regra de negocio para gravar as vendas
@@ -385,13 +386,20 @@ namespace Regras
             id = stocks.ID(id);
 
             io.DadosStock(out idp, out quantidade);
-            if(produtos.ExisteProduto(idp) == true)
+
+            if(quantidade < 5)
+                return false;
+
+            try
             {
                 Stock stock = new Stock(quantidade, idp, id);
                 stocks.InserirStock(stock);
                 return true;
             }
-            return false;
+            catch(StockE e) 
+            {
+                throw new StockE("Falha nas regras" + "-" + e.Message);
+            }
         }
 
         /// <summary>
@@ -407,13 +415,21 @@ namespace Regras
 
 
             io.DadosStock(out id, out quantidade);
-            if(produtos.ExisteProduto(id) == true)
+
+            if(quantidade < 5)
+                return false;
+
+            try
             {
                 stocks.AdicionarStock(id, quantidade);
                 return true;
             }
+            catch (StockE e)
+            {
+                throw new StockE("Falha nas regras" + "-" + e.Message);
+            }
 
-            return false;
+            
         }
 
         /// <summary>

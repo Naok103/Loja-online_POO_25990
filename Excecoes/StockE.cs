@@ -5,24 +5,25 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+
 namespace Excecoes
 {
     /// <summary>
-    /// Purpose: Classe para as excexoes relacionadas com campanhas
+    /// Purpose: Classe para as excexoes relacionadas com stocks
     /// Created by: Rafael silva
-    /// Created on: 22/12/2023 17:28:30
+    /// Created on: 22/12/2023 19:28:09
     /// </summary>
-    public class CampanhaE : Exception
+    public class StockE : Exception
     {
-        public CampanhaE() : base("Erro em produtos")
+        public StockE() : base("Erro em produtos")
         {
 
         }
 
-        public CampanhaE(string s) : base(s) { }
+        public StockE(string s) : base(s) { }
 
 
-        public CampanhaE(string s, Exception e)
+        public StockE(string s, Exception e)
         {
             throw new ProdutosE(s + "-" + e.Message);
         }

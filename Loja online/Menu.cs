@@ -238,7 +238,7 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        //regras.RealizarVenda(vendas,produtos,clientes);
+                        regras.RealizarVenda(vendas,produtos,clientes, stocks);
                         break;
                     case 2:
                         io.MostrarVendas(vendas);
@@ -273,7 +273,17 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
-                        regras.InserirStock(stocks, produtos);
+
+                        try
+                        {
+                            regras.InserirStock(stocks, produtos);
+                            break;
+                        }
+                        catch(StockE e)
+                        {
+                            Console.WriteLine("Erro" + "-" + e.Message);
+                        }
+
                         break;
                     case 2:
                         Console.WriteLine("Qual o id do Produto que deseja acabar com o stock do mesmo?");
@@ -281,7 +291,17 @@ namespace Loja_online
                         regras.AcabarStock(stocks, id);
                         break;
                     case 3:
-                        regras.AdicionarStock(stocks, produtos);
+
+                        try
+                        {
+                            regras.AdicionarStock(stocks, produtos);
+                            break;
+                        }
+                        catch (StockE e)
+                        {
+                            Console.WriteLine("Erro" + "-" + e.Message);
+                        }
+                        
                         break;
                     case 4:
                         regras.RetirarStock(stocks, produtos);

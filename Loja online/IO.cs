@@ -191,7 +191,7 @@ namespace Loja_online
         /// <param name="categoria">variavel para a categoria do produto</param>
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
-        /// <param name="i">variavel que determina que propriedade do produto deve ser alterada</param>
+        /// <param name="array">variavel array que determina que propriedade do produto deve ser alterada</param>
         public void AlterarDadosP(out string nome, out string categoria, out int preco, out int garantia, out int[] array)
         {
             categoria = "";
@@ -282,7 +282,7 @@ namespace Loja_online
         /// </summary>
         /// <param name="nome">variavel para o nome da marca</param>
         /// <param name="site">variavel para o site da marca</param>
-        /// <param name="i">variavel que determina que propriedade da marca deve ser alterada</param>
+        /// <param name="array">variavel array que determina que propriedade da marca deve ser alterada</param>
         public void AlterarDadosM(out string nome, out string site, out int[] array)
         {
             site = "";
@@ -467,7 +467,7 @@ namespace Loja_online
         /// <summary>
         /// Funcao para pedir ao utilizador quais as variaveis que quer alterar numa campanha
         /// </summary>
-        /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
+        /// <param name="array">variavel que determina que propriedade da campanha deve ser alterada</param>
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
@@ -554,7 +554,7 @@ namespace Loja_online
         /// <summary>
         ///  Funcao para pedir ao utilizador quais as variaveis que quer alterar num funcionario
         /// </summary>
-        /// <param name="d">variavel que determina que propriedade do funcionario deve ser alterada</param>
+        /// <param name="array">variavel array que determina que propriedade do funcionario deve ser alterada</param>
         /// <param name="nome">variavel para o nome do funcionario</param>
         /// <param name="contacto">variavel para o contacto do funcionario</param>
         /// <param name="nif">variavel para o nif do funcionario</param>
@@ -642,7 +642,7 @@ namespace Loja_online
         /// <summary>
         /// Funcao para pedir ao utilizador quais as variaveis que quer alterar num manager
         /// </summary>
-        /// <param name="d">variavel que determina que propriedade do manager deve ser alterada</param>
+        /// <param name="array">variavel array que determina que propriedade do manager deve ser alterada</param>
         /// <param name="nome">variavel para o nome do manager</param>
         /// <param name="contacto">variavel para o contacto do manager</param>
         /// <param name="nif">variavel para o nif do manager</param>
@@ -709,7 +709,7 @@ namespace Loja_online
         /// <summary>
         /// Funcao para mostrar os fornecedor na consola
         /// </summary>
-        /// <param name="fornecedor">variavel para a lista de fornecedor</param>
+        /// <param name="fornecedores">variavel para a lista de fornecedores</param>
         public void MostrarFornecedores(Fornecedores fornecedores)
         {
             foreach (Fornecedor fornecedor in fornecedores)
