@@ -180,7 +180,7 @@ namespace Loja_online
             categoria = Console.ReadLine();
             Console.WriteLine("Qual o preco do produto?");
             preco = int.Parse(Console.ReadLine());
-            Console.WriteLine("Qual a garantia do produto?");
+            Console.WriteLine("Qual a garantia do produto em semanas?");
             garantia = int.Parse(Console.ReadLine());
         }
 

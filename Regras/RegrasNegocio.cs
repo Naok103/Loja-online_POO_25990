@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Dados;
+using Excecoes;
 using Loja_online;
 using objetos;
 using Objetos;
@@ -119,16 +120,25 @@ namespace Regras
             IO io = new IO();
             string nome, categoria;
             int preco, id = 0, garantia;
-            
-            if (marcas.ExisteMarca(idm) == true)
+
+            io.DadosProdutos(out nome, out categoria, out preco, out garantia);
+            id = produtos.ID(id);
+
+            if (marcas.ExisteMarca(idm) == true || preco > 850 || garantia < 8)
+                return false;
+            try
             {
-                io.DadosProdutos(out nome, out categoria, out preco, out garantia);
-                id = produtos.ID(id);
-                Produto produto = new Produto(id,nome,categoria,preco,garantia,idm);
+                Produto produto = new Produto(id, nome, categoria, preco, garantia, idm);
                 produtos.InserirProduto(produto);
                 return true;
             }
-            return false;
+            catch(ProdutosE e)
+            {
+                throw new ProdutosE("Falha nas regras" + "-" + e.Message);
+            }
+                
+            
+            
         }
 
         /// <summary>
@@ -144,13 +154,21 @@ namespace Regras
             int preco,garantia;
             int[] array;
 
-            if (produtos.ExisteProduto(id) == true)
+            io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out array);
+
+            if (preco > 850 || garantia < 8)
             {
-                io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out array);
-                produtos.AlterarProduto(id,array,nome,categoria,preco,garantia);
+                return false;
+            }
+            try
+            {
+                produtos.AlterarProduto(id, array, nome, categoria, preco, garantia);
                 return true;
             }
-            return false;
+            catch (ProdutosE e)
+            {
+                throw new ProdutosE("Falha nas regras" + "-" + e.Message);
+            }
         }
 
         /// <summary>

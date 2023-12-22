@@ -36,6 +36,9 @@
     <Reference Include="Dados">
       <HintPath>..\Dados\bin\Debug\Dados.dll</HintPath>
     </Reference>
+    <Reference Include="Excecoes">
+      <HintPath>..\Excecoes\bin\Debug\Excecoes.dll</HintPath>
+    </Reference>
     <Reference Include="objetos">
       <HintPath>..\objetos\bin\Debug\objetos.dll</HintPath>
     </Reference>

@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Excecoes;
 using Objetos;
 
 
@@ -59,12 +60,12 @@ namespace Dados
         /// <returns>retorna true se o produto for adicionado ou false se nao</returns>
         public bool InserirProduto(Produto p)
         {
-            if(ExisteProduto(p.Id) == false)
+            if (ExisteProduto(p.Id) == true)
             {
-                produtos.Add(p);
-                return true;
+                throw new ProdutosE();
             }
-            return false;
+            produtos.Add(p);
+            return true;
         }
 
         /// <summary>
@@ -79,7 +80,10 @@ namespace Dados
         /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
         public bool AlterarProduto(int id, int[] t, string nome, string categoria, int preco, int garantia)
         {
-            for(int o = 0;o< produtos.Count; o++)
+            if (ExisteProduto(id) == true)
+                throw new ProdutosE();
+
+            for (int o = 0;o< produtos.Count; o++)
             {
                 if (produtos[o].Id == id)
                 {
@@ -103,7 +107,7 @@ namespace Dados
                     } 
                 }
             }
-            return false;
+            return true;
         }
        
         /// <summary>

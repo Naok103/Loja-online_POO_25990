@@ -1,9 +1,10 @@
 ﻿using System;
-using Regras;
 using System.Security.Policy;
 using Dados;
 using objetos;
 using Objetos;
+using Regras;
+using Excecoes;
 
 
 namespace Loja_online
@@ -114,20 +115,48 @@ namespace Loja_online
                 switch (op)
                 {
                     case 1:
+
                         Console.WriteLine("Qual o id da Marca ao qual o Produto que deseja adicionar pertence?");
                         id = int.Parse(Console.ReadLine());
-                        regras.InserirProduto(marcas, produtos, id);
+
+                        try
+                        {
+                            regras.InserirProduto(marcas, produtos, id);
+                            break;
+                        }
+                        catch(ProdutosE e)
+                        {
+                            Console.WriteLine("Erro :" + e.Message);
+                        }
+
                         break;
+
                     case 2:
+
                         Console.WriteLine("Qual o id do Produto que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        regras.AlterarProduto(id, produtos);
+
+                        try
+                        {
+                            regras.AlterarProduto(id, produtos);
+                            break;
+                        }
+                        catch (ProdutosE e)
+                        {
+                            Console.WriteLine("Erro :" + e.Message);
+                        }
+
                         break;
+
                     case 3:
+
                         Console.WriteLine("Qual o id do Produto que deseja retirar da loja?");
                         id = int.Parse(Console.ReadLine());
+
                         regras.RetirarProduto(id, produtos);
+
                         break;
+
                     case 4:
                         //desenvolver
                         break;
