@@ -126,7 +126,7 @@ namespace Loja_online
                         }
                         catch(ProdutosE e)
                         {
-                            Console.WriteLine("Erro :" + e.Message);
+                            Console.WriteLine("Erro" + "-" + e.Message); 
                         }
 
                         break;
@@ -143,7 +143,7 @@ namespace Loja_online
                         }
                         catch (ProdutosE e)
                         {
-                            Console.WriteLine("Erro :" + e.Message);
+                            Console.WriteLine("Erro" + "-" + e.Message);
                         }
 
                         break;
@@ -318,42 +318,85 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.InserirCampanha(campanhas);
-                        break;
+
+                        try
+                        {
+                            regras.InserirCampanha(campanhas);
+                            break;
+                        }
+                        catch (CampanhaE e)
+                        {
+                            throw new CampanhaE("Erro" + "-" + e.Message);
+                        }
+                    
                     case 2:
+
                         Console.WriteLine("Qual o nome da Campanha que deseja alterar?");
                         nome = Console.ReadLine();
-                        regras.AlterarCampanha(nome,campanhas);
-                        break;
+
+                        try
+                        {
+                            regras.AlterarCampanha(nome, campanhas);
+                            break;
+                        }
+                        catch (CampanhaE e)
+                        {
+                            throw new CampanhaE("Erro" + "-" + e.Message);
+                        }
+                        
                     case 3:
+
                         Console.WriteLine("Qual o nome da Campanha que deseja retirar?");
                         nome = Console.ReadLine();
                         regras.RetirarCampanha(nome, campanhas);
+
                         break;
                     case 4:
+
                         Console.WriteLine("Qual o id do Produto que deseja adicionar a Campanha?");
                         id = int.Parse(Console.ReadLine());
                         Console.WriteLine("Qual o nome da Campanha que deseja adicionar o produto?");
                         nome = Console.ReadLine();
-                        regras.AdicionarProdutoCampanha(id, nome, produtos, campanhas);
-                        break;
+
+                        try
+                        {
+                            regras.AdicionarProdutoCampanha(id, nome, produtos, campanhas);
+                            break;
+                        }
+                        catch (CampanhaE e)
+                        {
+                            throw new CampanhaE("Erro" + "-" + e.Message);
+                        }
+
                     case 5:
+
                         Console.WriteLine("Qual o id do Produto que deseja adicionar a Campanha?");
                         id = int.Parse(Console.ReadLine());
                         Console.WriteLine("Qual o nome da Campanha que deseja adicionar o produto?");
                         nome = Console.ReadLine();
+
                         regras.RetirarProdutoCampanha(id, nome, produtos, campanhas);
+
                         break;
                     case 6:
+
                         io.MostrarCampanha(campanhas);
+
                         break;
+
                     case 7:
+
                         Console.WriteLine("Qual o nome da Campanha que deseja ver os Produtos?");
                         nome = Console.ReadLine();
+
                         io.MostrarProdutoCampanha(nome, campanhas);
+
                         break;
+
                     case 8:
+
                         regras.GravarCampanha(@"dadoscampanhas", @"dadosprodutocampanha", campanhas);
+
                         break;
                 }
             } while (opcao != 0);

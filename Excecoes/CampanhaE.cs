@@ -10,19 +10,19 @@ namespace Excecoes
     /// <summary>
     /// Purpose: Classe para as excexoes relacionadas com produtos
     /// Created by: Rafael silva
-    /// Created on: 22/12/2023 16:44:08
+    /// Created on: 22/12/2023 17:28:30
     /// </summary>
-    public class ProdutosE : Exception
+    public class CampanhaE : Exception
     {
-        public ProdutosE() : base("Erro em produtos")
+        public CampanhaE() : base("Erro em produtos")
         {
 
         }
 
-        public ProdutosE(string s) : base(s) { }
+        public CampanhaE(string s) : base(s) { }
 
 
-        public ProdutosE(string s, Exception e)
+        public CampanhaE(string s, Exception e)
         {
             throw new ProdutosE(s + "-" + e.Message);
         }

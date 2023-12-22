@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Objetos;
+using Excecoes;
 
 namespace Dados
 {
@@ -57,8 +58,11 @@ namespace Dados
         /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool InseirCampanha(Campanha campanha)
         {
+            if (ExisteCampanha(campanha.Nome) == true)
+                throw new CampanhaE();
+
             campanhas.Add(campanha);
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -70,7 +74,10 @@ namespace Dados
         /// <returns>retorna true se for adicionado e false se nao</returns>
         public bool AdicionarProdutoCampanha(string nome,int id, Produtos produtos)
         {
-            foreach(Campanha campanha in campanhas)
+            if (ExisteCampanha(nome) == true)
+                throw new CampanhaE();
+
+            foreach (Campanha campanha in campanhas)
             {
                 if(campanha.Nome == nome)
                 {
@@ -87,7 +94,7 @@ namespace Dados
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -125,7 +132,10 @@ namespace Dados
         /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
         public bool AlterarCampanha(int[] t, string nome, int duracao, int desconto)
         {
-            for(int k = 0; k < campanhas.Count; k++)
+            if (ExisteCampanha(nome) == true)
+                throw new CampanhaE();
+
+            for (int k = 0; k < campanhas.Count; k++)
             {
                 if (campanhas[k].Nome == nome)
                 {
@@ -135,18 +145,18 @@ namespace Dados
                         {
                             case 1:
                                 campanhas[k].Nome = nome;
-                                return true;
+                                break;
                             case 2:
                                 campanhas[k].Duracao = duracao;
-                                return true;
+                                break;
                             case 3:
                                 campanhas[k].Desconto = desconto;
-                                return true;
+                                break;
                         }
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         /// <summary>

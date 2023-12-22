@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CampanhaE.cs" />
     <Compile Include="ProdutosE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -494,13 +494,21 @@ namespace Regras
 
             io.DadosCampanha(out nome, out desconto, out duracao);
 
-            if(campanhas.ExisteCampanha(nome) == false)
+            if(duracao < 4 || desconto < 20)
+            {
+                return false;  
+            }
+
+            try
             {
                 Campanha campanha = new Campanha(nome, duracao, desconto);
                 campanhas.InseirCampanha(campanha);
                 return true;
             }
-            return false;
+            catch(CampanhaE e)
+            {
+                throw new CampanhaE("Falha nas regras" + "-" + e.Message);
+            }
         }
 
         /// <summary>
@@ -513,12 +521,20 @@ namespace Regras
         /// <returns></returns>
         public bool AdicionarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
         {
-            if((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
+            if(produtos.ExisteProduto(id) == false)
+            {
+                return false;
+            }
+
+            try
             {
                 campanhas.AdicionarProdutoCampanha(nome, id, produtos);
                 return true;
             }
-            return false;
+            catch (CampanhaE e)
+            {
+                throw new CampanhaE("Falha nas regras" + "-" + e.Message);
+            }
         }
 
         /// <summary>
@@ -555,13 +571,21 @@ namespace Regras
             int desconto, duracao;
             int[] array;
 
-            if(campanhas.ExisteCampanha(n) == true)
+            io.AlterarDadosCA(out array, out nome, out desconto, out duracao);
+
+            if (duracao < 4 || desconto < 20)
             {
-                io.AlterarDadosCA(out array, out nome, out desconto, out duracao);
+                return false;   
+            }
+            try
+            {
                 campanhas.AlterarCampanha(array, nome, duracao, desconto);
                 return true;
             }
-            return false;
+            catch (CampanhaE e)
+            {
+                throw new CampanhaE("Falha nas regras" + "-" + e.Message);
+            }
         }
 
         /// <summary>
