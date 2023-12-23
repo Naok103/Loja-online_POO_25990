@@ -22,6 +22,22 @@ namespace Dados
         bool AdicionarVenda(Venda v);
 
         /// <summary>
+        /// Funcao para adicionar produtos e as suas quantidades vendidas a um dicionario de uma venda
+        /// </summary>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="id">variavel array para os ids dos produtos vendidos</param>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <returns></returns>
+        bool AdicionarProdutos(int[] p, int[] q, int id);
+
+        /// <summary>
+        /// funcao para buscar o proximo id da venda
+        /// </summary>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <returns>retorna o id</returns>
+        int ID(int id);
+
+        /// <summary>
         /// Funcao para guardar as vendas num ficheiro binario
         /// </summary>
         /// <param name="m">variavel para o nome do ficheiro</param>

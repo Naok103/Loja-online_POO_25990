@@ -48,7 +48,7 @@ namespace Objetos
             this.nome = nome;
             this.duracao = duracao;
             this.desconto = desconto;
-            this.idP = new List<Produto>();
+            idP = new List<Produto>();
 
         }
 

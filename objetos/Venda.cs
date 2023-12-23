@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 
 
@@ -14,8 +15,8 @@ namespace Objetos
     {
         #region ESTADO 
 
-        private int quantidade; //variavel para a quantidade vendida
-        private int idP; //variavel para o id do produto vendido
+        private int id; // variavel para o id da venda
+        private Dictionary<int, int> produtos; // dicionario para os produtos vendidos e as suas quantidades
         private int idC; //variavel para o id do cliente que comprou o produto
         private DateTime hora; //variavel para a hora em que a venda foi realizada
 
@@ -30,8 +31,8 @@ namespace Objetos
         /// </summary>
         public Venda()
         {
-            quantidade = 0;
-            idP = 0;
+            id = 0;
+            produtos = new Dictionary<int, int>();
             idC = 0;
             hora = new DateTime(0,0,0);
         }
@@ -39,16 +40,15 @@ namespace Objetos
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// <param name="quantidade"> variavel para a quantidade vendida</param>
-        /// <param name="idP">variavel para o id do produto vendido</param>
         /// <param name="idC">variavel para o id do cliente que comprou o produto</param>
         /// <param name="hora">variavel para a hora em que a venda foi realizada</param>
-        public Venda(int quantidade, int idP, int idC, DateTime hora)
+        /// <param name="id">variavel para o id da venda</param>
+        public Venda(int idC, DateTime hora, int id)
         {
-            this.quantidade = quantidade;
-            this.idP = idP;
+            produtos = new Dictionary<int, int>();
             this.idC = idC;
             this.hora = hora;
+            this.id = id;
         }
 
         #endregion
@@ -56,29 +56,12 @@ namespace Objetos
         #region PROPRIEDADES
 
         /// <summary>
-        /// propriedades da variavel quantidade
+        /// Propriedades do dicionario
         /// </summary>
-        public int Quantidades
+        public Dictionary<int, int> Produtos
         {
-            set
-            {
-                if (value > 0)
-                    quantidade = value;
-            }
-            get { return quantidade; }
-        }
-
-        /// <summary>
-        /// Propriedades da variavel Id Produto
-        /// </summary>
-        public int IDP
-        {
-            set
-            {
-                if (value > 0)
-                    idP = value;
-            }
-            get { return idP; }
+            get { return produtos; }
+            set { produtos = value; }
         }
 
         /// <summary>
@@ -102,6 +85,20 @@ namespace Objetos
             get { return hora; }
             set { hora = value; }
         }
+
+        /// <summary>
+        /// Propriedades da variavel Id
+        /// </summary>
+        public int ID
+        {
+            set
+            {
+                if (value > 0)
+                    id = value;
+            }
+            get { return id; }
+        }
+
         #endregion
 
         #region Operadores
@@ -114,7 +111,7 @@ namespace Objetos
         /// <returns>retorna verdaeiro se o conteudo das Vendas comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Venda v1, Venda v2)
         {
-            if ((v1.quantidade == v2.quantidade) && (v1.idP == v2.idP) && (v1.idC == v2.idC) && (v1.hora == v2.hora))
+            if ((v1.produtos == v2.produtos) && (v1.idC == v2.idC) && (v1.hora == v2.hora) && (v1.id == v2.id))
             {
                 return true;
             }
@@ -146,7 +143,7 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de uma venda</returns>
         public override string ToString()
         {
-            return string.Format("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", quantidade.ToString(), idC.ToString(), idP.ToString(), hora.ToString());
+            return string.Format("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", produtos.ToString(), idC.ToString(), hora.ToString(), id.ToString());
         }
 
         /// <summary>

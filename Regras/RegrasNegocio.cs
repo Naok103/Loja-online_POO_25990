@@ -124,7 +124,7 @@ namespace Regras
             io.DadosProdutos(out nome, out categoria, out preco, out garantia);
             id = produtos.ID(id);
 
-            if (marcas.ExisteMarca(idm) == true || preco > 850 || garantia < 8)
+            if (marcas.ExisteMarca(idm) == false || preco > 850 || garantia < 8)
                 return false;
             try
             {
@@ -324,21 +324,24 @@ namespace Regras
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <param name="clientes">variavel para a lista de clientes</param>
         /// <returns></returns>
-        public bool RealizarVenda(Vendas vendas, Produtos produtos, Clientes clientes, Stocks stocks)
+        public bool RealizarVenda(Vendas vendas, Clientes clientes, Stocks stocks)
         {
             IO io = new IO();
 
-            int quantidade, idc, idp;
+            int idc, id = 0;
+            int[] quantidade;
+            int[] idp;
             DateTime hora;
+            id = vendas.ID(id);
+            io.DadosVendas(out quantidade, out idp, out idc);
 
-            io.DadosVendas(out quantidade, out idc, out idp);
-
-            if (produtos.ExisteProduto(idp) == true && clientes.ExisteCliente(idp) == true)
+            if (clientes.ExisteCliente(idc) == true)
             {
                 hora = DateTime.Now;
-                Venda venda = new Venda(quantidade, idp, idc, hora);
+                Venda venda = new Venda(idc, hora, id);
                 vendas.AdicionarVenda(venda);
-                stocks.RetirarStock(idp, quantidade);
+                vendas.AdicionarProdutos(idp, quantidade, id);
+                StockVenda(idp, quantidade, stocks);
                 return true;
             }
             return false;
@@ -351,9 +354,10 @@ namespace Regras
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="m">variavel para o nome do ficheiro</param>
         /// <returns></returns>
-        public bool GuardarVendas(Vendas vendas, string m)
+        public bool GuardarVendas(Vendas vendas, string m, string n)
         {
             vendas.GuardarVenda(m);
+            vendas.GuardarVendaProduto(n);
             return true;
         }
 
@@ -363,9 +367,10 @@ namespace Regras
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="m">variavel para o nome do ficheiro</param>
         /// <returns></returns>
-        public Vendas LerVendas(Vendas vendas, string m)
+        public Vendas LerVendas(Vendas vendas, string m, string n)
         {
             vendas.LerVenda(m);
+            vendas.LerVendaProduto(n);
             return vendas;
         }
 
@@ -400,6 +405,22 @@ namespace Regras
             {
                 throw new StockE("Falha nas regras" + "-" + e.Message);
             }
+        }
+
+        /// <summary>
+        /// Funcoa para retirar do stock os produtos de uma venda
+        /// </summary>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="p">variavel array para os ids dos produtos vendidos</param>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <returns></returns>
+        public bool StockVenda(int[] p, int[] q, Stocks stocks)
+        {
+            for (int i = 0; i < p.Length; i++)
+            {
+                stocks.RetirarStock(p[i], q[i]);
+            }
+            return true;
         }
 
         /// <summary>

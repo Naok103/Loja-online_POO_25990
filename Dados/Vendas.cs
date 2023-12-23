@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Excecoes;
 using Objetos;
 
 namespace Dados
@@ -67,6 +68,43 @@ namespace Dados
         }
 
         /// <summary>
+        /// Funcao para adicionar produtos e as suas quantidades vendidas a um dicionario de uma venda
+        /// </summary>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="id">variavel array para os ids dos produtos vendidos</param>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <returns></returns>
+        public bool AdicionarProdutos(int[] p, int[] q, int id)
+        {
+            foreach(Venda venda in vendas)
+            {
+                if(venda.ID == id)
+                {
+                    for (int i = 0; i < p.Length; i++)
+                    {
+                        venda.Produtos.Add(p[i], q[i]);
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// funcao para buscar o proximo id da venda
+        /// </summary>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <returns>retorna o id</returns>
+        public int ID(int id)
+        {
+            for (int i = 0; i < vendas.Count; i++)
+            {
+                id = vendas[i].ID;
+            }
+            id++;
+            return id;
+        }
+
+        /// <summary>
         /// Funcao para guardar as vendas num ficheiro binario
         /// </summary>
         /// <param name="m">variavel para o nome do ficheiro</param>
@@ -107,7 +145,7 @@ namespace Dados
                 {
                     foreach (var venda in vendas)
                     {
-                        writer.WriteLine($"{venda.Quantidades}#{venda.IDP}#{venda.IDC}#{venda.Hora}");
+                        writer.WriteLine($"{venda.ID}#{venda.IDC}#{venda.Hora}");
                     }
                 }
                 return true;
@@ -132,14 +170,12 @@ namespace Dados
                 while (linha != null)
                 {
                     string[] sdados = linha.Split('#');
-                    int quantidade = int.Parse(sdados[0]);
-                    int Idp = int.Parse(sdados[1]);
-                    int Idc = int.Parse(sdados[2]);
-                    DateTime hora = DateTime.Parse(sdados[3]);
+                    int Id = int.Parse(sdados[0]);
+                    int Idc = int.Parse(sdados[1]);
+                    DateTime hora = DateTime.Parse(sdados[2]);
 
-                    Venda venda = new Venda(quantidade, Idp, Idc, hora);
-
-                    vendas.Add(venda);
+                    Venda venda = new Venda(Idc, hora, Id);
+                    vendas.Add(venda); 
 
                     linha = sr.ReadLine();
                 }
@@ -147,6 +183,63 @@ namespace Dados
             return true;
         }
 
+        /// <summary>
+        /// Funcao para guardar as quantidades e produtos de uma venda num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarVendaProduto(string m)
+        {
+            try
+            {
+                using (StreamWriter writer = File.CreateText(m))
+                {
+                    foreach (var venda in vendas)
+                    {
+                        foreach(var p in venda.Produtos)
+                        {
+                            writer.WriteLine($"{venda.ID}#{p.Key}#{p.Value}");
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao gravar produtos: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Funcao para ler as quantidades e produtos de uma venda num ficheiro de texto
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool LerVendaProduto(string m)
+        {
+            using (StreamReader sr = File.OpenText(m))
+            {
+                string linha = sr.ReadLine();
+                while (linha != null)
+                {
+                    string[] sdados = linha.Split('#');
+                    int Id = int.Parse(sdados[0]);
+                    int IdP = int.Parse(sdados[1]);
+                    int Quantidade = int.Parse(sdados[2]);
+
+                    int[] q = new int[1];
+                    int[] p = new int[1];
+                    q[0] = Quantidade;
+                    p[0] = IdP;
+
+                    AdicionarProdutos(p, q, Id);
+
+                    linha = sr.ReadLine();
+                }
+            }
+            return true;
+        }
         #endregion
 
         #region IEnumerable<Venda> Members

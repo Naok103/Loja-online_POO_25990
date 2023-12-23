@@ -23,24 +23,23 @@ namespace Loja_online
             Menu menu = new Menu();
 
             produtos = regras.LerProduto(produtos, @"dadosprodutos");
-            clientes = regras.LerClientes(clientes, @"dadosclientes");
             marcas = regras.LerMarcas(marcas, @"dadosmarcas");
             stocks = regras.LerStocks(stocks, @"dadosstock");
+            clientes = regras.LerClientes(clientes, @"dadosclientes");
+            
             funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
             managers = regras.LerManager(managers, @"dadosmanager");
-            campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
+            //campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
             fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
-
-            /*
-            regras.LerVendas(vendas, @"dadosvendas");
-            */
+            vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
+            
 
             menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
 
             regras.GravarProduto(produtos, @"dadosprodutos");
             regras.GravarMarcas(marcas, @"dadosmarcas");
             regras.GuardarClientes(clientes, @"dadosclientes");
-            regras.GuardarVendas(vendas, @"dadosvendas");
+            regras.GuardarVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
             regras.GravarStocks(stocks, @"dadosstock");
             regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
             regras.GuardarManager(managers, @"dadosmanager");

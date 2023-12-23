@@ -238,7 +238,7 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.RealizarVenda(vendas,produtos,clientes, stocks);
+                        regras.RealizarVenda(vendas,clientes, stocks);
                         break;
                     case 2:
                         io.MostrarVendas(vendas);
@@ -249,7 +249,7 @@ namespace Loja_online
                         io.MostrarVendasCliente(vendas, id);
                         break;
                     case 4:
-                        regras.GuardarVendas(vendas, @"dadosvendas");
+                        regras.GuardarVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
                         break;
                 }
             } while (opcao != 0);

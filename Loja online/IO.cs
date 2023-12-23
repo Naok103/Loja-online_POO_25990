@@ -332,7 +332,10 @@ namespace Loja_online
         {
             foreach(Venda venda in v)
             {
-                Console.WriteLine("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", venda.Quantidades, venda.IDC, venda.IDP, venda.Hora);
+                foreach(var p in venda.Produtos)
+                {
+                    Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora);
+                }
             }
         }
 
@@ -347,7 +350,10 @@ namespace Loja_online
             {
                 if(venda.IDC == id)
                 {
-                    Console.WriteLine("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", venda.Quantidades, venda.IDC, venda.IDP, venda.Hora);
+                    foreach(var p in venda.Produtos)
+                    {
+                        Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora);
+                    } 
                 }
             }
         }
@@ -355,17 +361,28 @@ namespace Loja_online
         /// <summary>
         /// Funcao para pedir ao utilizador as variaveis de uma venda
         /// </summary>
-        /// <param name="quantidade"> variavel para a quantidade vendida</param>
-        /// <param name="idp">variavel para o id do produto vendido</param>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="id">variavel array para os ids dos produtos vendidos</param>
         /// <param name="idc">variavel para o id do cliente que comprou o produto</param>
-        public void DadosVendas(out int quantidade, out int idc, out int idp)
+        public void DadosVendas(out int[] q, out int[] id, out int idc)
         {
-            Console.WriteLine("Qual a quantidade?");
-            quantidade = int.Parse(Console.ReadLine());
+            int y;
+
             Console.WriteLine("Qual o id do cliente?");
             idc = int.Parse(Console.ReadLine());
-            Console.WriteLine("Qual 0 id do produto?");
-            idp = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quantos produtos vao ser vendidos?");
+            y = int.Parse(Console.ReadLine());
+
+            q = new int[y ];
+            id = new int[y ];
+
+            for (int i = 0;i < y ; i++)
+            {
+                Console.WriteLine("Qual o id do produto?");
+                id[i] = int.Parse(Console.ReadLine());
+                Console.WriteLine("Qual a quantidade?");
+                q[i] = int.Parse(Console.ReadLine());  
+            } 
         }
 
         #endregion
