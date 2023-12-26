@@ -1,13 +1,8 @@
-﻿using Objetos;
-using Dados;
-using System;
-using System.Collections.Generic;
-using System.Security.Policy;
-using System.Collections;
-using System.ComponentModel;
-using System.Runtime;
-using System.Diagnostics.Contracts;
+﻿using System;
+
 using objetos;
+using Objetos;
+using Dados;
 
 namespace Loja_online
 {

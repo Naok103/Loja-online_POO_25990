@@ -2,11 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 using Excecoes;
 using Objetos;
 
@@ -80,7 +77,7 @@ namespace Dados
         /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
         public bool AlterarProduto(int id, int[] t, string nome, string categoria, double preco, int garantia)
         {
-            if (ExisteProduto(id) == true)
+            if (ExisteProduto(id) == false)
                 throw new ProdutosE();
 
             for (int o = 0;o< produtos.Count; o++)
@@ -250,8 +247,9 @@ namespace Dados
         /// <param name="idv">variavel para o id da venda</param>
         /// <param name="quantidade">variavel para a quantidade do novo produto</param>
         /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
         /// <returns>retorna true se o produto foi trocado ou false se nao</returns>
-        public bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas)
+        public bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas, Stocks stocks)
         {
             foreach(Venda venda in vendas)
             {
@@ -261,6 +259,7 @@ namespace Dados
                     {
                         if(p.Key == idp)
                         {
+                            stocks.AdicionarStock(p.Key, p.Value);
                             venda.Produtos.Remove(p.Key);
                         }
                     }
@@ -272,7 +271,7 @@ namespace Dados
         }
 
         /// <summary>
-        /// Funcao para calcular
+        /// Funcao para calcular o preco da troca
         /// </summary>
         /// <param name="id">variavel para o id do novo produto</param>
         /// <param name="idp">variavel para o id do produto a ser trocado</param>

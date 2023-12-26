@@ -148,6 +148,21 @@ namespace Dados
             return false;
         }
 
+        public bool VerificarQuantidade(int id, int quantidade)
+        {
+            for (int i = 0; i < stocks.Count; i++)
+            {
+                if (stocks[i].IDP == id)
+                {
+                    if(quantidade < stocks[i].Quantidade)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// funcao para buscar o proximo id do stock
         /// </summary>

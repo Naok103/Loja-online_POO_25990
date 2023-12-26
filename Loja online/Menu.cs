@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Security.Policy;
-using Dados;
+
 using objetos;
 using Objetos;
 using Regras;
 using Excecoes;
+using Dados;
 
 
 namespace Loja_online
@@ -161,7 +161,7 @@ namespace Loja_online
                         //desenvolver
                         break;
                     case 5:
-                        regras.TrocarProduto(produtos, vendas);
+                        regras.TrocarProduto(produtos, vendas, stocks);
                         break;
                     case 6:
                         io.MostrarProdutos(produtos);

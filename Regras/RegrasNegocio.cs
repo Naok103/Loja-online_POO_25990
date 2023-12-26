@@ -190,17 +190,26 @@ namespace Regras
             return false;
         }
 
-        public bool TrocarProduto(Produtos produtos ,Vendas vendas)
+        /// <summary>
+        /// Funcoa com as regras de negocio para trocar um produto
+        /// </summary>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
+        /// <returns></returns>
+        public bool TrocarProduto(Produtos produtos ,Vendas vendas, Stocks stocks)
         {
             IO io = new IO();
 
             int id, idp, idv, quantidade;
 
             io.Troca(out id, out idp, out idv, out quantidade);
+            
 
-            if(produtos.Preco(idv,idp,id,quantidade,vendas) == true)
+            if(produtos.Preco(idv,idp,id,quantidade,vendas) == true && stocks.VerificarQuantidade(id, quantidade) == true)
             {
-                produtos.TrocarProduto(idp,id,idv,quantidade,vendas);
+                produtos.TrocarProduto(idp, id, idv, quantidade, vendas, stocks);
+                stocks.RetirarStock(id, quantidade);
                 return true;
             }
             
