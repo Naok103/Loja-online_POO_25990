@@ -185,6 +185,25 @@ namespace Loja_online
         }
 
         /// <summary>
+        /// Funcao para pedir ao utilizador as variaveis de uma troca
+        /// </summary>
+        /// <param name="id">variavel para o id do novo produto</param>
+        /// <param name="idp">variavel para o id do produto a ser trocado</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="quantidade">variavel para a quantidade do novo produto</param>
+        public void Troca(out int id,out int idv, out int idp, out int quantidade)
+        {
+            Console.WriteLine("Qual o id do produto que deseja trocar?");
+            idp = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o id do produto novo?");
+            id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o id da venda?");
+            idv = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual a quantidade do novo produto?");
+            quantidade = int.Parse(Console.ReadLine());
+        }
+
+        /// <summary>
         /// Funcao para pedir ao utilizador quias as variaveis que quer alterar de um produto
         /// </summary>
         /// <param name="nome">variavel para o nome do produto</param>

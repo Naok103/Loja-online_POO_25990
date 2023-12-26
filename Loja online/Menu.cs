@@ -161,7 +161,7 @@ namespace Loja_online
                         //desenvolver
                         break;
                     case 5:
-                        //desenvolver
+                        regras.TrocarProduto(produtos, vendas);
                         break;
                     case 6:
                         io.MostrarProdutos(produtos);
@@ -233,12 +233,12 @@ namespace Loja_online
             do
             {
                 Console.WriteLine("Escolha uma opcao:");
-                Console.WriteLine(" 0- Menu Principal\n1- RealizarVenda\n2- Mostrar Venda\n3- Mostrar Venda Cliente\n4- Guardar Manager");
+                Console.WriteLine(" 0- Menu Principal\n1- Realizar Venda\n2- Mostrar Venda\n3- Mostrar Venda Cliente\n4- Guardar Venda");
                 opcao = int.Parse(Console.ReadLine());
                 switch (opcao)
                 {
                     case 1:
-                        regras.RealizarVenda(vendas,clientes, stocks);
+                        regras.RealizarVenda(vendas,clientes, stocks, produtos);
                         break;
                     case 2:
                         io.MostrarVendas(vendas);

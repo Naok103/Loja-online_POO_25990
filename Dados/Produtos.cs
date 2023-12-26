@@ -245,11 +245,77 @@ namespace Dados
         /// <summary>
         /// Funcao para trocar um produto
         /// </summary>
-        /// <param name="id">variavel para o id do produto</param>
-        /// <returns></returns>
-        public bool TrocarProduto(int id)// desenvolver
+        /// <param name="idp">variavel para o id do produto a trocar</param>
+        /// <param name="id">variavel para o id do novo produto</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="quantidade">variavel para a quantidade do novo produto</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <returns>retorna true se o produto foi trocado ou false se nao</returns>
+        public bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas)
         {
+            foreach(Venda venda in vendas)
+            {
+                if(venda.ID == idv)
+                {
+                    foreach (var p in venda.Produtos)
+                    {
+                        if(p.Key == idp)
+                        {
+                            venda.Produtos.Remove(p.Key);
+                        }
+                    }
+                    venda.Produtos.Add(id, quantidade);
+                    return true;
+                }
+            }
             return false;
+        }
+
+        /// <summary>
+        /// Funcao para calcular
+        /// </summary>
+        /// <param name="id">variavel para o id do novo produto</param>
+        /// <param name="idp">variavel para o id do produto a ser trocado</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="quantidade">variavel para a quantidade do novo produto</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <returns></returns>
+        public bool Preco(int idv,int idp, int id, int quantidade, Vendas vendas)
+        {
+            double preco1 = 0, preco2 = 0;
+            foreach (Venda venda in vendas)
+            {
+                if (venda.ID == idv)
+                {
+                    foreach (var p in venda.Produtos)
+                    {
+                        if(p.Key == idp)
+                        {
+                            foreach (Produto produto in produtos)
+                            {
+                                if (produto.Id == idp)
+                                {
+                                    preco1 = produto.Preco * p.Value;
+                                } 
+                                if(produto.Id == id)
+                                {
+                                    preco2 = produto.Preco * quantidade;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            if(preco2 > preco1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>

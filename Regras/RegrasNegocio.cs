@@ -190,6 +190,23 @@ namespace Regras
             return false;
         }
 
+        public bool TrocarProduto(Produtos produtos ,Vendas vendas)
+        {
+            IO io = new IO();
+
+            int id, idp, idv, quantidade;
+
+            io.Troca(out id, out idp, out idv, out quantidade);
+
+            if(produtos.Preco(idv,idp,id,quantidade,vendas) == true)
+            {
+                produtos.TrocarProduto(idp,id,idv,quantidade,vendas);
+                return true;
+            }
+            
+            return false;
+        }
+
         /// <summary>
         /// funcao com a regra de negocio para gravar os produtos
         /// </summary>

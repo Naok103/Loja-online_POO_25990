@@ -85,9 +85,13 @@ namespace Dados
         /// <summary>
         /// Funcao para trocar um produto
         /// </summary>
-        /// <param name="id">variavel para o id do produto</param>
-        /// <returns></returns>
-        bool TrocarProduto(int id);// desenvolver
+        /// <param name="idp">variavel para o id do produto a trocar</param>
+        /// <param name="id">variavel para o id do novo produto</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="quantidade">variavel para a quantidade do novo produto</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <returns>retorna true se o produto foi trocado ou false se nao</returns>
+        bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas);
 
         /// <summary>
         /// funcao para buscar o proximo id do produto
