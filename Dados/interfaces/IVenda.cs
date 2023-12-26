@@ -31,6 +31,17 @@ namespace Dados
         bool AdicionarProdutos(int[] p, int[] q, int id);
 
         /// <summary>
+        /// Funcao para calcular
+        /// </summary>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="p">variavel array para os ids dos produtos vendidos</param>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <param name="preco">variavel para o preco da venda</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
+        double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos);
+
+        /// <summary>
         /// funcao para buscar o proximo id da venda
         /// </summary>
         /// <param name="id">variavel para o id da venda</param>

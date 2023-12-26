@@ -26,13 +26,11 @@ namespace Loja_online
             marcas = regras.LerMarcas(marcas, @"dadosmarcas");
             stocks = regras.LerStocks(stocks, @"dadosstock");
             clientes = regras.LerClientes(clientes, @"dadosclientes");
-            
             funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
             managers = regras.LerManager(managers, @"dadosmanager");
             //campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
             fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
             vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
-            
 
             menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
 

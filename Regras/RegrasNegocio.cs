@@ -119,7 +119,8 @@ namespace Regras
         {
             IO io = new IO();
             string nome, categoria;
-            int preco, id = 0, garantia;
+            int id = 0, garantia;
+            double preco;
 
             io.DadosProdutos(out nome, out categoria, out preco, out garantia);
             id = produtos.ID(id);
@@ -151,7 +152,8 @@ namespace Regras
         {
             IO io = new IO();
             string nome, categoria;
-            int preco,garantia;
+            int garantia;
+            double preco;
             int[] array;
 
             io.AlterarDadosP(out nome, out categoria, out preco, out garantia, out array);
@@ -316,29 +318,31 @@ namespace Regras
 
         #region VENDA
 
-       
+
         /// <summary>
         /// funcao com a regra de negocio para adicionar uma venda
         /// </summary>
         /// <param name="vendas">variavel para a lista de vendas</param>
-        /// <param name="produtos">variavel para a lista de produtos</param>
         /// <param name="clientes">variavel para a lista de clientes</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns></returns>
-        public bool RealizarVenda(Vendas vendas, Clientes clientes, Stocks stocks)
+        public bool RealizarVenda(Vendas vendas, Clientes clientes, Stocks stocks, Produtos produtos)
         {
             IO io = new IO();
 
             int idc, id = 0;
+            double preco = 0;
             int[] quantidade;
             int[] idp;
             DateTime hora;
             id = vendas.ID(id);
             io.DadosVendas(out quantidade, out idp, out idc);
-
+            preco = vendas.CalculaPreco(idp, quantidade, id, preco, produtos);
             if (clientes.ExisteCliente(idc) == true)
             {
                 hora = DateTime.Now;
-                Venda venda = new Venda(idc, hora, id);
+                Venda venda = new Venda(idc, hora, id, preco);
                 vendas.AdicionarVenda(venda);
                 vendas.AdicionarProdutos(idp, quantidade, id);
                 StockVenda(idp, quantidade, stocks);

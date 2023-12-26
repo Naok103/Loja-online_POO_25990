@@ -78,7 +78,7 @@ namespace Dados
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <returns>retorna true se for alterado uma propriedade do produto e false se nao</returns>
-        public bool AlterarProduto(int id, int[] t, string nome, string categoria, int preco, int garantia)
+        public bool AlterarProduto(int id, int[] t, string nome, string categoria, double preco, int garantia)
         {
             if (ExisteProduto(id) == true)
                 throw new ProdutosE();
@@ -218,7 +218,7 @@ namespace Dados
                     string nome = sdados[1];
                     string categoria = sdados[2];
                     int garantia = int.Parse(sdados[3]);
-                    int preco = int.Parse(sdados[4]);
+                    double preco = double.Parse(sdados[4]);
                     int idm = int.Parse(sdados[5]);
 
 

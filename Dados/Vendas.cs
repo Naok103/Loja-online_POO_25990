@@ -90,6 +90,36 @@ namespace Dados
         }
 
         /// <summary>
+        /// Funcao para calcular
+        /// </summary>
+        /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
+        /// <param name="p">variavel array para os ids dos produtos vendidos</param>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <param name="preco">variavel para o preco da venda</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <returns></returns>
+        public double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos)
+        {
+            foreach (Venda venda in vendas)
+            {
+                if (venda.ID == id)
+                {
+                    for (int i = 0; i < p.Length; i++)
+                    {
+                        foreach(Produto produto in produtos)
+                        {
+                            if(produto.Id == p[i])
+                            {
+                                preco = produto.Preco * q[i];
+                            }
+                        }
+                    }
+                }
+            }
+            return preco;
+        }
+
+        /// <summary>
         /// funcao para buscar o proximo id da venda
         /// </summary>
         /// <param name="id">variavel para o id da venda</param>
@@ -145,7 +175,7 @@ namespace Dados
                 {
                     foreach (var venda in vendas)
                     {
-                        writer.WriteLine($"{venda.ID}#{venda.IDC}#{venda.Hora}");
+                        writer.WriteLine($"{venda.ID}#{venda.IDC}#{venda.Hora}#{venda.Preco}");
                     }
                 }
                 return true;
@@ -173,8 +203,9 @@ namespace Dados
                     int Id = int.Parse(sdados[0]);
                     int Idc = int.Parse(sdados[1]);
                     DateTime hora = DateTime.Parse(sdados[2]);
+                    double Preco = double.Parse(sdados[3]);
 
-                    Venda venda = new Venda(Idc, hora, Id);
+                    Venda venda = new Venda(Idc, hora, Id, Preco);
                     vendas.Add(venda); 
 
                     linha = sr.ReadLine();

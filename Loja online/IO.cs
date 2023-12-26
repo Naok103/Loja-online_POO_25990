@@ -172,14 +172,14 @@ namespace Loja_online
         /// <param name="categoria">variavel para a categoria do produto</param>
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
-        public void DadosProdutos(out string nome, out string categoria, out int preco, out int garantia)
+        public void DadosProdutos(out string nome, out string categoria, out double preco, out int garantia)
         {
             Console.WriteLine("Qual o nome do produto?");
             nome = Console.ReadLine();
             Console.WriteLine("Qual a categoria a qual o produto pertence?");
             categoria = Console.ReadLine();
             Console.WriteLine("Qual o preco do produto?");
-            preco = int.Parse(Console.ReadLine());
+            preco = double.Parse(Console.ReadLine());
             Console.WriteLine("Qual a garantia do produto em semanas?");
             garantia = int.Parse(Console.ReadLine());
         }
@@ -192,11 +192,11 @@ namespace Loja_online
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <param name="array">variavel array que determina que propriedade do produto deve ser alterada</param>
-        public void AlterarDadosP(out string nome, out string categoria, out int preco, out int garantia, out int[] array)
+        public void AlterarDadosP(out string nome, out string categoria, out double preco, out int garantia, out int[] array)
         {
             categoria = "";
             nome = "";
-            preco = 0;
+            preco = 0.00;
             garantia= 0;
             array = new int[4];
             int a, i = 0;
@@ -225,7 +225,7 @@ namespace Loja_online
                     else if (a == 3)
                     {
                         Console.WriteLine("Qual o novo preco do produto?");
-                        preco = int.Parse(Console.ReadLine());
+                        preco = double.Parse(Console.ReadLine());
                         array[i] = a;
                         i++;
                         break;
@@ -334,7 +334,7 @@ namespace Loja_online
             {
                 foreach(var p in venda.Produtos)
                 {
-                    Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora);
+                    Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}, Preco: {5}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora, venda.Preco);
                 }
             }
         }
@@ -352,7 +352,7 @@ namespace Loja_online
                 {
                     foreach(var p in venda.Produtos)
                     {
-                        Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora);
+                        Console.WriteLine("Id Venda: {0}, Quantidade: {1}, Id Cliente: {2}, Id Produto: {3}, Hora: {4}, Preco: {5}", venda.ID, p.Value, venda.IDC, p.Key, venda.Hora, venda.Preco);
                     } 
                 }
             }

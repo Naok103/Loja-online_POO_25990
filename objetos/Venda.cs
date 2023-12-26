@@ -19,6 +19,7 @@ namespace Objetos
         private Dictionary<int, int> produtos; // dicionario para os produtos vendidos e as suas quantidades
         private int idC; //variavel para o id do cliente que comprou o produto
         private DateTime hora; //variavel para a hora em que a venda foi realizada
+        private double preco; //variavel para o custo da venda
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace Objetos
             produtos = new Dictionary<int, int>();
             idC = 0;
             hora = new DateTime(0,0,0);
+            preco = 0.00;
         }
 
         /// <summary>
@@ -43,12 +45,14 @@ namespace Objetos
         /// <param name="idC">variavel para o id do cliente que comprou o produto</param>
         /// <param name="hora">variavel para a hora em que a venda foi realizada</param>
         /// <param name="id">variavel para o id da venda</param>
-        public Venda(int idC, DateTime hora, int id)
+        /// <param name="preco">variavel para o custo da venda</param>
+        public Venda(int idC, DateTime hora, int id, double preco)
         {
             produtos = new Dictionary<int, int>();
             this.idC = idC;
             this.hora = hora;
             this.id = id;
+            this.preco = preco;
         }
 
         #endregion
@@ -99,6 +103,18 @@ namespace Objetos
             get { return id; }
         }
 
+        /// <summary>
+        /// Propriedades da variavel Id
+        /// </summary>
+        public double Preco
+        {
+            set
+            {
+                if (value > 0)
+                    preco = value;
+            }
+            get { return preco; }
+        }
         #endregion
 
         #region Operadores
@@ -111,7 +127,7 @@ namespace Objetos
         /// <returns>retorna verdaeiro se o conteudo das Vendas comparadas forem iguais e falso se nao forem</returns>
         public static bool operator ==(Venda v1, Venda v2)
         {
-            if ((v1.produtos == v2.produtos) && (v1.idC == v2.idC) && (v1.hora == v2.hora) && (v1.id == v2.id))
+            if ((v1.produtos == v2.produtos) && (v1.idC == v2.idC) && (v1.hora == v2.hora) && (v1.id == v2.id) && (v1.preco == v2.preco))
             {
                 return true;
             }
@@ -143,7 +159,7 @@ namespace Objetos
         /// <returns>retorna uma frase com o conteudo de uma venda</returns>
         public override string ToString()
         {
-            return string.Format("Quantidade: {0}, Id Cliente: {1}, Id Produto: {2}, Hora: {3}", produtos.ToString(), idC.ToString(), hora.ToString(), id.ToString());
+            return string.Format("Produtos: {0}, Id Cliente: {1}, Hora: {2}, ID Venda: {3}, Preco: {4}", produtos.ToString(), idC.ToString(), hora.ToString(), id.ToString(), preco.ToString());
         }
 
         /// <summary>

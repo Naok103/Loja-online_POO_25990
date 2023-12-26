@@ -18,7 +18,7 @@ namespace Objetos
         private int id; //variavel para o id produto
         private string nome; //variavel para o nome do produto
         private string categoria; //variavel para a categoria do produto
-        private int preco; //variavel para o preco do produto
+        private double preco; //variavel para o preco do produto
         private int garantia; //variavel para a garantia do produto
         private int idM; //variavel para o id da marca do produto
 
@@ -50,7 +50,7 @@ namespace Objetos
         /// <param name="preco">variavel para o preco do produto</param>
         /// <param name="garantia">variavel para a garantia do produto</param>
         /// <param name="idM">variavel para o id da marca do produto</param>
-        public Produto(int id, string nome, string categoria, int preco, int garantia, int idM)
+        public Produto(int id, string nome, string categoria, double preco, int garantia, int idM)
         {
             this.id = id;
             this.nome = nome;
@@ -98,12 +98,12 @@ namespace Objetos
         /// <summary>
         /// Propriedades da variavel preco
         /// </summary>
-        public int Preco
+        public double Preco
         {
             set
             {
                 if (value > 0)
-                    id = value;
+                    preco = value;
             }
             get { return preco; }
         }
@@ -116,7 +116,7 @@ namespace Objetos
             set
             {
                 if (value > 0)
-                    id = value;
+                    garantia = value;
             }
             get { return garantia; }
         }
@@ -203,7 +203,6 @@ namespace Objetos
         {
             return preco.CompareTo(p.preco);
         }
-
 
         #endregion
 
