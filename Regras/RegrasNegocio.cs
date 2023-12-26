@@ -191,7 +191,26 @@ namespace Regras
         }
 
         /// <summary>
-        /// Funcoa com as regras de negocio para trocar um produto
+        /// Funcao com as regras de negocio para devolver um produto
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
+        /// <returns></returns>
+        public bool DevolverProduto(int id, int idv, Produtos produtos, Vendas vendas, Stocks stocks)
+        {
+            if(vendas.ExisteVenda(idv) == true)
+            {
+                produtos.DevolverProduto(id, idv, vendas, stocks);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Funcao com as regras de negocio para trocar um produto
         /// </summary>
         /// <param name="produtos">variavel para a lista dos produtos</param>
         /// <param name="vendas">variavel para a lista de vendas</param>

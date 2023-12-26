@@ -79,8 +79,11 @@ namespace Dados
         /// Funcao para devolver um produto
         /// </summary>
         /// <param name="id">variavel para o id do produto</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
         /// <returns></returns>
-        bool DevolverProduto(int id);// desenvolver
+        bool DevolverProduto(int id, int idv, Vendas vendas, Stocks stocks);
 
         /// <summary>
         /// Funcao para trocar um produto

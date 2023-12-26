@@ -86,6 +86,23 @@ namespace Dados
         }
 
         /// <summary>
+        /// Funcao para verificar se uma venda ja existe
+        /// </summary>
+        /// <param name="id">variavel para o id da venda</param>
+        /// <returns>retorna true se a venda existe e false se nao</returns>
+        public bool ExisteVenda(int id)
+        {
+            foreach (Venda venda in vendas)
+            {
+                if (venda.ID == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Funcao para calcular
         /// </summary>
         /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>

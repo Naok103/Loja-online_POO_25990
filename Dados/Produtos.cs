@@ -233,10 +233,29 @@ namespace Dados
         /// Funcao para devolver um produto
         /// </summary>
         /// <param name="id">variavel para o id do produto</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="stocks">variavel para a lista de stocks</param>
         /// <returns></returns>
-        public bool DevolverProduto(int id)// desenvolver
+        public bool DevolverProduto(int id, int idv, Vendas vendas, Stocks stocks)
         {
-            return true;
+            foreach (Venda venda in vendas)
+            {
+                if (venda.ID == idv)
+                {
+                    foreach (var p in venda.Produtos)
+                    {
+                        if (p.Key == id)
+                        {
+                            stocks.AdicionarStock(p.Key, p.Value);
+                            venda.Produtos.Remove(p.Key);
+                            return true;
+                        }
+                    }
+                    
+                }
+            }
+            return false;
         }
 
         /// <summary>

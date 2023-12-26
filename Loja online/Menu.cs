@@ -105,7 +105,7 @@ namespace Loja_online
             RegrasNegocio regras = new RegrasNegocio();
 
             int op;
-            int id;
+            int id, idv;
             bool aux;
             do
             {
@@ -158,7 +158,12 @@ namespace Loja_online
                         break;
 
                     case 4:
-                        //desenvolver
+                        Console.WriteLine("Qual o id do Produto que deseja devolver?");
+                        id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Qual o id da venda em que consta o produto?");
+                        idv = int.Parse(Console.ReadLine());
+
+                        regras.DevolverProduto(id, idv, produtos, vendas, stocks);
                         break;
                     case 5:
                         regras.TrocarProduto(produtos, vendas, stocks);
