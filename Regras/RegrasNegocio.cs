@@ -162,6 +162,7 @@ namespace Regras
             {
                 return false;
             }
+
             try
             {
                 produtos.AlterarProduto(id, array, nome, categoria, preco, garantia);
@@ -227,8 +228,7 @@ namespace Regras
 
             if(produtos.Preco(idv,idp,id,quantidade,vendas) == true && stocks.VerificarQuantidade(id, quantidade) == true)
             {
-                produtos.TrocarProduto(idp, id, idv, quantidade, vendas, stocks);
-                stocks.RetirarStock(id, quantidade);
+                produtos.TrocarProduto(idp, id, idv, quantidade, vendas, stocks, produtos);
                 return true;
             }
             

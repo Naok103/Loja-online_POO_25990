@@ -267,8 +267,9 @@ namespace Dados
         /// <param name="quantidade">variavel para a quantidade do novo produto</param>
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="stocks">variavel para a lista de stocks</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns>retorna true se o produto foi trocado ou false se nao</returns>
-        public bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas, Stocks stocks)
+        public bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas, Stocks stocks, Produtos produtos)
         {
             foreach(Venda venda in vendas)
             {
@@ -278,15 +279,64 @@ namespace Dados
                     {
                         if(p.Key == idp)
                         {
-                            stocks.AdicionarStock(p.Key, p.Value);
-                            venda.Produtos.Remove(p.Key);
+                            if(Garantia(vendas, produtos, idp, idv) == true)
+                            {
+                                stocks.AdicionarStock(p.Key, p.Value);
+                                venda.Produtos.Remove(p.Key);
+                            }
                         }
                     }
                     venda.Produtos.Add(id, quantidade);
+                    stocks.RetirarStock(id, quantidade);
                     return true;
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Funcao que verifica se um produto encontra se dentro da garantia
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="idp">variavel para o id do produto a trocar</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <returns></returns>
+        public bool Garantia(Vendas vendas, Produtos produtos, int idp, int idv) 
+        {
+            DateTime D1 = new DateTime(0,0,0), D2 = DateTime.Now;
+            int garantia = 0;
+            foreach (Venda venda in vendas)
+            {
+                if (venda.ID == idv)
+                {
+                    D1 = venda.Hora;
+                }
+            }
+            foreach(Produto produto in produtos)
+            {
+                if(produto.Id == idp)
+                {
+                    garantia = produto.Garantia;
+                }
+            }
+
+            TimeSpan diferenca = D2 - D1;
+
+            int semanasDeDiferenca = diferenca.Days / 7;
+
+            if(garantia == 0)
+            {
+                return false;
+            }
+            if(semanasDeDiferenca <= garantia)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -341,15 +391,15 @@ namespace Dados
         /// </summary>
         /// <param name="id">variavel para o id do produto</param>
         /// <returns>retorna o id</returns>
-        public int ID(int id)
-        {
-            for (int i = 0; i < produtos.Count; i++)
+            public int ID(int id)
             {
-                id = produtos[i].Id;
+                for (int i = 0; i < produtos.Count; i++)
+                {
+                    id = produtos[i].Id;
+                }
+                id++;
+                return id;
             }
-            id++;
-            return id;
-        }
 
         public void Ordenar()
         {

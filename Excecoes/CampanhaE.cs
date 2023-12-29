@@ -14,7 +14,7 @@ namespace Excecoes
     /// </summary>
     public class CampanhaE : Exception
     {
-        public CampanhaE() : base("Erro em produtos")
+        public CampanhaE() : base("Erro em campanha")
         {
 
         }
@@ -24,7 +24,7 @@ namespace Excecoes
 
         public CampanhaE(string s, Exception e)
         {
-            throw new ProdutosE(s + "-" + e.Message);
+            throw new CampanhaE(s + "-" + e.Message);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Excecoes
 
         public StockE(string s, Exception e)
         {
-            throw new ProdutosE(s + "-" + e.Message);
+            throw new StockE(s + "-" + e.Message);
         }
     }
 }

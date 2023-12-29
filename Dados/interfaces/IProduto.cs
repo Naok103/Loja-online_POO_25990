@@ -94,8 +94,30 @@ namespace Dados
         /// <param name="quantidade">variavel para a quantidade do novo produto</param>
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="stocks">variavel para a lista de stocks</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns>retorna true se o produto foi trocado ou false se nao</returns>
-        bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas, Stocks stocks);
+        bool TrocarProduto(int idp, int id, int idv, int quantidade, Vendas vendas, Stocks stocks, Produtos produtos);
+
+        /// <summary>
+        /// Funcao que verifica se um produto encontra se dentro da garantia
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="idp">variavel para o id do produto a trocar</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <returns></returns>
+        bool Garantia(Vendas vendas, Produtos produtos, int idp, int idv);
+
+        /// <summary>
+        /// Funcao para calcular o preco da troca
+        /// </summary>
+        /// <param name="id">variavel para o id do novo produto</param>
+        /// <param name="idp">variavel para o id do produto a ser trocado</param>
+        /// <param name="idv">variavel para o id da venda</param>
+        /// <param name="quantidade">variavel para a quantidade do novo produto</param>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <returns></returns>
+        bool Preco(int idv, int idp, int id, int quantidade, Vendas vendas);
 
         /// <summary>
         /// funcao para buscar o proximo id do produto
