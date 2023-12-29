@@ -104,6 +104,30 @@ namespace Regras
             return clientes;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para guardar os clientes num ficheiro binario
+        /// </summary>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarClientesB(Clientes clientes, string m)
+        {
+            clientes.GravarClienteB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler os clientes num ficheiro binario
+        /// </summary>
+        /// <param name="clientes">variavel para a lista dos clientes</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Clientes LerClientesB(Clientes clientes, string m)
+        {
+            clientes.LerClienteB(m);
+            return clientes;
+        }
+
         #endregion
 
         #region PRODUTO
@@ -259,6 +283,30 @@ namespace Regras
             return produtos;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar os produtos num ficheiro binario
+        /// </summary>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GravarProdutoB(Produtos produtos, string m)
+        {
+            produtos.GuardarProdutoB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler os produtos num ficheiro binario
+        /// </summary>
+        /// <param name="produtos">variavel para a lista dos produtos</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Produtos LerProdutoB(Produtos produtos, string m)
+        {
+            produtos.LerProdutoB(m);
+            return produtos;
+        }
+
         #endregion
 
         #region MARCA
@@ -285,17 +333,7 @@ namespace Regras
                 return true;
             }
             return false;
-            /*
-            try
-            {
-                marcas.InserirMarca(marca);
-                return true;
-            }
-            catch (Exception e) { }
-            {
-                throw new Exception(e.Message +  " - Falha de Regras de Negocio");
-            }
-            */
+            
         }
 
         /// <summary>
@@ -359,6 +397,30 @@ namespace Regras
             return marcas;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as marcas num ficheiro binario
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GravarMarcasB(Marcas marcas, string m)
+        {
+            marcas.GravarMarcasB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler as marcas num ficheiro binario
+        /// </summary>
+        /// <param name="marcas">variavel para a lista das marcas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Marcas LerMarcasB(Marcas marcas, string m)
+        {
+            marcas.LerMarcasB(m);
+            return marcas;
+        }
+
         #endregion
 
         #region VENDA
@@ -395,13 +457,14 @@ namespace Regras
             }
             return false;
         }
-        
+
 
         /// <summary>
         /// funcao com a regra de negocio para gravar as vendas
         /// </summary>
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="n">variavel para o nome do ficheiro</param>
         /// <returns></returns>
         public bool GuardarVendas(Vendas vendas, string m, string n)
         {
@@ -415,11 +478,37 @@ namespace Regras
         /// </summary>
         /// <param name="vendas">variavel para a lista de vendas</param>
         /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="n">variavel para o nome do ficheiro</param>
         /// <returns></returns>
         public Vendas LerVendas(Vendas vendas, string m, string n)
         {
             vendas.LerVenda(m);
             vendas.LerVendaProduto(n);
+            return vendas;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as vendas num ficheiro binario
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarVendasB(Vendas vendas, string m)
+        {
+            vendas.GuardarVendaB(m);
+            
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler as vendas num ficheiro binario
+        /// </summary>
+        /// <param name="vendas">variavel para a lista de vendas</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Vendas LerVendasB(Vendas vendas, string m)
+        {
+            vendas.LerVendaB(m);
             return vendas;
         }
 
@@ -560,6 +649,30 @@ namespace Regras
         public Stocks LerStocks(Stocks stocks, string m)
         {
             stocks.LerStock(m);
+            return stocks;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para gravar o stock num ficheiro binario
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GravarStocksB(Stocks stocks, string m)
+        {
+            stocks.GravarStockB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler o stock num ficheiro binario
+        /// </summary>
+        /// <param name="stocks">variavel para a lista de stock</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Stocks LerStocksB(Stocks stocks, string m)
+        {
+            stocks.LerStockB(m);
             return stocks;
         }
 
@@ -719,6 +832,30 @@ namespace Regras
             return campanhas;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar as campanhas num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
+        public bool GravarCampanhaB(string m, Campanhas campanhas)
+        {
+            campanhas.GuardarCampanhasB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler as campanhas num ficheiro binario
+        /// </summary>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
+        /// <returns></returns>
+        public Campanhas LerCampanhasB(string m, Campanhas campanhas)
+        {
+            campanhas.LerCampanhasB(m);
+            return campanhas;
+        }
+
         #endregion
 
         #region FUNCIONARIO
@@ -810,6 +947,30 @@ namespace Regras
         public Funcionarios LerFuncionario(Funcionarios funcionarios, string m)
         {
             funcionarios.LerFuncionario(m);
+            return funcionarios;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para  gravar funcionarios num ficheiro binario
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarFuncionarioB(Funcionarios funcionarios, string m)
+        {
+            funcionarios.GuardarFuncionarioB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para  ler funcionarios num ficheiro binario
+        /// </summary>
+        /// <param name="funcionarios">variavel para a lista de funcionarios</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Funcionarios LerFuncionarioB(Funcionarios funcionarios, string m)
+        {
+            funcionarios.LerFuncionarioB(m);
             return funcionarios;
         }
 
@@ -908,6 +1069,30 @@ namespace Regras
             return managers;
         }
 
+        /// <summary>
+        /// funcao com a regra de negocio para gravar os managers num ficheiro binario
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarManagerB(Managers managers, string m)
+        {
+            managers.GuardarManagerB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler os managers num ficheiro binario
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Managers LerManagerB(Managers managers, string m)
+        {
+            managers.LerManagerB(m);
+            return managers;
+        }
+
         #endregion
 
         #region FORNECEDOR
@@ -993,6 +1178,30 @@ namespace Regras
         public Fornecedores LerFornecedores(Fornecedores fornecedores, string m)
         {
             fornecedores.LerFornecedor(m);
+            return fornecedores;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para guardar os fornecedores num ficheiro binario
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public bool GuardarFornecedoresB(Fornecedores fornecedores, string m)
+        {
+            fornecedores.GravarFornecedorB(m);
+            return true;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para ler os fornecedores num ficheiro binario
+        /// </summary>
+        /// <param name="fornecedores">variavel para a lista dos fornecedores</param>
+        /// <param name="m">variavel para o nome do ficheiro</param>
+        /// <returns></returns>
+        public Fornecedores LerFornecedoresB(Fornecedores fornecedores, string m)
+        {
+            fornecedores.LerFornecedorB(m);
             return fornecedores;
         }
 

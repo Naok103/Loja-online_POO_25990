@@ -17,6 +17,8 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/12/2023 14:39:30
     /// </summary>
+
+    [Serializable]
     public class Fornecedores: IFornecedor, IEnumerable<Fornecedor>
     {
         #region ESTADO 

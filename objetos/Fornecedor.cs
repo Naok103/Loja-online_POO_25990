@@ -14,6 +14,8 @@ namespace objetos
     /// Created by: Rafael silva
     /// Created on: 21/12/2023 14:30:31
     /// </summary>
+
+    [Serializable]
     public class Fornecedor : Pessoa
     {
         #region ESTADO 

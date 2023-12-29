@@ -22,15 +22,15 @@ namespace Loja_online
             Fornecedores fornecedores = new Fornecedores();
             Menu menu = new Menu();
 
-            produtos = regras.LerProduto(produtos, @"dadosprodutos");
-            marcas = regras.LerMarcas(marcas, @"dadosmarcas");
-            stocks = regras.LerStocks(stocks, @"dadosstock");
-            clientes = regras.LerClientes(clientes, @"dadosclientes");
-            funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
-            managers = regras.LerManager(managers, @"dadosmanager");
+            //produtos = regras.LerProduto(produtos, @"dadosprodutos");
+            //marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+            //stocks = regras.LerStocks(stocks, @"dadosstock");
+            //clientes = regras.LerClientes(clientes, @"dadosclientes");
+            //funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
+            //managers = regras.LerManager(managers, @"dadosmanager");
             //campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
-            fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
-            vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
+            //fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
+            //vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
 
             menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
 
