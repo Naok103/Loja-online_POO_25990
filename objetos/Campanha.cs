@@ -9,7 +9,7 @@ namespace Objetos
     /// Created on: 08/11/2023 14:25:48
     /// </summary>
     [Serializable]
-    public class Campanha
+    public class Campanha : IComparable<Campanha>
     {
         #region ESTADO 
 
@@ -160,6 +160,15 @@ namespace Objetos
                 }
             }
             return false;
+        }
+
+        #endregion
+
+        #region OUTROSMETODOS
+
+        public int CompareTo(Campanha c)
+        {
+            return desconto.CompareTo(c.desconto);
         }
 
         #endregion

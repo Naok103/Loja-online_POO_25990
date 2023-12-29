@@ -284,6 +284,12 @@ namespace Dados
             }
             return true;
         }
+
+        public void Ordenar()
+        {
+            vendas.Sort();
+        }
+
         #endregion
 
         #region IEnumerable<Venda> Members
@@ -301,8 +307,6 @@ namespace Dados
         #endregion
 
         #endregion
-        
-
 
     }
 }

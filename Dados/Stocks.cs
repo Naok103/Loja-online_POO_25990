@@ -275,6 +275,11 @@ namespace Dados
             return stocks.GetEnumerator();
         }
 
+        public void Ordenar()
+        {
+            stocks.Sort();
+        }
+
         #endregion
 
         #endregion

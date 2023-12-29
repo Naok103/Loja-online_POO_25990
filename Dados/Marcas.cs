@@ -234,6 +234,11 @@ namespace Dados
             return true;
         }
 
+        public void Ordenar()
+        {
+            marcas.Sort();
+        }
+
         #endregion
 
         #region IEnumerable<Marca> Members

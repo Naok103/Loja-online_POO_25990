@@ -272,6 +272,7 @@ namespace Loja_online
         /// <param name="m">variavel para lista das marcas</param>
         public void MostrarMarcas(Marcas m)
         {
+            m.Ordenar();
             foreach (Marca marca in m)
             {
                 Console.WriteLine("Id: {0}, Nome: {1}, Site: {2}", marca.Id, marca.Nome, marca.Site);
@@ -409,6 +410,7 @@ namespace Loja_online
         /// <param name="s">variavel para lista do stock</param>
         public void MostrarStock(Stocks s)
         {
+            s.Ordenar();
             foreach (Stock stock in s)
             {
                 Console.WriteLine("Id stock: {0}, Quantidade: {1}, Id Produto: {2}", stock.ID, stock.Quantidade, stock.IDP);
@@ -422,6 +424,7 @@ namespace Loja_online
         /// <param name="id">variavel para o id do produto</param>
         public void MostrarStockProduto(Stocks s, int id) 
         {
+            s.Ordenar();
             foreach (Stock stock in s)
             {
                 if(stock.IDP == id)
@@ -454,6 +457,7 @@ namespace Loja_online
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         public void MostrarCampanha(Campanhas campanhas) 
         {
+            campanhas.Ordenar();
             foreach(Campanha campanha in campanhas)
             {
                 Console.WriteLine("Campanha: {0}, Duracao: {1}, Desconto: {2}", campanha.Nome, campanha.Duracao, campanha.Desconto);
@@ -467,6 +471,7 @@ namespace Loja_online
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         public void MostrarProdutoCampanha(string nome, Campanhas campanhas)
         {
+            campanhas.Ordenar();
             foreach (Campanha campanha in campanhas)
             {
                 if(campanha.Nome == nome)

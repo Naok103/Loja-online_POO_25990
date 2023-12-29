@@ -350,6 +350,12 @@ namespace Dados
             }
             return true;
         }
+
+        public void Ordenar()
+        {
+            campanhas.Sort();
+        }
+
         #endregion
 
         #region IEnumerable<Venda> Members

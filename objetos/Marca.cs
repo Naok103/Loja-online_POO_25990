@@ -12,7 +12,7 @@ using System;
 namespace Objetos
 {
     [Serializable]
-    public class Marca
+    public class Marca : IComparable<Marca>
     {
         #region ESTADO 
 
@@ -152,7 +152,14 @@ namespace Objetos
 
         #endregion
 
-        
+        #region OUTROSMETODOS
+
+        public int CompareTo(Marca m)
+        {
+            return nome.CompareTo(m.nome);
+        }
+
+        #endregion
 
         #endregion
     }

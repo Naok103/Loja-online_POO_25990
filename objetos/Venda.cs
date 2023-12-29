@@ -11,7 +11,7 @@ namespace Objetos
     /// Created on: 08/11/2023 14:27:30
     /// </summary>
     [Serializable]
-    public class Venda
+    public class Venda : IComparable<Venda>
     {
         #region ESTADO 
 
@@ -182,7 +182,14 @@ namespace Objetos
 
         #endregion
 
-        
+        #region OUTROSMETODOS
+
+        public int CompareTo(Venda v)
+        {
+            return preco.CompareTo(v.preco);
+        }
+
+        #endregion
 
         #endregion
     }

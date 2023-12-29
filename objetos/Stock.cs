@@ -11,7 +11,7 @@ namespace Objetos
     /// Created on: 08/11/2023 14:30:21
     /// </summary>
     [Serializable]
-    public class Stock
+    public class Stock : IComparable<Stock>
     {
         #region ESTADO 
 
@@ -150,6 +150,15 @@ namespace Objetos
                 }
             }
             return false;
+        }
+
+        #endregion
+
+        #region OUTROSMETODOS
+
+        public int CompareTo(Stock s)
+        {
+            return quantidade.CompareTo(s.quantidade);
         }
 
         #endregion
