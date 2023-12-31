@@ -16,54 +16,84 @@ namespace Loja_online
     /// </summary>
     public class Menu
     {
-        public void MenuPrincipal(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores) 
+        public void MenuPrincipal1(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras) 
+        {
+            
+            int op, id;
+            string pass;
+
+            do
+            {
+                Console.WriteLine("Escolha uma opcao:");
+                Console.WriteLine(" 0- Sair \n 1- Produto \n 2- Marca \n 3- Cliente \n 4- Venda \n 5- Stock \n 6- Campanha \n 7- Fornecedor \n 8- Manager");
+                op = int.Parse(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        MenuProduto(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 2:
+                        MenuMarca(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 3:
+                        MenuCliente(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 4:
+                        MenuVenda(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 5:
+                        MenuStock(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 6:
+                        MenuCampanha(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 7:
+                        MenuFornecedor(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        break;
+                    case 8:
+                        Console.WriteLine("Qual e o seu id?");
+                        id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Qual a password ?");
+                        pass = Console.ReadLine();
+                        if (regras.Login(managers, id, pass))
+                        {
+                            MenuPrincipal2(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+                        }
+                        break;
+                    case 0:
+                        break;
+                }
+            } while (op != 0);
+            
+            
+        }
+
+        public void MenuPrincipal2(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             int op;
             Console.WriteLine("Escolha uma opcao:");
-            Console.WriteLine(" 0- Sair \n 1- Produto \n 2- Marca \n 3- Cliente \n 4- Venda \n 5- Stock \n 6- Campanha \n 7- Funcioanrio \n 8- Manager \n 9- Fornecedor");
+            Console.WriteLine(" 0- Menu Principal \n 1- Funcionario \n 2- Manager");
             op = int.Parse(Console.ReadLine());
             do
             {
                 switch (op)
                 {
                     case 1:
-                        MenuProduto(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+                        MenuFuncionario(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
                         break;
                     case 2:
-                        MenuMarca(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 3:
-                        MenuCliente(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 4:
-                        MenuVenda(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 5:
-                        MenuStock(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 6:
-                        MenuCampanha(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 7:
-                        MenuFuncionario(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 8:
-                        MenuManager(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-                        break;
-                    case 9:
-                        MenuFornecedor(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+                        MenuManager(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
                         break;
                     case 0:
                         break;
                 }
             } while (op != 0);
-            Environment.Exit(0);
+            
         }
 
-        public void MenuMarca(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuMarca(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
 
             int op;
             int id;
@@ -92,21 +122,23 @@ namespace Loja_online
                         break;
                     case 4:
                         io.MostrarMarcas(marcas);
-                        Console.Clear();
+                        
                         break;
                     case 5:
                         regras.GravarMarcas(marcas, @"dadosmarcas");
                         break;
+                    case 0:
+                        break;
                 }
             } while (op != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuProduto(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuProduto(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int op;
             int id, idv;
@@ -176,28 +208,29 @@ namespace Loja_online
                         break;
                     case 6:
                         io.MostrarProdutos(produtos);
-                        Console.Clear();
+                       
                         break;
                     case 7:
                         Console.WriteLine("Qual o id da marca que deseja ver os produtos?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarProdutosMarca(produtos, id);
-                        Console.Clear();
+                        
                         break;
                     case 8:
                         regras.GravarProduto(produtos, @"dadosprodutos");
                         break;
-
+                    case 0:
+                        break;
                 }
             } while (op != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuCliente(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuCliente(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int opcao, id;
             do
@@ -225,27 +258,29 @@ namespace Loja_online
                         break;
                     case 4:
                         io.MostrarClientes(clientes);
-                        Console.Clear();
+                        
                         break; 
                     case 5:
                         Console.WriteLine("Qual o id do Cliente que deseja ver?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarCliente(clientes, id);
-                        Console.Clear();
+                        
                         break;
                     case 6:
                         regras.GuardarClientes(clientes, @"dadosclientes");
                         break;
+                    case 0:
+                        break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuVenda(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores) 
+        public void MenuVenda(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras) 
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int opcao, id;
             do
@@ -256,33 +291,35 @@ namespace Loja_online
                 switch (opcao)
                 {
                     case 1:
-                        regras.RealizarVenda(vendas,clientes, stocks, produtos);
+                        regras.RealizarVenda(vendas,clientes, stocks, produtos, campanhas);
                         Console.Clear();
                         break;
                     case 2:
                         io.MostrarVendas(vendas);
-                        Console.Clear();
+                        
                         break;
                     case 3:
                         Console.WriteLine("Qual o id do Cliente que deseja ver as vendas?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarVendasCliente(vendas, id);
-                        Console.Clear();
+                        
                         break;
                     case 4:
                         regras.GuardarVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
                         break;
+                    case 0:
+                        break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuStock(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuStock(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
 
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int op;
             int id;
@@ -331,30 +368,32 @@ namespace Loja_online
                         break;
                     case 5:
                         io.MostrarStock(stocks);
-                        Console.Clear();
+                        
                         break;
                     case 6:
                         Console.WriteLine("Qual o id do Produto que deseja ver o stock?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarStockProduto(stocks, id);
-                        Console.Clear();
+                        
                         break;
                     case 7:
                         regras.GravarStocks(stocks, @"dadosstock");
                         break;
+                    case 0:
+                        break;
                 }
             } while (op != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuCampanha(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuCampanha(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
-            int opcao, id;
-            string nome;
+            int opcao, idp, id;
+            
             do
             {
                 Console.WriteLine("Escolha uma opcao:");
@@ -377,12 +416,12 @@ namespace Loja_online
                         
                     case 2:
 
-                        Console.WriteLine("Qual o nome da Campanha que deseja alterar?");
-                        nome = Console.ReadLine();
+                        Console.WriteLine("Qual o id da Campanha que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
 
                         try
                         {
-                            regras.AlterarCampanha(nome, campanhas);
+                            regras.AlterarCampanha(id, campanhas);
                             Console.Clear();
                             break;
                         }
@@ -393,21 +432,21 @@ namespace Loja_online
                         
                     case 3:
 
-                        Console.WriteLine("Qual o nome da Campanha que deseja retirar?");
-                        nome = Console.ReadLine();
-                        regras.RetirarCampanha(nome, campanhas);
+                        Console.WriteLine("Qual o id da Campanha que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
+                        regras.RetirarCampanha(id, campanhas);
                         Console.Clear();
                         break;
                     case 4:
 
                         Console.WriteLine("Qual o id do Produto que deseja adicionar a Campanha?");
+                        idp = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Qual o id da Campanha que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Qual o nome da Campanha que deseja adicionar o produto?");
-                        nome = Console.ReadLine();
 
                         try
                         {
-                            regras.AdicionarProdutoCampanha(id, nome, produtos, campanhas);
+                            regras.AdicionarProdutoCampanha(idp, id, produtos, campanhas);
                             Console.Clear();
                             break;
                         }
@@ -418,41 +457,39 @@ namespace Loja_online
 
                     case 5:
                         Console.WriteLine("Qual o id do Produto que deseja adicionar a Campanha?");
+                        idp = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Qual o id da Campanha que deseja alterar?");
                         id = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Qual o nome da Campanha que deseja adicionar o produto?");
-                        nome = Console.ReadLine();
 
-                        regras.RetirarProdutoCampanha(id, nome, produtos, campanhas);
+                        regras.RetirarProdutoCampanha(idp, id, produtos, campanhas);
                         Console.Clear();
                         break;
                     case 6:
                         io.MostrarCampanha(campanhas);
-                        Console.Clear();
+                        
                         break;
 
                     case 7:
-                        Console.WriteLine("Qual o nome da Campanha que deseja ver os Produtos?");
-                        nome = Console.ReadLine();
+                        Console.WriteLine("Qual o id da Campanha que deseja alterar?");
+                        id = int.Parse(Console.ReadLine());
 
-                        io.MostrarProdutoCampanha(nome, campanhas);
-                        Console.Clear();
+                        io.MostrarProdutoCampanha(id, campanhas);  
                         break;
-
                     case 8:
-
                         regras.GravarCampanha(@"dadoscampanhas", @"dadosprodutocampanha", campanhas);
-
+                        break;
+                    case 0:
                         break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuFuncionario(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuFuncionario(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int opcao, id;
             do
@@ -480,21 +517,23 @@ namespace Loja_online
                         break;
                     case 4:
                         io.MostrarFuncionarios(funcionarios);
-                        Console.Clear();
+                        
                         break;
                     case 5:
                         regras.GuardarFuncionario(funcionarios, @"dadosfuncionario");
                         break;
+                    case 0:
+                        break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
 
-        public void MenuManager(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuManager(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int opcao, id;
             do
@@ -522,23 +561,22 @@ namespace Loja_online
                         break;
                     case 4:
                         io.MostrarManagers(managers);
-                        Console.Clear();
+                        
                         break;
                     case 5:
                         regras.GuardarManager(managers, @"dadosmanager");
                         break;
+                    case 0:
+                        break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
-
-            
         }
 
-        public void MenuFornecedor(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores)
+        public void MenuFornecedor(Produtos produtos, Marcas marcas, Stocks stocks, Clientes clientes, Funcionarios funcionarios, Managers managers, Vendas vendas, Campanhas campanhas, Fornecedores fornecedores, RegrasNegocio regras)
         {
             IO io = new IO();
-            RegrasNegocio regras = new RegrasNegocio();
+            
 
             int opcao, id;
             do
@@ -566,21 +604,23 @@ namespace Loja_online
                         break;
                     case 4:
                         io.MostrarFornecedores(fornecedores);
-                        Console.Clear();
+                        
                         break;
                     case 5:
                         Console.WriteLine("Qual o id do Cliente que deseja ver?");
                         id = int.Parse(Console.ReadLine());
                         io.MostrarFornecedor(fornecedores, id);
-                        Console.Clear();
+                        
                         break;
                     case 6:
                         regras.GuardarFornecedores(fornecedores, @"dadosfornecedores");
                         break;
+                    case 0:
+                        break;
                 }
             } while (opcao != 0);
             Console.Clear();
-            MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            
         }
     }
 }

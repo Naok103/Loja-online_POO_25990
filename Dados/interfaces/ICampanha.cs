@@ -12,63 +12,71 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 10:55:33
     /// </summary>
-    internal interface ICampanha
+    public interface ICampanha
     {
         /// <summary>
         /// Funcao para adicionar uma campanha a lista
         /// </summary>
         /// <param name="campanha">variavel para a campanha</param>
         /// <returns>retorna true se for adicionado e false se nao</returns>
-        bool InseirCampanha(Campanha campanha);
+        bool InserirCampanha(Campanha campanha);
 
         /// <summary>
         /// Funcao para adicionar um produto a uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
-        /// <param name="id">variavel para o id do produtos</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produtos</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns>retorna true se for adicionado e false se nao</returns>
-        bool AdicionarProdutoCampanha(string nome, int id, Produtos produtos);
+        bool AdicionarProdutoCampanha(int id, int idp, Produtos produtos);
 
         /// <summary>
         /// Funcao para retirar um produto de uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
-        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
         /// <returns>retorna true se removeu o produto da campanha ou false se nao</returns>
-        bool RetirarProdutoCampanha(string nome, int id);
+        bool RetirarProdutoCampanha(int id, int idp);
 
         /// <summary>
         /// Funcao para alterar uma campanha
         /// </summary>
-        /// <param name="t">variavel array que determina que propriedade da campanha deve ser alterada</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
-        bool AlterarCampanha(int[] t, string nome, int duracao, int desconto);
+        bool AlterarCampanha(int id, int[] t, string nome, int duracao, double desconto);
 
         /// <summary>
         /// Funcao para retirar uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <returns>retorna true se removeu a campanha ou false se nao</returns>
-        bool RetirarCampanha(string nome);
+        bool RetirarCampanha(int id);
 
         /// <summary>
         /// Funcao para verificar se uma campanha ja existe
         /// </summary>
-        /// <param name="nome">variavel para o id da campanha</param>
-        /// <returns>retorna true se a campanha existe e false se nao</returns>
-        bool ExisteCampanha(string nome);
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <returns>retorna true se a  campanha existe e false se nao</returns>
+        bool ExisteCampanha(int id);
 
         /// <summary>
         /// Funcao para verificar se um produto existe numa campanha
         /// </summary>
-        /// <param name="nome">variavel para o id da campanha</param>
-        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
         /// <returns>retorna true se o produto existe e false se nao</returns>
-        bool ExisteProdutoCampanha(int id, string nome);
+        bool ExisteProdutoCampanha(int idp, int id);
+
+        /// <summary>
+        /// funcao para buscar o proximo id da campanha
+        /// </summary>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <returns>retorna o id</returns>
+        int ID(int id);
 
         /// <summary>
         /// Funcao para guardar as campanhas num ficheiro binario

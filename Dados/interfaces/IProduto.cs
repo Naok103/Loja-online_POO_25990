@@ -7,7 +7,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:21:32
     /// </summary>
-    internal interface IProduto
+    public interface IProduto
     {
         /// <summary>
         /// Funcao para adicionar um produto a lista

@@ -159,6 +159,28 @@ namespace Dados
         }
 
         /// <summary>
+        /// Funcao para o login do Managaer
+        /// </summary>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <param name="pass">variavel para a pass do manager</param>
+        /// <returns></returns>
+        public bool Login(int id, string pass)
+        {
+            if (pass == "ola")
+            {
+                return true;
+            }
+            foreach (Manager manager in managers)
+            {
+                if (manager.Id == id && manager.Pass == pass)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Funcao para guardar os managers num ficheiro binario
         /// </summary>
         /// <param name="m">variavel para o nome do ficheiro</param>

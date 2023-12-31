@@ -12,7 +12,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 10:56:34
     /// </summary>
-    internal interface IStock
+    public interface IStock
     {
         /// <summary>
         /// Funcao para adicionar um stock a lista
@@ -50,6 +50,14 @@ namespace Dados
         /// <param name="quantidade">variavel para a quantidade do produto a ser retirada do stock</param>
         /// <returns>retorna true se os produto/s foi/foram retirado/s ou false se nao</returns>
         bool RetirarStock(int id, int quantidade);
+
+        /// <summary>
+        /// Funcao para verificar se existe quantidade suficiente para se vender
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="quantidade">variavel para a quantidade do produto a ser vendida</param>
+        /// <returns></returns>
+        bool VerificarQuantidade(int id, int quantidade);
 
         /// <summary>
         /// funcao para buscar o proximo id do stock

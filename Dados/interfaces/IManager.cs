@@ -13,7 +13,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 16/12/2023 15:22:24
     /// </summary>
-    internal interface IManager
+    public interface IManager
     {
         /// <summary>
         /// Funcao para adicionar um manager a lista
@@ -54,6 +54,8 @@ namespace Dados
         /// <param name="id">variavel para o id do manager</param>
         /// <returns>retorna o id</returns>
         int ID(int id);
+
+        bool Login(int id, string pass);
 
         /// <summary>
         /// Funcao para guardar os managers num ficheiro binario

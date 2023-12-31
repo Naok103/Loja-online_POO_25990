@@ -467,14 +467,14 @@ namespace Loja_online
         /// <summary>
         /// Funcao para mostrar os produtos de um campanha especifica na consola
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="campanhas">variavel para a lista de campanhas</param>
-        public void MostrarProdutoCampanha(string nome, Campanhas campanhas)
+        public void MostrarProdutoCampanha(int id, Campanhas campanhas)
         {
             campanhas.Ordenar();
             foreach (Campanha campanha in campanhas)
             {
-                if(campanha.Nome == nome)
+                if(campanha.Id == id)
                 {
                     foreach (Produto produto in campanha.IDP)
                     {
@@ -490,12 +490,12 @@ namespace Loja_online
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
-        public void DadosCampanha(out string nome, out int desconto, out int duracao)
+        public void DadosCampanha(out string nome, out double desconto, out int duracao)
         {
             Console.WriteLine("Qual o nome da campanha?");
             nome = Console.ReadLine();
-            Console.WriteLine("Qual o desconto praticado na campanha?");
-            desconto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Qual o desconto praticado na campanha(0.00)?");
+            desconto = double.Parse(Console.ReadLine());
             Console.WriteLine("Qual a duracao da campanha em semanas?");
             duracao = int.Parse(Console.ReadLine());
         }
@@ -507,7 +507,7 @@ namespace Loja_online
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
-        public void AlterarDadosCA(out int[] array, out string nome, out int desconto, out int duracao)
+        public void AlterarDadosCA(out int[] array, out string nome, out double desconto, out int duracao)
         {
             nome = "";
             desconto = 0;
@@ -541,7 +541,7 @@ namespace Loja_online
                     else if (b == 3)
                     {
                         Console.WriteLine("Qual o novo desconto da Campanha?");
-                        desconto = int.Parse(Console.ReadLine());
+                        desconto = double.Parse(Console.ReadLine());
                         t = b;
                         t++;
                         break;

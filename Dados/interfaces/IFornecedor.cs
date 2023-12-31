@@ -14,7 +14,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/12/2023 14:48:52
     /// </summary>
-    internal interface IFornecedor
+    public interface IFornecedor
     {
         /// <summary>
         /// Funcao para adicionar um fornecedor a lista

@@ -103,32 +103,44 @@ namespace Dados
         }
 
         /// <summary>
-        /// Funcao para calcular
+        /// Funcao para calcular o preco de uma venda
         /// </summary>
         /// <param name="q"> variavel array para a quantidade vendida de cada produto</param>
         /// <param name="p">variavel array para os ids dos produtos vendidos</param>
         /// <param name="id">variavel para o id da venda</param>
         /// <param name="preco">variavel para o preco da venda</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        public double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos)
+        public double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos, Campanhas campanhas)
         {
-            foreach (Venda venda in vendas)
+            double aux;
+            double desconto;
+            for (int i = 0; i < p.Length; i++)
             {
-                if (venda.ID == id)
+                foreach (Produto produto in produtos)
                 {
-                    for (int i = 0; i < p.Length; i++)
+                    if (produto.Id == p[i])
                     {
-                        foreach(Produto produto in produtos)
+                        aux = produto.Preco * q[i];
+                        preco += aux;
+                    }
+                }
+                foreach (Campanha campanha in campanhas)
+                {
+                    foreach (Produto produto in campanha.IDP)
+                    {
+                        if (produto.Id == p[i])
                         {
-                            if(produto.Id == p[i])
-                            {
-                                preco = produto.Preco * q[i];
-                            }
+                            desconto = campanha.Desconto;
+                            desconto *= produto.Preco;
+                            desconto *= q[i];
+                            preco -= desconto;
                         }
                     }
                 }
             }
+
             return preco;
         }
 

@@ -13,10 +13,10 @@ namespace Objetos
     {
         #region ESTADO 
 
-        
+        private int id; //variavel para o id da campanha
         private string nome; //variavel para o nome da campanha
         private int duracao; //variavel para a duracao da campanha
-        private int desconto; //variavel para o desconto no produto durante a campanha
+        private double desconto; //variavel para o desconto no produto durante a campanha
         private List<Produto> idP; //lista com os produtos sobre efeito da campanha
 
         #endregion
@@ -34,17 +34,20 @@ namespace Objetos
             duracao = 0;
             desconto = 0;
             idP = new List<Produto>();
+            id = 0;
             
         }
 
         /// <summary>
         /// Construtor por parametros
         /// </summary>
-        /// /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
-        public Campanha(string nome, int duracao, int desconto)
+        public Campanha(int id, string nome, int duracao, double desconto)
         {
+            this.id = id;
             this.nome = nome;
             this.duracao = duracao;
             this.desconto = desconto;
@@ -55,6 +58,15 @@ namespace Objetos
         #endregion
 
         #region PROPRIEDADES
+
+        /// <summary>
+        /// Propriedade da variavel id
+        /// </summary>
+        public int Id
+        {
+            set { id = value; }
+            get { return id; }
+        }
 
         /// <summary>
         /// Propriedade da variavel nome
@@ -77,7 +89,7 @@ namespace Objetos
         /// <summary>
         /// Propriedades da variavel desconto
         /// </summary>
-        public int Desconto
+        public double Desconto
         {
             set
             {
@@ -111,7 +123,7 @@ namespace Objetos
         public static bool operator ==(Campanha c1, Campanha c2)
         {
 
-            if ((c1.nome == c2.nome) && (c1.desconto == c2.desconto) && (c1.duracao == c2.duracao))
+            if ((c1.id == c2.id) && (c1.nome == c2.nome) && (c1.desconto == c2.desconto) && (c1.duracao == c2.duracao))
             {
                 return true;
             }

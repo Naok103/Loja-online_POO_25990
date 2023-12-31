@@ -12,7 +12,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 10:55:58
     /// </summary>
-    internal interface IVenda
+    public interface IVenda
     {
         /// <summary>
         /// Funcao para adicionar uma venda a lista de vendas
@@ -45,8 +45,9 @@ namespace Dados
         /// <param name="id">variavel para o id da venda</param>
         /// <param name="preco">variavel para o preco da venda</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
+        /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos);
+        double CalculaPreco(int[] p, int[] q, int id, double preco, Produtos produtos, Campanhas campanhas);
 
         /// <summary>
         /// funcao para buscar o proximo id da venda

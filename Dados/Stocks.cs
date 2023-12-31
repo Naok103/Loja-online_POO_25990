@@ -113,7 +113,7 @@ namespace Dados
         /// <returns>retorna true se os produto/s foi/foram adicionado/s ou false se nao</returns>
         public bool AdicionarStock(int id, int quantidade)
         {
-            if (ExisteStock(id) == true)
+            if (ExisteStock(id) == false)
             {
                 throw new StockE();
             }
@@ -148,6 +148,12 @@ namespace Dados
             return false;
         }
 
+        /// <summary>
+        /// Funcao para verificar se existe quantidade suficiente para se vender
+        /// </summary>
+        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="quantidade">variavel para a quantidade do produto a ser vendida</param>
+        /// <returns></returns>
         public bool VerificarQuantidade(int id, int quantidade)
         {
             for (int i = 0; i < stocks.Count; i++)

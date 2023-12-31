@@ -14,7 +14,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 14/12/2023 16:37:20
     /// </summary>
-    internal interface IFuncionario
+    public interface IFuncionario
     {
         /// <summary>
         /// Funcao para adicionar um funcionario a lista

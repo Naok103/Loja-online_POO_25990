@@ -22,17 +22,35 @@ namespace Loja_online
             Fornecedores fornecedores = new Fornecedores();
             Menu menu = new Menu();
 
-            //produtos = regras.LerProduto(produtos, @"dadosprodutos");
-            //marcas = regras.LerMarcas(marcas, @"dadosmarcas");
-            //stocks = regras.LerStocks(stocks, @"dadosstock");
-            //clientes = regras.LerClientes(clientes, @"dadosclientes");
-            //funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
-            //managers = regras.LerManager(managers, @"dadosmanager");
-            //campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
-            //fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
-            //vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
+            #region LER
+            
+            produtos = regras.LerProduto(produtos, @"dadosprodutos");
+            marcas = regras.LerMarcas(marcas, @"dadosmarcas");
+            stocks = regras.LerStocks(stocks, @"dadosstock");
+            clientes = regras.LerClientes(clientes, @"dadosclientes");
+            funcionarios = regras.LerFuncionario(funcionarios, @"dadosfuncionario");
+            managers = regras.LerManager(managers, @"dadosmanager");
+            campanhas = regras.LerCampanhas(@"dadoscampanhas", @"dadosprodutocampanha", campanhas, produtos);
+            fornecedores = regras.LerFornecedores(fornecedores, @"dadosfornecedores");
+            vendas = regras.LerVendas(vendas, @"dadosvendas", @"dadosvendaproduto");
 
-            menu.MenuPrincipal(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores);
+            /*
+            produtos = regras.LerProdutoB(produtos, @"dadosprodutosB");
+            marcas = regras.LerMarcasB(marcas, @"dadosmarcasB");
+            stocks = regras.LerStocksB(stocks, @"dadosstockB");
+            clientes = regras.LerClientesB(clientes, @"dadosclientesB");
+            funcionarios = regras.LerFuncionarioB(funcionarios, @"dadosfuncionarioB");
+            managers = regras.LerManagerB(managers, @"dadosmanagerB");
+            campanhas = regras.LerCampanhasB(@"dadoscampanhasB",campanhas);
+            fornecedores = regras.LerFornecedoresB(fornecedores, @"dadosfornecedoresB");
+            vendas = regras.LerVendasB(vendas, @"dadosvendasB");
+            */
+
+            #endregion
+
+            menu.MenuPrincipal1(produtos, marcas, stocks, clientes, funcionarios, managers, vendas, campanhas, fornecedores, regras);
+
+            #region GRAVAR
 
             regras.GravarProduto(produtos, @"dadosprodutos");
             regras.GravarMarcas(marcas, @"dadosmarcas");
@@ -43,6 +61,20 @@ namespace Loja_online
             regras.GuardarManager(managers, @"dadosmanager");
             regras.GravarCampanha(@"dadoscampanhas", @"dadosprodutocampanha", campanhas);
             regras.GuardarFornecedores(fornecedores, @"dadosfornecedores");
+
+            regras.GravarProdutoB(produtos, @"dadosprodutosB");
+            regras.GravarMarcasB(marcas, @"dadosmarcasB");
+            regras.GuardarClientesB(clientes, @"dadosclientesB");
+            regras.GuardarVendasB(vendas, @"dadosvendasB");
+            regras.GravarStocksB(stocks, @"dadosstockB");
+            regras.GuardarFuncionarioB(funcionarios, @"dadosfuncionarioB");
+            regras.GuardarManagerB(managers, @"dadosmanagerB");
+            regras.GravarCampanhaB(@"dadoscampanhasB", campanhas);
+            regras.GuardarFornecedoresB(fornecedores, @"dadosfornecedoresB");
+
+            #endregion
+
+            Environment.Exit(0);
         }
     }
 }

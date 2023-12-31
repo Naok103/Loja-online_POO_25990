@@ -56,9 +56,9 @@ namespace Dados
         /// </summary>
         /// <param name="campanha">variavel para a campanha</param>
         /// <returns>retorna true se for adicionado e false se nao</returns>
-        public bool InseirCampanha(Campanha campanha)
+        public bool InserirCampanha(Campanha campanha)
         {
-            if (ExisteCampanha(campanha.Nome) == true)
+            if (ExisteCampanha(campanha.Id) == true)
                 throw new CampanhaE();
 
             campanhas.Add(campanha);
@@ -68,24 +68,27 @@ namespace Dados
         /// <summary>
         /// Funcao para adicionar um produto a uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
-        /// <param name="id">variavel para o id do produtos</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produtos</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns>retorna true se for adicionado e false se nao</returns>
-        public bool AdicionarProdutoCampanha(string nome,int id, Produtos produtos)
+        public bool AdicionarProdutoCampanha(int id,int idp, Produtos produtos)
         {
-            if (ExisteCampanha(nome) == true)
+            if (!ExisteCampanha(id))
+            {
                 throw new CampanhaE();
+            }
+                
 
             foreach (Campanha campanha in campanhas)
             {
-                if(campanha.Nome == nome)
+                if(campanha.Id == id)
                 {
-                    if (ExisteProdutoCampanha(id, nome) == false)
+                    if (ExisteProdutoCampanha(idp, id) == false)
                     {
                         foreach(Produto produto in produtos)
                         {
-                            if(produto.Id == id)
+                            if(produto.Id == idp)
                             {
                                 campanha.IDP.Add(produto);
                                 return true;
@@ -100,18 +103,18 @@ namespace Dados
         /// <summary>
         /// Funcao para retirar um produto de uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
-        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
         /// <returns>retorna true se removeu o produto da campanha ou false se nao</returns>
-        public bool RetirarProdutoCampanha(string nome, int id)
+        public bool RetirarProdutoCampanha(int id, int idp)
         {
             foreach(Campanha campanha in campanhas)
             {
-                if(campanha.Nome == nome)
+                if(campanha.Id == id)
                 {
                     foreach(Produto produto in campanha.IDP)
                     {
-                        if(produto.Id == id)
+                        if(produto.Id == idp)
                         {
                             campanha.IDP.Remove(produto);
                             return true;
@@ -125,15 +128,19 @@ namespace Dados
         /// <summary>
         /// Funcao para alterar uma campanha
         /// </summary>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="t">variavel que determina que propriedade da campanha deve ser alterada</param>
         /// <param name="nome">variavel para o nome da campanha</param>
         /// <param name="duracao">variavel para a duracao da campanha</param>
         /// <param name="desconto">variavel para o desconto no produto durante a campanha</param>
         /// <returns>retorna true se for alterado uma propriedade da campanha e false se nao</returns>
-        public bool AlterarCampanha(int[] t, string nome, int duracao, int desconto)
+        public bool AlterarCampanha(int id, int[] t, string nome, int duracao, double desconto)
         {
-            if (ExisteCampanha(nome) == true)
+            if (!ExisteCampanha(id))
+            {
                 throw new CampanhaE();
+            }
+                
 
             for (int k = 0; k < campanhas.Count; k++)
             {
@@ -162,13 +169,13 @@ namespace Dados
         /// <summary>
         /// Funcao para retirar uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <returns>retorna true se removeu a campanha ou false se nao</returns>
-        public bool RetirarCampanha(string nome)
+        public bool RetirarCampanha(int id)
         {
             foreach(Campanha campanha in campanhas)
             {
-                if(campanha.Nome == nome)
+                if(campanha.Id == id)
                 {
                     campanhas.Remove(campanha);
                     return true;
@@ -180,13 +187,13 @@ namespace Dados
         /// <summary>
         /// Funcao para verificar se uma campanha ja existe
         /// </summary>
-        /// <param name="nome">variavel para o id da campanha</param>
-        /// <returns>retorna true se a campanha existe e false se nao</returns>
-        public bool ExisteCampanha(string nome)
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <returns>retorna true se a  campanha existe e false se nao</returns>
+        public bool ExisteCampanha(int id)
         {
             foreach(Campanha campanha in campanhas)
             {
-                if (campanha.Nome == nome)
+                if (campanha.Id == id)
                 {
                     return true;
                 }
@@ -197,18 +204,18 @@ namespace Dados
         /// <summary>
         /// Funcao para verificar se um produto existe numa campanha
         /// </summary>
-        /// <param name="nome">variavel para o id da campanha</param>
-        /// <param name="id">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
         /// <returns>retorna true se o produto existe e false se nao</returns>
-        public bool ExisteProdutoCampanha(int id, string nome)
+        public bool ExisteProdutoCampanha(int idp, int id)
         {
             foreach(Campanha campanha in campanhas)
             {
-                if(campanha.Nome == nome)
+                if(campanha.Id == id)
                 {
                     foreach(Produto produto in campanha.IDP)
                     {
-                        if(produto.Id == id)
+                        if(produto.Id == idp)
                         {
                             return true;
                         }
@@ -216,6 +223,21 @@ namespace Dados
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// funcao para buscar o proximo id da campanha
+        /// </summary>
+        /// <param name="id">variavel para o id da campanha</param>
+        /// <returns>retorna o id</returns>
+        public int ID(int id)
+        {
+            for (int i = 0; i < campanhas.Count; i++)
+            {
+                id = campanhas[i].Id;
+            }
+            id++;
+            return id;
         }
 
         /// <summary>
@@ -259,7 +281,7 @@ namespace Dados
                 {
                     foreach (var campanha in campanhas)
                     {
-                        writer.WriteLine($"{campanha.Nome}#{campanha.Desconto}#{campanha.Duracao}");
+                        writer.WriteLine($"{campanha.Id}#{campanha.Nome}#{campanha.Desconto}#{campanha.Duracao}");
                     }
                 }
                 return true;
@@ -284,11 +306,12 @@ namespace Dados
                 while (linha != null)
                 {
                     string[] sdados = linha.Split('#');
-                    string nome = sdados[0];
-                    int desconto = int.Parse(sdados[1]);
-                    int duracao = int.Parse(sdados[2]);
+                    int id = int.Parse(sdados[0]);
+                    string nome = sdados[1];
+                    double desconto = double.Parse(sdados[2]);
+                    int duracao = int.Parse(sdados[3]);
                     
-                    Campanha campanha = new Campanha(nome,duracao,desconto);
+                    Campanha campanha = new Campanha(id,nome,duracao,desconto);
 
                     campanhas.Add(campanha);
 
@@ -313,7 +336,7 @@ namespace Dados
                     {
                         foreach(Produto produto in campanha.IDP)
                         {
-                            writer.WriteLine($"{campanha.Nome}#{produto.Id}");
+                            writer.WriteLine($"{campanha.Id}#{produto.Id}");
                         }
                     }
                 }
@@ -340,10 +363,10 @@ namespace Dados
                 while (linha != null)
                 {
                     string[] sdados = linha.Split('#');
-                    string nomeC = sdados[0];
                     int id = int.Parse(sdados[1]);
+                    int idp = int.Parse(sdados[1]);
 
-                    AdicionarProdutoCampanha(nomeC, id, produtos);
+                    AdicionarProdutoCampanha(id, idp, produtos);
 
                     linha = sr.ReadLine();
                 }

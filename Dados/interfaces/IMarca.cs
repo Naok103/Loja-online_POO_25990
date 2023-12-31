@@ -12,7 +12,7 @@ namespace Dados
     /// Created by: Rafael silva
     /// Created on: 21/11/2023 11:20:28
     /// </summary>
-    internal interface IMarca
+    public interface IMarca
     {
         /// <summary>
         /// Funcao para adicionar uma marca a lista

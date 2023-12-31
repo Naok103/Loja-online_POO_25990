@@ -13,6 +13,7 @@ namespace objetos
     /// Created by: Rafael silva
     /// Created on: 07/12/2023 15:09:07
     /// </summary>
+    [Serializable]
     public class Pessoa
     {
         #region ESTADO 

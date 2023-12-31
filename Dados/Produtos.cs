@@ -391,15 +391,15 @@ namespace Dados
         /// </summary>
         /// <param name="id">variavel para o id do produto</param>
         /// <returns>retorna o id</returns>
-            public int ID(int id)
+        public int ID(int id)
+        {
+            for (int i = 0; i < produtos.Count; i++)
             {
-                for (int i = 0; i < produtos.Count; i++)
-                {
-                    id = produtos[i].Id;
-                }
-                id++;
-                return id;
+                id = produtos[i].Id;
             }
+            id++;
+            return id;
+        }
 
         public void Ordenar()
         {

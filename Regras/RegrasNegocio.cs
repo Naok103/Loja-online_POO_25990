@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Net.Security;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
+
 using Dados;
 using Excecoes;
 using Loja_online;
@@ -160,10 +157,7 @@ namespace Regras
             catch(ProdutosE e)
             {
                 throw new ProdutosE("Falha nas regras" + "-" + e.Message);
-            }
-                
-            
-            
+            }  
         }
 
         /// <summary>
@@ -434,7 +428,7 @@ namespace Regras
         /// <param name="stocks">variavel para a lista de stocks</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <returns></returns>
-        public bool RealizarVenda(Vendas vendas, Clientes clientes, Stocks stocks, Produtos produtos)
+        public bool RealizarVenda(Vendas vendas, Clientes clientes, Stocks stocks, Produtos produtos, Campanhas campanhas)
         {
             IO io = new IO();
 
@@ -445,8 +439,8 @@ namespace Regras
             DateTime hora;
             id = vendas.ID(id);
             io.DadosVendas(out quantidade, out idp, out idc);
-            preco = vendas.CalculaPreco(idp, quantidade, id, preco, produtos);
-            if (clientes.ExisteCliente(idc) == true)
+            preco = vendas.CalculaPreco(idp, quantidade, id, preco, produtos, campanhas);
+            if (clientes.ExisteCliente(idc) == true )
             {
                 hora = DateTime.Now;
                 Venda venda = new Venda(idc, hora, id, preco);
@@ -689,19 +683,20 @@ namespace Regras
         {
             IO io = new IO();
             string nome;
-            int desconto, duracao;
-
+            int duracao, id =0;
+            double desconto;
+            
             io.DadosCampanha(out nome, out desconto, out duracao);
-
-            if(duracao < 4 || desconto < 20)
+            id = campanhas.ID(id);
+            if(duracao < 4 || desconto < 0.20)
             {
                 return false;  
             }
 
             try
             {
-                Campanha campanha = new Campanha(nome, duracao, desconto);
-                campanhas.InseirCampanha(campanha);
+                Campanha campanha = new Campanha(id, nome, duracao, desconto);
+                campanhas.InserirCampanha(campanha);
                 return true;
             }
             catch(CampanhaE e)
@@ -713,21 +708,21 @@ namespace Regras
         /// <summary>
         /// funcao com a regra de negocio para adicionar um produto a uma campanha
         /// </summary>
-        /// <param name="id">variavel para o id do produto</param>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        public bool AdicionarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
+        public bool AdicionarProdutoCampanha(int idp, int id, Produtos produtos, Campanhas campanhas)
         {
-            if(produtos.ExisteProduto(id) == false)
+            if(produtos.ExisteProduto(idp) == false)
             {
                 return false;
             }
 
             try
             {
-                campanhas.AdicionarProdutoCampanha(nome, id, produtos);
+                campanhas.AdicionarProdutoCampanha(id, idp, produtos);
                 return true;
             }
             catch (CampanhaE e)
@@ -739,18 +734,18 @@ namespace Regras
         /// <summary>
         /// funcao com a regra de negocio para retirar um produto de uma campanha
         /// </summary>
-        /// <param name="id">variavel para o id do produto</param>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="idp">variavel para o id do produto</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="produtos">variavel para a lista de produtos</param>
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        public bool RetirarProdutoCampanha(int id, string nome, Produtos produtos, Campanhas campanhas)
+        public bool RetirarProdutoCampanha(int idp, int id, Produtos produtos, Campanhas campanhas)
         {
-            if ((campanhas.ExisteCampanha(nome)) == true && (produtos.ExisteProduto(id) == true))
+            if ((campanhas.ExisteCampanha(id)) == true && (produtos.ExisteProduto(idp) == true))
             {
-                if(campanhas.ExisteProdutoCampanha(id,nome) == true)
+                if(campanhas.ExisteProdutoCampanha(idp,id) == true)
                 {
-                    campanhas.RetirarProdutoCampanha(nome, id);
+                    campanhas.RetirarProdutoCampanha(id, idp);
                     return true;
                 }
             }
@@ -760,25 +755,27 @@ namespace Regras
         /// <summary>
         /// funcao com a regra de negocio para alterar uma campanha
         /// </summary>
-        /// <param name="n">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        public bool AlterarCampanha(string n, Campanhas campanhas)
+        public bool AlterarCampanha(int id, Campanhas campanhas)
         {
             IO io = new IO();
             string nome;
-            int desconto, duracao;
+            int duracao;
+            double desconto;
             int[] array;
 
             io.AlterarDadosCA(out array, out nome, out desconto, out duracao);
 
-            if (duracao < 4 || desconto < 20)
+            if (!(duracao > 4 || desconto > 0.20))
             {
-                return false;   
+                return false;
             }
+            
             try
             {
-                campanhas.AlterarCampanha(array, nome, duracao, desconto);
+                campanhas.AlterarCampanha(id, array, nome, duracao, desconto);
                 return true;
             }
             catch (CampanhaE e)
@@ -790,14 +787,14 @@ namespace Regras
         /// <summary>
         /// funcao com a regra de negocio para retirar uma campanha
         /// </summary>
-        /// <param name="nome">variavel para o nome da campanha</param>
+        /// <param name="id">variavel para o id da campanha</param>
         /// <param name="campanhas">variavel para a lista de campanhas</param>
         /// <returns></returns>
-        public bool RetirarCampanha(string nome, Campanhas campanhas)
+        public bool RetirarCampanha(int id, Campanhas campanhas)
         {
-            if(campanhas.ExisteCampanha(nome) == true)
+            if(campanhas.ExisteCampanha(id) == true)
             {
-                campanhas.RetirarCampanha(nome);
+                campanhas.RetirarCampanha(id);
                 return true;
             }
             return false;
@@ -1019,7 +1016,7 @@ namespace Regras
             int[] array;
             string nome, pass;
 
-            if (managers.ExisteManager(id) == true)
+            if (managers.ExisteManager(id))
             {
                 io.AlterarDadosM(out array, out nome, out contacto, out nif, out pass);
                 managers.AlterarManager(id, array, nome, contacto, nif, pass);
@@ -1037,9 +1034,25 @@ namespace Regras
         public bool RetirarManager(Managers managers, int id)
         {
 
-            if (managers.ExisteManager(id) == true)
+            if (managers.ExisteManager(id))
             {
                 managers.RetirarManager(id);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// funcao com a regra de negocio para o login
+        /// </summary>
+        /// <param name="managers">variavel para a lista de managers</param>
+        /// <param name="id">variavel para o id do manager</param>
+        /// <param name="pass">variavel para a pass do manager</param>
+        /// <returns></returns>
+        public bool Login(Managers managers, int id, string pass)
+        {
+            if(managers.Login(id, pass))
+            {
                 return true;
             }
             return false;
